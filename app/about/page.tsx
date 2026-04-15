@@ -11,7 +11,7 @@ const leaders = [
   { initials:'RK', name:'Rajesh Kumar', title:'Managing Director', qual:'CA, MBA (Finance)', exp:'28+ Years', bio:'Former CFO of multiple PSU entities. Deep expertise in financial governance, statutory compliance, and strategic advisory across public sector undertakings.', tags:['PSU Finance','Statutory Compliance','Strategic Advisory'] },
   { initials:'AS', name:'Arun Sharma', title:'Director – IT Infrastructure', qual:'B.Tech, PMP Certified', exp:'22+ Years', bio:'Specialist in enterprise networking and data center infrastructure. Led IT procurement for large-scale government and enterprise projects across India.', tags:['Data Centers','Enterprise Networking','PSU Procurement'] },
 ];
-
+  
 export default function AboutPage() {
   return (
     <>
