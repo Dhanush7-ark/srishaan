@@ -2,7 +2,19 @@ import SectionReveal from '@/components/ui/SectionReveal';
 import TiltCard from '@/components/ui/TiltCard';
 import ServicesHeroCanvas from '@/components/services/ServicesHeroCanvas';
 import Link from 'next/link';
-import CtaSection from '@/components/home/CtaSection';
+
+function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {
+  return (
+    <SectionReveal className={`word-reveal ${className}`}>
+      {words.map((word, i) => (
+        <span key={i} className="word">
+          <span style={{ transitionDelay: `${i * 0.09}s` }}>{word}</span>
+          {' '}
+        </span>
+      ))}
+    </SectionReveal>
+  );
+}
 
 export const metadata = { title: 'Services | Srishaan Finance' };
 
@@ -206,7 +218,37 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <CtaSection />
+      {/* ── CTA ── */}
+      <section id="cta" style={{ background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '96px 6%' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
+        <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
+        <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
+        <div className="cta-ring" style={{ width: '740px', height: '740px', animationDelay: '1.6s' }}></div>
+        
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <SectionReveal>
+            <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Get in Touch</span>
+            <WordReveal 
+              className="mb-4"
+              words={[
+                <span key="1">Ready</span>,
+                <span key="2">to</span>,
+                <em key="3" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Engage?</em>
+              ]}
+            />
+            <style dangerouslySetInnerHTML={{ __html: `
+              .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+            `}} />
+            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '0 auto 40px' }}>Reach out to discuss your requirements — whether financial advisory, compliance management, or IT infrastructure supply. We respond promptly.</p>
+          </SectionReveal>
+          <SectionReveal delay={0.2}>
+            <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn-gold">Contact Us Today</Link>
+              <Link href="/about" className="btn-ghost" style={{ color: 'rgba(255,255,255,.88)', borderColor: 'rgba(255,255,255,.22)' }}>About Srishaan</Link>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
     </>
   );
 }

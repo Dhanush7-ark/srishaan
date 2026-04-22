@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { useEffect, useRef, Fragment } from 'react';
-import GlobeCanvas from './GlobeCanvas';
+import FinanceCanvas from './FinanceCanvas';
 
 export default function HeroSection() {
   const innerRef = useRef<HTMLDivElement>(null);
@@ -93,9 +93,9 @@ export default function HeroSection() {
           </div>
         </div>
 
-        {/* RIGHT: Globe */}
+        {/* RIGHT: Finance Story Visualization */}
         <div style={{position:'relative',display:'flex',alignItems:'center',justifyContent:'center',height:'560px',opacity:0,animation:'fadeUp .9s .28s cubic-bezier(.16,1,.3,1) forwards'}}>
-          <GlobeCanvas />
+          <FinanceCanvas />
           {/* Floating cards */}
           <div style={{position:'absolute',top:'5%',right:'-2%',backdropFilter:'blur(24px)',WebkitBackdropFilter:'blur(24px)',borderRadius:'16px',padding:'18px 22px',minWidth:'192px',background:'rgba(255,255,255,.10)',border:'1px solid rgba(255,255,255,.14)',boxShadow:'0 8px 32px rgba(0,0,0,.2)',animation:'heroCardIn .8s 1.1s cubic-bezier(.16,1,.3,1) both, floatY 5.5s 2s ease-in-out infinite'}}>
             <div style={{fontSize:'10px',fontWeight:600,textTransform:'uppercase',letterSpacing:'.1em',color:'var(--dim)',marginBottom:'5px'}}>Avg Annual Returns</div>

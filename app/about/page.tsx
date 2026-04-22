@@ -2,180 +2,334 @@ import SectionReveal from '@/components/ui/SectionReveal';
 import TiltCard from '@/components/ui/TiltCard';
 import StatCounter from '@/components/ui/StatCounter';
 import Link from 'next/link';
-import CtaSection from '@/components/home/CtaSection';
+import HeroCanvas from '@/components/about/HeroCanvas';
 import PhilosophyCanvas from '@/components/about/PhilosophyCanvas';
 
 export const metadata = { title: 'About Us | Srishaan Finance' };
 
-const leaders = [
-  { initials:'RK', name:'Rajesh Kumar', title:'Managing Director', qual:'CA, MBA (Finance)', exp:'28+ Years', bio:'Former CFO of multiple PSU entities. Deep expertise in financial governance, statutory compliance, and strategic advisory across public sector undertakings.', tags:['PSU Finance','Statutory Compliance','Strategic Advisory'] },
-  { initials:'AS', name:'Arun Sharma', title:'Director – IT Infrastructure', qual:'B.Tech, PMP Certified', exp:'22+ Years', bio:'Specialist in enterprise networking and data center infrastructure. Led IT procurement for large-scale government and enterprise projects across India.', tags:['Data Centers','Enterprise Networking','PSU Procurement'] },
-];
-  
+function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {
+  return (
+    <SectionReveal className={`word-reveal ${className}`}>
+      {words.map((word, i) => (
+        <span key={i} className="word">
+          <span style={{ transitionDelay: `${i * 0.09}s` }}>{word}</span>
+          {' '}
+        </span>
+      ))}
+    </SectionReveal>
+  );
+}
+
 export default function AboutPage() {
   return (
     <>
-      {/* Hero */}
-      <section style={{padding:'140px 0 80px',background:'var(--navy)',position:'relative',overflow:'hidden'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%'}}>
-          <div style={{fontSize:'13px',color:'var(--dim)',marginBottom:'24px'}}>
-            <Link href="/" style={{color:'var(--dim)',textDecoration:'none'}}>Home</Link>
-            <span style={{margin:'0 10px',opacity:.4}}>/</span>
-            <span style={{color:'var(--gold)'}}>About Us</span>
+      {/* HERO */}
+      <section id="about-hero" style={{ position: 'relative', minHeight: '70vh', display: 'flex', alignItems: 'center', overflow: 'hidden', paddingTop: '68px' }}>
+        <HeroCanvas />
+        <div className="orb orb-a" style={{ position: 'absolute', borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)', width: '460px', height: '460px', right: '4%', top: '5%', background: 'radial-gradient(circle,rgba(26,58,143,.22),transparent 70%)' }}></div>
+        <div className="orb orb-b" style={{ position: 'absolute', borderRadius: '50%', pointerEvents: 'none', filter: 'blur(80px)', width: '320px', height: '320px', left: '6%', bottom: '10%', background: 'radial-gradient(circle,rgba(240,165,0,.08),transparent 70%)' }}></div>
+        <div className="hero-grid" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', backgroundImage: 'radial-gradient(rgba(255,255,255,.055) 1px,transparent 1px)', backgroundSize: '36px 36px', maskImage: 'radial-gradient(ellipse 75% 75% at 50% 50%,black 20%,transparent 100%)' }}></div>
+        
+        <div className="hero-text" style={{ position: 'relative', zIndex: 2, padding: '0 6%', maxWidth: '720px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '12px', color: 'var(--dim)', marginBottom: '20px', animation: 'fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both' }}>
+            <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round"/></svg>
+            <span style={{ color: 'var(--muted)' }}>About Us</span>
           </div>
-          <div style={{display:'inline-flex',alignItems:'center',gap:'8px',background:'rgba(240,165,0,.08)',border:'1px solid rgba(240,165,0,.2)',color:'var(--gold)',fontSize:'11px',fontWeight:600,letterSpacing:'.1em',textTransform:'uppercase',padding:'5px 14px',borderRadius:'100px',marginBottom:'28px'}}>
-            <span style={{width:'6px',height:'6px',borderRadius:'50%',background:'var(--gold)',animation:'blink 2s ease-in-out infinite'}}/>
-            SEBI Registered · Est. 2024
+          
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.22)', color: 'var(--gold)', fontSize: '11.5px', fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', padding: '5px 14px', borderRadius: '100px', marginBottom: '28px', animation: 'fadeUp .7s .2s cubic-bezier(.16,1,.3,1) both' }}>
+            <span style={{ width: '5px', height: '5px', background: 'var(--gold)', borderRadius: '50%', animation: 'blink 2s ease-in-out infinite' }}></span>
+            Incorporated 2025 · Hyderabad
           </div>
-          <h1 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(2.8rem,5vw,5rem)',fontWeight:700,lineHeight:1.06,letterSpacing:'-.03em',maxWidth:'700px'}}>
-            Srishaan Tech &amp; <span className="gold-grad">Financial Services</span>
-          </h1>
-          <p style={{fontSize:'17px',color:'var(--muted)',lineHeight:1.8,maxWidth:'540px',marginTop:'24px'}}>A SEBI-registered private limited company delivering integrated financial and IT infrastructure solutions from Hyderabad.</p>
+          
+          <WordReveal 
+            className="mb-5"
+            words={[
+              <span key="1">Srishaan</span>,
+              <span key="2">Tech &amp;</span>,
+              <br key="br"/>,
+              <em key="3" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Financial</em>,
+              <span key="4">Services</span>
+            ]}
+          />
+          <style dangerouslySetInnerHTML={{ __html: `
+            .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+          `}} />
+          
+          <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.75, fontWeight: 300, maxWidth: '600px', animation: 'fadeUp .7s .85s cubic-bezier(.16,1,.3,1) both' }}>
+            A professionally managed organisation delivering integrated financial, compliance, and IT infrastructure solutions to corporates and public sector undertakings across India.
+          </p>
+        </div>
+        
+        <div style={{ position: 'absolute', bottom: '36px', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', color: 'var(--dim)', fontSize: '10px', letterSpacing: '.1em', textTransform: 'uppercase' }}>
+          <span>Scroll</span>
+          <div style={{ width: '1px', height: '36px', background: 'linear-gradient(to bottom,transparent,var(--dim))', animation: 'slideDown 1.6s ease-in-out infinite' }}></div>
         </div>
       </section>
 
-      {/* Overview */}
-      <section id="overview" style={{padding:'100px 0',background:'var(--navy-2)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%',display:'grid',gridTemplateColumns:'1fr 1fr',gap:'64px',alignItems:'start'}}>
-          <SectionReveal>
-            <h2 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(1.8rem,3vw,2.6rem)',fontWeight:700,lineHeight:1.2,letterSpacing:'-.02em',marginBottom:'24px'}}>Who We Are</h2>
-            <p style={{fontSize:'15px',color:'var(--muted)',lineHeight:1.8,marginBottom:'16px'}}>Srishaan Tech & Financial Services Pvt. Ltd. is a dual-vertical organisation delivering both financial advisory services and IT infrastructure solutions, primarily to public sector undertakings and enterprises across India.</p>
-            <p style={{fontSize:'15px',color:'var(--muted)',lineHeight:1.8,marginBottom:'32px'}}>Incorporated in February 2024 and recognised under Startup India, Make in India, and Digital India initiatives, we bring together decades of expertise in financial governance and enterprise technology.</p>
-            <div style={{display:'flex',gap:'12px',flexWrap:'wrap'}}>
-              {['Startup India','Make in India','Digital India'].map(g=>(
-                <span key={g} style={{fontSize:'11px',fontWeight:700,padding:'6px 14px',borderRadius:'100px',border:'1px solid rgba(240,165,0,.3)',color:'var(--gold)',background:'rgba(240,165,0,.06)',letterSpacing:'.06em'}}>{g}</span>
-              ))}
+      {/* COMPANY OVERVIEW */}
+      <section id="overview" style={{ background: 'var(--navy-2)', padding: '96px 6%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '80px', alignItems: 'start' }}>
+          <div>
+            <SectionReveal className="mb-14">
+              <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Company Overview</span>
+              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>Who We <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Are</em></h2>
+            </SectionReveal>
+            <div>
+              <SectionReveal delay={0.1}><p style={{ color: 'var(--muted)', fontSize: '14.5px', lineHeight: 1.8, fontWeight: 300, marginBottom: '18px' }}>Srishaan Tech & Financial Services Pvt. Ltd. is a professionally managed organisation incorporated in 2025, established with a vision to deliver integrated financial, compliance, and procurement solutions to corporates and PSUs across India.</p></SectionReveal>
+              <SectionReveal delay={0.2}><p style={{ color: 'var(--muted)', fontSize: '14.5px', lineHeight: 1.8, fontWeight: 300, marginBottom: '18px' }}>Headquartered in Hyderabad, Srishaan combines deep financial expertise with IT supply capabilities, supporting organisations in achieving operational efficiency, regulatory compliance, and streamlined procurement.</p></SectionReveal>
+              <SectionReveal delay={0.3}><p style={{ color: 'var(--muted)', fontSize: '14.5px', lineHeight: 1.8, fontWeight: 300 }}>The Company operates with a strong focus on professionalism, process orientation, and technology-driven execution — backed by leadership with 20–40 years of cross-industry experience.</p></SectionReveal>
             </div>
-          </SectionReveal>
-          <SectionReveal delay={0.15}>
-            <div style={{background:'var(--surf)',border:'1px solid var(--bdr)',borderRadius:'16px',padding:'28px',backdropFilter:'blur(20px)'}}>
-              <h3 style={{fontSize:'12px',fontWeight:600,textTransform:'uppercase',letterSpacing:'.1em',color:'var(--dim)',marginBottom:'20px'}}>Statutory Profile</h3>
+            <SectionReveal delay={0.4}>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '28px' }}>
+                {['Startup India', 'Make in India', 'Digital India', 'MSE Registered'].map(g => (
+                  <span key={g} className="gbadge"><span style={{ width: '6px', height: '6px', background: 'var(--gold)', borderRadius: '50%' }}></span>{g}</span>
+                ))}
+              </div>
+            </SectionReveal>
+          </div>
+
+          <div>
+            <SectionReveal className="mb-14">
+              <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Statutory Profile</span>
+              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>Our <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Registration</em></h2>
+            </SectionReveal>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '14px', marginTop: '32px' }}>
               {[
-                ['CIN','U74999TG2024PTC176888'],
-                ['Incorporated','20 February 2024'],
-                ['Headquarters','Hyderabad, Telangana'],
-                ['Classification','Private Limited'],
-                ['GST','36AAQCS6755Q1ZH'],
-                ['Startup Recognition','DPIIT Recognised'],
-              ].map(([k,v])=>(
-                <div key={k} style={{display:'flex',justifyContent:'space-between',alignItems:'center',padding:'12px 0',borderBottom:'1px solid var(--bdr)'}}>
-                  <span style={{fontSize:'12px',color:'var(--dim)',fontWeight:500}}>{k}</span>
-                  <span style={{fontSize:'12px',color:'var(--white)',fontWeight:600,textAlign:'right',maxWidth:'60%'}}>{v}</span>
-                </div>
+                { label: 'CIN', value: 'U62020TS2025PTC205782', mono: true },
+                { label: 'Incorporated', value: '2025 · Companies Act' },
+                { label: 'Headquarters', value: 'Hyderabad, Telangana' },
+                { label: 'Enterprise Classification', value: 'Micro & Small Enterprise (MSE)' },
+                { label: 'GST Registration', value: 'Valid & Active' },
+                { label: 'Startup Recognition', value: 'Govt. of India Framework' },
+              ].map((info, i) => (
+                <SectionReveal key={info.label} delay={i * 0.1}>
+                  <div className="info-card">
+                    <div style={{ fontSize: '10.5px', fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', color: 'var(--dim)', marginBottom: '6px' }}>{info.label}</div>
+                    <div style={{ fontSize: info.mono ? '13px' : '15px', fontWeight: 500, color: info.mono ? 'var(--gold)' : 'var(--white)', lineHeight: 1.5, fontFamily: info.mono ? 'monospace' : 'inherit', letterSpacing: info.mono ? '.04em' : 'normal' }}>{info.value}</div>
+                  </div>
+                </SectionReveal>
               ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES — TWO VERTICALS */}
+      <section id="services-split" style={{ background: 'var(--navy)', padding: '96px 6%' }}>
+        <SectionReveal className="text-center mb-14">
+          <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Business Verticals</span>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>Two Integrated <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Service Streams</em></h2>
+          <p style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '14px auto 0' }}>Financial services depth meets IT infrastructure capability — under one professionally managed organisation.</p>
+        </SectionReveal>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+          {/* Financial vertical */}
+          <SectionReveal>
+            <div className="svc-group">
+              <div className="svc-group-header fin">
+                <div style={{ fontSize: '22px' }}>📊</div>
+                <div>
+                  <div style={{ fontSize: '16px', fontWeight: 600 }}>Financial & Compliance Services</div>
+                  <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 300, marginTop: '2px' }}>Advisory · Accounting · Compliance · CFO</div>
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  { title: 'Outsourced CFO Services', desc: 'Senior financial leadership on demand — strategy, planning, and oversight without the full-time overhead.' },
+                  { title: 'Financial Planning & Budgeting', desc: 'Working capital management, forecasting, and budgeting frameworks aligned with your growth targets.' },
+                  { title: 'MIS Reporting & Strategic Advisory', desc: 'Actionable management information systems and KPI dashboards for data-driven decision-making.' },
+                  { title: 'Accounting & Statutory Compliance', desc: 'GST, Income Tax, and full regulatory compliance management via a structured, documentation-driven approach.' },
+                  { title: 'Bid Management & Procurement Support', desc: 'Proposal preparation and coordination services enabling efficient participation in procurement processes across India.' }
+                ].map((s, i) => (
+                  <div key={i} className="svc-item">
+                    <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '18px', fontWeight: 700, color: 'rgba(240,165,0,.22)', minWidth: '26px', lineHeight: 1.2 }}>0{i+1}</div>
+                    <div>
+                      <h4 style={{ fontSize: '13.5px', fontWeight: 600, marginBottom: '3px' }}>{s.title}</h4>
+                      <p style={{ fontSize: '12.5px', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.55 }}>{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </SectionReveal>
+
+          {/* IT Infrastructure vertical */}
+          <SectionReveal delay={0.2}>
+            <div className="svc-group">
+              <div className="svc-group-header it">
+                <div style={{ fontSize: '22px' }}>🖧</div>
+                <div>
+                  <div style={{ fontSize: '16px', fontWeight: 600 }}>IT Infrastructure & Networking</div>
+                  <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 300, marginTop: '2px' }}>Supply · Cabling · Data Centers · FTTx</div>
+                </div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {[
+                  { title: 'IT Hardware & Infrastructure Supply', desc: 'Reliable sourcing with competitive pricing and complete documentation support aligned with PSU procurement standards.' },
+                  { title: 'Passive Network Components', desc: 'In association with Msys Connect India Pvt. Ltd. — comprehensive structured cabling and connectivity solutions.' },
+                  { title: 'Data Center Infrastructure', desc: 'Pre-terminated copper and fiber systems, high-density patch panels, and full data center build-out support.' },
+                  { title: 'FTTx & Enterprise Networks', desc: 'Fiber-to-the-x last-mile connectivity, network racks, enclosures, cable management, and testing equipment.' }
+                ].map((s, i) => (
+                  <div key={i} className="svc-item">
+                    <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '18px', fontWeight: 700, color: 'rgba(240,165,0,.22)', minWidth: '26px', lineHeight: 1.2 }}>0{i+1}</div>
+                    <div>
+                      <h4 style={{ fontSize: '13.5px', fontWeight: 600, marginBottom: '3px' }}>{s.title}</h4>
+                      <p style={{ fontSize: '12.5px', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.55 }}>{s.desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div style={{ marginTop: '18px' }}>
+                <div style={{ fontSize: '11.5px', color: 'var(--dim)', letterSpacing: '.07em', textTransform: 'uppercase', fontWeight: 600, marginBottom: '12px' }}>Product Portfolio</div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', marginTop: '10px' }}>
+                  {[
+                    'Cat5e / Cat6 / Cat6A / Cat7',
+                    'Optical Fiber OS2 / OM3 / OM4 / OM5',
+                    'Shielded & Unshielded Copper',
+                    'Pre-terminated Fiber Systems',
+                    'High-Density Patch Panels',
+                    'Network Racks & Enclosures',
+                    'FTTx Last-Mile Solutions',
+                    'Network Testing Equipment'
+                  ].map(p => (
+                    <div key={p} className="prod-tag">
+                      <span style={{ width: '5px', height: '5px', background: 'var(--gold)', borderRadius: '50%', flexShrink: 0 }}></span>
+                      {p}
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </SectionReveal>
         </div>
       </section>
 
-      {/* Services Split */}
-      <section id="services-split" style={{padding:'100px 0',background:'var(--navy)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%'}}>
-          <SectionReveal className="mb-16"><h2 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(2rem,3.5vw,3rem)',fontWeight:700,letterSpacing:'-.02em'}}>Our Two Verticals</h2></SectionReveal>
-          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr',gap:'48px'}}>
-            <SectionReveal>
-              <h3 style={{fontSize:'14px',fontWeight:700,textTransform:'uppercase',letterSpacing:'.1em',color:'var(--gold)',marginBottom:'24px'}}>Financial & Compliance Services</h3>
-              {['Outsourced CFO Services','Financial Planning & Budgeting','MIS Reporting & Strategic Advisory','Accounting & Statutory Compliance','Bid Management & Procurement Support'].map((s,i)=>(
-                <div key={s} style={{display:'flex',gap:'16px',alignItems:'flex-start',marginBottom:'20px'}}>
-                  <span style={{width:'26px',height:'26px',borderRadius:'50%',background:'rgba(240,165,0,.1)',border:'1px solid rgba(240,165,0,.3)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'11px',fontWeight:700,color:'var(--gold)',flexShrink:0}}>0{i+1}</span>
-                  <span style={{fontSize:'14.5px',color:'var(--muted)',paddingTop:'3px'}}>{s}</span>
-                </div>
-              ))}
-            </SectionReveal>
-            <SectionReveal delay={0.15}>
-              <h3 style={{fontSize:'14px',fontWeight:700,textTransform:'uppercase',letterSpacing:'.1em',color:'var(--blue-b)',marginBottom:'24px'}}>IT Infrastructure & Networking</h3>
-              {['IT Hardware & Infrastructure Supply','Passive Network Components','Data Center Infrastructure','FTTx & Enterprise Networks'].map((s,i)=>(
-                <div key={s} style={{display:'flex',gap:'16px',alignItems:'flex-start',marginBottom:'20px'}}>
-                  <span style={{width:'26px',height:'26px',borderRadius:'50%',background:'rgba(45,91,227,.1)',border:'1px solid rgba(45,91,227,.3)',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'11px',fontWeight:700,color:'var(--blue-b)',flexShrink:0}}>0{i+1}</span>
-                  <span style={{fontSize:'14.5px',color:'var(--muted)',paddingTop:'3px'}}>{s}</span>
-                </div>
-              ))}
-            </SectionReveal>
-          </div>
-        </div>
-      </section>
-
-      {/* Recognition */}
-      <section id="recognition" style={{padding:'80px 0',background:'var(--navy-2)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%'}}>
-          <SectionReveal className="mb-12"><h2 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(1.8rem,3vw,2.6rem)',fontWeight:700,letterSpacing:'-.02em'}}>Government Recognitions</h2></SectionReveal>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(3,1fr)',gap:'24px'}}>
-            {[{name:'Startup India',icon:'🚀',desc:'Registered and recognised under DPIIT Startup India initiative'},{name:'Make in India',icon:'🇮🇳',desc:'Committed to sourcing and promoting Indian-manufactured products'},{name:'Digital India',icon:'💻',desc:'Aligned with the national digital transformation mission'}].map((r,i)=>(
-              <SectionReveal key={r.name} delay={i*0.1}>
-                <TiltCard className="glass-card" style={{padding:'32px 24px',borderRadius:'16px',textAlign:'center'}}>
-                  <div style={{position:'relative',zIndex:2}}>
-                    <div style={{fontSize:'40px',marginBottom:'16px'}}>{r.icon}</div>
-                    <h3 style={{fontSize:'16px',fontWeight:700,marginBottom:'10px',color:'var(--white)'}}>{r.name}</h3>
-                    <p style={{fontSize:'13px',color:'var(--muted)',lineHeight:1.7}}>{r.desc}</p>
-                  </div>
-                </TiltCard>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Leadership */}
-      <section id="leadership" style={{padding:'100px 0',background:'var(--navy)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%'}}>
-          <SectionReveal className="mb-16"><h2 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(2rem,3.5vw,3rem)',fontWeight:700,letterSpacing:'-.02em'}}>Leadership Team</h2></SectionReveal>
-          <div style={{display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(320px,1fr))',gap:'28px'}}>
-            {leaders.map((l,i)=>(
-              <SectionReveal key={l.name} delay={i*0.15}>
-                <TiltCard className="glass-card" style={{padding:'32px',borderRadius:'20px'}}>
-                  <div style={{position:'relative',zIndex:2}}>
-                    <div style={{display:'flex',alignItems:'center',gap:'16px',marginBottom:'20px'}}>
-                      <div style={{width:'56px',height:'56px',borderRadius:'50%',background:'linear-gradient(135deg,var(--blue),var(--blue-b))',display:'flex',alignItems:'center',justifyContent:'center',fontSize:'18px',fontWeight:700,color:'#fff',flexShrink:0}}>{l.initials}</div>
-                      <div>
-                        <div style={{fontSize:'16px',fontWeight:700,color:'var(--white)',marginBottom:'2px'}}>{l.name}</div>
-                        <div style={{fontSize:'12px',color:'var(--gold)',fontWeight:600}}>{l.title}</div>
-                        <div style={{fontSize:'11px',color:'var(--dim)'}}>{l.qual}</div>
-                      </div>
-                    </div>
-                    <p style={{fontSize:'13.5px',color:'var(--muted)',lineHeight:1.7,marginBottom:'16px'}}>{l.bio}</p>
-                    <div style={{fontSize:'12px',color:'var(--gold)',fontWeight:600,marginBottom:'10px'}}>{l.exp} Experience</div>
-                    <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
-                      {l.tags.map(t=><span key={t} style={{fontSize:'10.5px',padding:'3px 10px',borderRadius:'100px',border:'1px solid var(--bdr)',color:'var(--dim)',background:'var(--surf)'}}>{t}</span>)}
-                    </div>
-                  </div>
-                </TiltCard>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats */}
-      <section style={{padding:'80px 0',background:'var(--navy-3)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%',display:'grid',gridTemplateColumns:'repeat(auto-fit,minmax(180px,1fr))',gap:'40px'}}>
-          {[{target:60,suffix:'+ Yrs',label:'Combined Leadership'},{target:2,suffix:'',label:'Service Verticals'},{target:8,suffix:'',label:'Core Services'},{target:3,suffix:'',label:'Govt. Initiatives'}].map((s,i)=>(
-            <SectionReveal key={s.label} delay={i*0.1} className="text-center">
-              <div style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(2rem,4vw,3rem)',fontWeight:700,color:'var(--gold)',lineHeight:1,marginBottom:'8px'}}><StatCounter target={s.target} suffix={s.suffix}/></div>
-              <p style={{fontSize:'12.5px',color:'var(--muted)',letterSpacing:'.05em',textTransform:'uppercase'}}>{s.label}</p>
+      {/* STARTUP RECOGNITION */}
+      <section id="recognition" style={{ background: 'var(--navy-2)', padding: '96px 6%' }}>
+        <SectionReveal className="text-center mb-14">
+          <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Government Alignment</span>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>Startup Recognition & <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>National Initiatives</em></h2>
+          <p style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '14px auto 0' }}>Srishaan operates in alignment with India's flagship government programmes, bringing agility, innovation, and cost efficiency to every engagement.</p>
+        </SectionReveal>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '24px' }}>
+          {[
+            { icon: '🚀', title: 'Startup India', desc: 'Recognised startup under the Government of India framework — eligible for procurement benefits applicable to startups and MSEs in government and PSU processes.' },
+            { icon: '🏭', title: 'Make in India', desc: 'Committed to domestic sourcing, local value addition, and supporting India\'s manufacturing and services ecosystem across all supply engagements.' },
+            { icon: '💻', title: 'Digital India', desc: 'Technology-driven execution at the core — deploying digital processes, MIS systems, and IT infrastructure that align with India\'s digital transformation vision.' }
+          ].map((r, i) => (
+            <SectionReveal key={r.title} delay={i * 0.1}>
+              <div className="recog-card">
+                <span className="recog-icon" style={{ fontSize: '32px', marginBottom: '18px', display: 'block', transition: 'transform .3s cubic-bezier(.16,1,.3,1)' }}>{r.icon}</span>
+                <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '18px', fontWeight: 600, color: 'var(--gold)', marginBottom: '10px' }}>{r.title}</h3>
+                <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7, fontWeight: 300 }}>{r.desc}</p>
+              </div>
             </SectionReveal>
           ))}
         </div>
       </section>
 
-      {/* ── Philosophy — 3D connected-nodes canvas ── */}
-      <section id="philosophy" style={{padding:'100px 0',background:'var(--navy-2)'}}>
-        <div style={{maxWidth:'1280px',margin:'0 auto',padding:'0 6%',display:'grid',gridTemplateColumns:'1fr 1fr',gap:'64px',alignItems:'center'}}>
-          {/* 3D Canvas */}
+      {/* LEADERSHIP */}
+      <section id="leadership" style={{ background: 'var(--navy)', padding: '96px 6%' }}>
+        <SectionReveal className="text-center mb-14">
+          <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Leadership Team</span>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>Experienced <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Promoters & Directors</em></h2>
+          <p style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '14px auto 0' }}>Over six decades of combined expertise across finance, manufacturing, technology, and public sector operations.</p>
+        </SectionReveal>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '28px' }}>
+          
           <SectionReveal>
-            <div style={{width:'100%',height:'440px',borderRadius:'20px',overflow:'hidden',background:'var(--navy-3)',border:'1px solid var(--bdr)'}}>
+            <div className="leader-card">
+              <div className="leader-avatar avatar-vg">VP</div>
+              <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '20px', fontWeight: 600, marginBottom: '4px' }}>Mr. Venu Gopal Pidugu</div>
+              <div style={{ fontSize: '12px', fontWeight: 500, color: 'var(--gold)', letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: '16px' }}>Promoter & Director</div>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.18)', color: 'var(--gold)', fontSize: '11.5px', fontWeight: 600, padding: '4px 12px', borderRadius: '100px', marginBottom: '18px' }}>🎓 Chartered Accountant</span>
+              <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.75, fontWeight: 300, marginBottom: '20px' }}>
+                A qualified Chartered Accountant with over 20 years of professional experience across diversified sectors including infrastructure, technology, and IT/ITES. Brings deep expertise in financial management, corporate finance, compliance, and strategic advisory — enabling structured governance and informed decision-making at scale.
+              </p>
+              <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.07em', fontWeight: 600, marginBottom: '8px' }}>Past Associations</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+                <span className="org-tag">GVK</span>
+                <span className="org-tag">Arabi Co. WLL</span>
+                <span className="org-tag">VSoft Technologies</span>
+              </div>
+              <div style={{ marginTop: '18px', paddingTop: '18px', borderTop: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div><div style={{ fontFamily: 'var(--font-playfair)', fontSize: '28px', fontWeight: 700, color: 'var(--gold)', lineHeight: 1 }}>20+</div><div style={{ fontSize: '11px', color: 'var(--dim)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '.06em' }}>Years Experience</div></div>
+                <div style={{ textAlign: 'right' }}><div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 300 }}>Finance · Compliance<br/>Strategic Advisory</div></div>
+              </div>
+            </div>
+          </SectionReveal>
+
+          <SectionReveal delay={0.2}>
+            <div className="leader-card">
+              <div className="leader-avatar avatar-jj">JC</div>
+              <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '20px', fontWeight: 600, marginBottom: '4px' }}>Mr. John J. Campos</div>
+              <div style={{ fontSize: '12px', fontWeight: 500, color: 'var(--gold)', letterSpacing: '.07em', textTransform: 'uppercase', marginBottom: '16px' }}>Promoter & Director</div>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.18)', color: 'var(--gold)', fontSize: '11.5px', fontWeight: 600, padding: '4px 12px', borderRadius: '100px', marginBottom: '18px' }}>🎓 Mechanical Engineer · JNTU Hyderabad</span>
+              <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.75, fontWeight: 300, marginBottom: '20px' }}>
+                A qualified Mechanical Engineer from JNTU, Hyderabad, with over 40 years of experience in manufacturing and production industries. Brings deep expertise in plant operations, process optimisation, and quality systems — providing operational discipline and execution rigour to Srishaan's delivery model.
+              </p>
+              <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.07em', fontWeight: 600, marginBottom: '8px' }}>Past Associations</div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '7px' }}>
+                <span className="org-tag">Procter & Gamble (P&G)</span>
+                <span className="org-tag">Coffee Day</span>
+              </div>
+              <div style={{ marginTop: '18px', paddingTop: '18px', borderTop: '1px solid var(--bdr)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <div><div style={{ fontFamily: 'var(--font-playfair)', fontSize: '28px', fontWeight: 700, color: 'var(--gold)', lineHeight: 1 }}>40+</div><div style={{ fontSize: '11px', color: 'var(--dim)', fontWeight: 500, textTransform: 'uppercase', letterSpacing: '.06em' }}>Years Experience</div></div>
+                <div style={{ textAlign: 'right' }}><div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 300 }}>Manufacturing · Operations<br/>Quality Systems</div></div>
+              </div>
+            </div>
+          </SectionReveal>
+
+        </div>
+      </section>
+
+      {/* STATS */}
+      <section id="stats" style={{ background: 'var(--navy-3)', borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', padding: '72px 6%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '40px' }}>
+          {[
+            { target: 60, suffix: '+ Yrs', label: 'Combined Leadership Experience' },
+            { target: 2, suffix: ' Verticals', label: 'Integrated Business Streams' },
+            { target: 8, suffix: ' Services', label: 'Core Service Offerings' },
+            { target: 3, suffix: ' Initiatives', label: 'Govt. Programme Alignment' }
+          ].map((s, i) => (
+            <SectionReveal key={s.label} delay={i * 0.1}>
+              <div className="stat">
+                <div style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4vw,3.6rem)', fontWeight: 700, color: 'var(--gold)', lineHeight: 1, marginBottom: '6px' }}>
+                  <StatCounter target={s.target} suffix={s.suffix} />
+                </div>
+                <div style={{ fontSize: '12px', fontWeight: 500, color: 'var(--dim)', letterSpacing: '.07em', textTransform: 'uppercase' }}>{s.label}</div>
+              </div>
+            </SectionReveal>
+          ))}
+        </div>
+      </section>
+
+      {/* PHILOSOPHY */}
+      <section id="philosophy" style={{ background: 'var(--navy-2)', padding: '96px 6%' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '80px', alignItems: 'center' }}>
+          <SectionReveal>
+            <div style={{ position: 'relative', height: '380px', borderRadius: '20px', overflow: 'hidden', border: '1px solid var(--bdr)', background: 'var(--navy-3)' }}>
               <PhilosophyCanvas />
             </div>
           </SectionReveal>
-          {/* Content */}
-          <SectionReveal delay={0.18}>
-            <p style={{fontSize:'11px',fontWeight:600,textTransform:'uppercase',letterSpacing:'.14em',color:'var(--gold)',marginBottom:'14px'}}>Our Standard</p>
-            <h2 style={{fontFamily:'var(--font-playfair)',fontSize:'clamp(2rem,3.5vw,3rem)',fontWeight:700,lineHeight:1.15,letterSpacing:'-.02em',marginBottom:'20px'}}>The Srishaan Standard</h2>
-            <p style={{fontSize:'15px',color:'var(--muted)',lineHeight:1.8,marginBottom:'32px'}}>Six interconnected principles that define how we operate, advise, and grow — for every client, every time.</p>
-            <div style={{display:'flex',flexDirection:'column',gap:'16px'}}>
-              {['Transparency in every transaction and recommendation','Compliance with all regulatory and statutory requirements','Client-centric approach with personalised strategies','Technology-backed insights for informed decisions','Long-term relationships over short-term gains','Continuous learning and professional development'].map((v,i)=>(
-                <div key={i} style={{display:'flex',gap:'14px',alignItems:'flex-start'}}>
-                  <span style={{width:'8px',height:'8px',borderRadius:'50%',background:'var(--gold)',marginTop:'6px',flexShrink:0,boxShadow:'0 0 8px rgba(240,165,0,.5)'}}/>
-                  <span style={{fontSize:'14.5px',color:'var(--muted)',lineHeight:1.65}}>{v}</span>
+          <SectionReveal delay={0.2}>
+            <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Our Commitment</span>
+            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 600, lineHeight: 1.18, letterSpacing: '-.02em' }}>The <em style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Srishaan</em> Standard</h2>
+            <p style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', marginTop: '14px' }}>Despite being a startup, Srishaan operates with structured processes, strong governance, and a clear commitment to quality — meeting the expectations of large corporates and PSUs.</p>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '13px', marginTop: '28px' }}>
+              {[
+                'Timely execution and reliability of supply',
+                'Complete documentation and compliance support',
+                'Transparent, process-oriented engagement model',
+                'Aligned with PSU and public procurement guidelines',
+                'Responsiveness and single point of accountability',
+                'MSE benefits applicable in government procurement'
+              ].map((v, i) => (
+                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', fontSize: '14px', color: 'var(--muted)', fontWeight: 300 }}>
+                  <span className="value-dot"></span>
+                  {v}
                 </div>
               ))}
             </div>
@@ -183,7 +337,34 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <CtaSection />
+      {/* CTA */}
+      <section id="cta" style={{ background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '96px 6%' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
+        <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
+        <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
+        <div className="cta-ring" style={{ width: '740px', height: '740px', animationDelay: '1.6s' }}></div>
+        
+        <div style={{ position: 'relative', zIndex: 1 }}>
+          <SectionReveal>
+            <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Partner With Us</span>
+            <WordReveal 
+              className="mb-4"
+              words={[
+                <span key="1">Explore</span>,
+                <span key="2">a</span>,
+                <em key="3" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Partnership</em>
+              ]}
+            />
+            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '0 auto 40px' }}>Srishaan Tech & Financial Services is keen to establish long-term professional associations with corporates and PSUs. We assure the highest standards of professionalism, compliance, and service excellence.</p>
+          </SectionReveal>
+          <SectionReveal delay={0.2}>
+            <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn-gold">Request Empanelment</Link>
+              <Link href="/contact" className="btn-ghost" style={{ color: 'rgba(255,255,255,.88)', borderColor: 'rgba(255,255,255,.22)' }}>Download Company Profile</Link>
+            </div>
+          </SectionReveal>
+        </div>
+      </section>
     </>
   );
 }
