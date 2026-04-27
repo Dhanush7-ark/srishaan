@@ -7,8 +7,12 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
   return (
     <SectionReveal className={`word-reveal ${className}`}>
       {words.map((word, i) => (
-        <span key={i} className="word">
-          <span style={{ transitionDelay: `${i * 0.09}s` }}>{word}</span>
+        <span key={i} className="word" style={{ padding: '0.05em 0' }}>
+          <span style={{ 
+            transitionDelay: `${i * 0.09}s`,
+            padding: '0.05em 0.15em 0.05em 0', // Padding to prevent clipping
+            display: 'inline-block'
+          }}>{word}</span>
           {' '}
         </span>
       ))}
@@ -219,7 +223,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section id="cta" style={{ background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '96px 6%' }}>
+      <section id="cta" style={{ background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
         <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
         <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
@@ -231,20 +235,20 @@ export default function ServicesPage() {
             <WordReveal 
               className="mb-4"
               words={[
-                <span key="1">Ready</span>,
-                <span key="2">to</span>,
+                <span key="1" style={{ color: '#fff' }}>Ready</span>,
+                <span key="2" style={{ color: '#fff' }}>to</span>,
                 <em key="3" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Engage?</em>
               ]}
             />
             <style dangerouslySetInnerHTML={{ __html: `
-              .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 700; line-height: 1.06; letter-spacing: -.03em; }
+              .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
             `}} />
-            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '540px', margin: '0 auto 40px' }}>Reach out to discuss your requirements — whether financial advisory, compliance management, or IT infrastructure supply. We respond promptly.</p>
+            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '580px', margin: '0 auto 48px' }}>Reach out to discuss your requirements — whether financial advisory, compliance management, or IT infrastructure supply. We respond promptly.</p>
           </SectionReveal>
           <SectionReveal delay={0.2}>
-            <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-              <Link href="/contact" className="btn-gold">Contact Us Today</Link>
-              <Link href="/about" className="btn-ghost" style={{ color: 'rgba(255,255,255,.88)', borderColor: 'rgba(255,255,255,.22)' }}>About Srishaan</Link>
+            <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+              <Link href="/contact" className="btn-gold" style={{ padding: '14px 32px' }}>Contact Us Today</Link>
+              <Link href="/about" className="btn-ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)', padding: '14px 32px' }}>About Srishaan</Link>
             </div>
           </SectionReveal>
         </div>
