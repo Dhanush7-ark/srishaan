@@ -22,208 +22,350 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
 
 export const metadata = { title: 'Services | Srishaan Finance' };
 
-const financialServices = [
-  { icon:'📋', title:'Outsourced CFO Services',            desc:'Strategic financial leadership without the full-time cost. We serve as your CFO for planning, reporting, and governance.' },
-  { icon:'📊', title:'Financial Planning & Budgeting',      desc:'Annual operating plans, budget preparation, and variance analysis for structured financial management.' },
-  { icon:'📈', title:'MIS Reporting & Strategic Advisory',  desc:'Management information systems, KPI dashboards, and data-driven strategic recommendations.' },
-  { icon:'🏛', title:'Accounting & Statutory Compliance',   desc:'Complete accounting management, tax filings, GST compliance, and regulatory adherence.' },
-  { icon:'🤝', title:'Bid Management & Procurement Support',desc:'End-to-end tender management, bid documentation, and procurement support for PSU contracts.' },
+const itAndItes = [
+  { icon:'🖥', title:'IT Infrastructure Support',      desc:'Complete lifecycle support for enterprise IT systems, hardware, and network availability.' },
+  { icon:'🛠', title:'Managed IT Services',            desc:'Proactive management and monitoring of your IT landscape to ensure zero downtime.' },
+  { icon:'📊', title:'IT-Enabled Services (ITES)',     desc:'Business process outsourcing and technology-enabled services for operational efficiency.' },
+  { icon:'🔌', title:'System Integration Support',     desc:'Seamlessly integrating disparate IT components into a unified, high-performance ecosystem.' },
 ];
-const itServices = [
-  { icon:'🖥', title:'IT Hardware & Infrastructure Supply', desc:'Procurement and supply of certified IT hardware for enterprise and government projects.' },
-  { icon:'🔌', title:'Passive Network Components',          desc:'Complete range of copper and fiber cabling, patch panels, and connectivity solutions.' },
-  { icon:'🏢', title:'Data Center Infrastructure',          desc:'Structured cabling, power management, and cooling solutions for data centers.' },
-  { icon:'🌐', title:'FTTx & Enterprise Networks',          desc:'Fiber-to-the-premises and enterprise-grade network deployments.' },
-  { icon:'🔧', title:'Network Racks & Management',          desc:'Cable management systems, network racks, and complete installation services.' },
+const projectExecution = [
+  { icon:'🚀', title:'End-to-End Execution',           desc:'Complete project lifecycle management from initial planning to final handover.' },
+  { icon:'🤝', title:'Vendor Coordination',            desc:'Seamless management of multiple vendors and implementation partners on-site.' },
+  { icon:'📍', title:'On-Site Deployment',             desc:'Expert on-ground deployment and management of technology infrastructure.' },
+  { icon:'🏗', title:'Technology Rollout',             desc:'Structured rollout of infrastructure and technology solutions across multiple locations.' },
 ];
-const products = ['Cat5e UTP','Cat6 UTP','Cat6A FTP','Cat7 SFTP','OS2 Singlemode Fiber','OM3 Multimode Fiber','OM4 Multimode Fiber','OM5 Wideband Fiber','Pre-terminated Systems','Patch Panels','FTTx Components','Cable Management','Tools & Testing','Network Racks','SFP Modules','Media Converters'];
+const supplyAndResale = [
+  { icon:'📦', title:'IT Hardware & Components',       desc:'Authorized supply of laptops, desktops, servers, and high-performance IT components.' },
+  { icon:'🔌', title:'Passive Network Components',      desc:'Complete range of copper/fiber cabling, patch panels, and connectivity products.' },
+  { icon:'🏢', title:'Authorized Resale',              desc:'Authorized partner-based resale including MSys Connect and other global platforms.' },
+  { icon:'🚛', title:'Procurement & Logistics',        desc:'End-to-end procurement support and logistics management for infrastructure projects.' },
+];
+const industries = [
+  { icon: '🏗️', title: 'Infrastructure Projects' },
+  { icon: '🏢', title: 'Corporate & Enterprise IT' },
+  { icon: '👥', title: 'Facility Management' },
+  { icon: '🏛️', title: 'Government & Institutions' }
+];
+
+function FinanceParticles() {
+  const symbols = ['$', '₹', '📈', '📊', '₿', '€', '£', '¥'];
+  return (
+    <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+      {[...Array(12)].map((_, i) => {
+        const symbol = symbols[i % symbols.length];
+        const left = Math.random() * 100;
+        const top = Math.random() * 100;
+        const duration = 15 + Math.random() * 20;
+        const delay = Math.random() * -20;
+        const size = 12 + Math.random() * 16;
+        return (
+          <div key={i} style={{
+            position: 'absolute',
+            left: `${left}%`,
+            top: `${top}%`,
+            fontSize: `${size}px`,
+            color: 'var(--gold)',
+            opacity: 0.15,
+            animation: `float-diag ${duration}s linear infinite`,
+            animationDelay: `${delay}s`,
+            fontWeight: 700,
+            filter: 'blur(0.5px)'
+          }}>
+            {symbol}
+          </div>
+        );
+      })}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes float-diag {
+          0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+          10% { opacity: 0.15; }
+          90% { opacity: 0.15; }
+          100% { transform: translate(300px, -300px) rotate(360deg); opacity: 0; }
+        }
+      `}} />
+    </div>
+  );
+}
 
 export default function ServicesPage() {
   return (
     <>
-      {/* ── Hero with 3D Octahedron ── */}
-      <section style={{ padding: '140px 0 80px', background: 'var(--navy)', position: 'relative', overflow: 'hidden', minHeight: '520px', display: 'flex', alignItems: 'center' }}>
-        {/* 3D Canvas — decorative bottom-left background */}
-        <div style={{ position: 'absolute', left: '-60px', bottom: '-60px', width: '540px', height: '540px', opacity: 0.9, pointerEvents: 'none' }}>
+      {/* ── Hero Section ── */}
+      <section style={{ 
+        padding: '120px 0', 
+        background: 'var(--navy)', 
+        position: 'sticky', 
+        top: 0,
+        zIndex: 1,
+        overflow: 'hidden', 
+        minHeight: '100vh', 
+        display: 'flex', 
+        alignItems: 'center' 
+      }}>
+        {/* Background Grid Design */}
+        <div style={{ position: 'absolute', inset: 0, opacity: 0.1, backgroundImage: 'linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)', backgroundSize: '60px 60px', pointerEvents: 'none' }} />
+        
+        {/* Finance Particles */}
+        <FinanceParticles />
+
+        {/* Decorative Glowing Orbs */}
+        <div style={{ position: 'absolute', left: '-5%', top: '20%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(240,165,0,0.1) 0%, transparent 70%)', filter: 'blur(60px)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', right: '5%', bottom: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(26,58,143,0.15) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
+
+        {/* 3D Canvas — decorative background */}
+        <div style={{ position: 'absolute', right: '-120px', top: '50%', transform: 'translateY(-50%)', width: '700px', height: '700px', opacity: 1, pointerEvents: 'none' }}>
           <ServicesHeroCanvas />
         </div>
-        {/* Fade overlay so canvas blends into background */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, transparent 25%, var(--navy) 65%)', pointerEvents: 'none' }} />
+        
+        {/* Vertical Brand Line */}
+        <div style={{ position: 'absolute', left: '4%', top: '20%', bottom: '20%', width: '1px', background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)', opacity: 0.4 }} />
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
-          <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '24px' }}>
-            <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
-            <span style={{ margin: '0 10px', opacity: .4 }}>/</span>
-            <span style={{ color: 'var(--gold)' }}>Services</span>
-          </div>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.2)', color: 'var(--gold)', fontSize: '11px', fontWeight: 600, letterSpacing: '.1em', textTransform: 'uppercase', padding: '5px 14px', borderRadius: '100px', marginBottom: '28px' }}>
-            Two Integrated Service Verticals
-          </div>
-          <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.8rem,5vw,5rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em', maxWidth: '620px' }}>
-            What We <span className="gold-grad">Deliver</span>
-          </h1>
-          <p style={{ fontSize: '17px', color: 'var(--muted)', lineHeight: 1.8, maxWidth: '500px', marginTop: '24px' }}>
-            Two integrated verticals — financial advisory and IT infrastructure — working together to serve your business needs.
-          </p>
-        </div>
-      </section>
-
-      {/* ── Financial Services ── */}
-      <section id="financial" style={{ padding: '100px 0', background: 'var(--navy-2)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1.1fr 1fr', gap: '64px', alignItems: 'start' }}>
-          <div>
-            <SectionReveal>
-              <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Financial Vertical</p>
-              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.02em', marginBottom: '40px' }}>Financial &amp; Compliance Services</h2>
-            </SectionReveal>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {financialServices.map((s, i) => (
-                <SectionReveal key={s.title} delay={i * 0.08}>
-                  <TiltCard className="glass-card" style={{ padding: '22px 24px', borderRadius: '14px', display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                    <div style={{ position: 'relative', zIndex: 2, display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                      <div style={{ fontSize: '24px', flexShrink: 0, marginTop: '2px' }}>{s.icon}</div>
-                      <div>
-                        <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--white)', marginBottom: '6px' }}>{s.title}</div>
-                        <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.65 }}>{s.desc}</div>
-                      </div>
-                    </div>
-                  </TiltCard>
-                </SectionReveal>
-              ))}
-            </div>
-          </div>
-          <SectionReveal delay={0.2}>
-            <div style={{ background: 'linear-gradient(135deg,rgba(26,58,143,.25),rgba(45,91,227,.12))', border: '1px solid rgba(45,91,227,.2)', borderRadius: '20px', padding: '40px 32px', position: 'sticky', top: '100px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--white)', marginBottom: '8px' }}>Financial Expertise at Scale</h3>
-              <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '28px' }}>Serving PSUs, enterprises, and growing companies with full-spectrum financial support.</p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                {['GST Compliance','Income Tax','Working Capital','PSU Procurement','Strategic Advisory','Financial Governance'].map(t => (
-                  <span key={t} style={{ fontSize: '11.5px', padding: '5px 12px', borderRadius: '100px', border: '1px solid rgba(240,165,0,.3)', color: 'var(--gold)', background: 'rgba(240,165,0,.06)' }}>{t}</span>
-                ))}
-              </div>
-            </div>
-          </SectionReveal>
-        </div>
-      </section>
-
-      {/* ── IT Services ── */}
-      <section id="it" style={{ padding: '100px 0', background: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '64px', alignItems: 'start' }}>
-          <SectionReveal delay={0.2}>
-            <div style={{ background: 'linear-gradient(135deg,rgba(26,58,143,.25),rgba(45,91,227,.12))', border: '1px solid rgba(45,91,227,.2)', borderRadius: '20px', padding: '40px 32px', position: 'sticky', top: '100px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--white)', marginBottom: '8px' }}>IT Infrastructure Supply</h3>
-              <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7, marginBottom: '28px' }}>Certified products and end-to-end project execution for enterprise and government networks.</p>
-              <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-                {['Copper Cabling','Optical Fiber','Data Centers','FTTx','Network Racks','PSU Compliant'].map(t => (
-                  <span key={t} style={{ fontSize: '11.5px', padding: '5px 12px', borderRadius: '100px', border: '1px solid rgba(45,91,227,.3)', color: 'var(--blue-b)', background: 'rgba(45,91,227,.06)' }}>{t}</span>
-                ))}
-              </div>
-            </div>
-          </SectionReveal>
-          <div>
-            <SectionReveal>
-              <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--blue-b)', marginBottom: '14px' }}>IT Vertical</p>
-              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.8rem,3vw,2.6rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.02em', marginBottom: '40px' }}>IT Infrastructure &amp; Networking</h2>
-            </SectionReveal>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {itServices.map((s, i) => (
-                <SectionReveal key={s.title} delay={i * 0.08}>
-                  <TiltCard className="glass-card" style={{ padding: '22px 24px', borderRadius: '14px' }}>
-                    <div style={{ position: 'relative', zIndex: 2, display: 'flex', gap: '16px', alignItems: 'flex-start' }}>
-                      <div style={{ fontSize: '24px', flexShrink: 0, marginTop: '2px' }}>{s.icon}</div>
-                      <div>
-                        <div style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--white)', marginBottom: '6px' }}>{s.title}</div>
-                        <div style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.65 }}>{s.desc}</div>
-                      </div>
-                    </div>
-                  </TiltCard>
-                </SectionReveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Products ── */}
-      <section id="products" style={{ padding: '100px 0', background: 'var(--navy-2)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
-          <SectionReveal className="mb-12">
-            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Product Portfolio</p>
-            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em' }}>Cabling &amp; Connectivity Products</h2>
-          </SectionReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(170px,1fr))', gap: '12px' }}>
-            {products.map((p, i) => (
-              <SectionReveal key={p} delay={i * 0.03}>
-                <TiltCard className="glass-card" style={{ padding: '16px 18px', borderRadius: '10px', textAlign: 'center' }}>
-                  <span style={{ position: 'relative', zIndex: 2, fontSize: '13.5px', color: 'var(--muted)', fontWeight: 500 }}>{p}</span>
-                </TiltCard>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Approach ── */}
-      <section id="approach" style={{ padding: '100px 0', background: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
-          <SectionReveal className="mb-16">
-            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em' }}>Our Approach</h2>
-          </SectionReveal>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '32px' }}>
-            {[
-              { n:'01', t:'Understand', d:'We begin with a thorough needs assessment — understanding your infrastructure goals, compliance requirements, and budget.' },
-              { n:'02', t:'Propose',    d:'A tailored solution proposal with product specifications, timelines, and transparent pricing.' },
-              { n:'03', t:'Execute',    d:'Certified installation teams deploy your infrastructure on time, with full documentation.' },
-              { n:'04', t:'Support',    d:'Post-installation support, warranty management, and ongoing maintenance services.' },
-            ].map((s, i) => (
-              <SectionReveal key={s.n} delay={i * 0.12}>
-                <TiltCard className="glass-card" style={{ padding: '32px 24px', borderRadius: '16px' }}>
-                  <div style={{ position: 'relative', zIndex: 2 }}>
-                    <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '36px', fontWeight: 700, color: 'rgba(240,165,0,.22)', lineHeight: 1, marginBottom: '16px' }}>{s.n}</div>
-                    <h3 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)', marginBottom: '10px' }}>{s.t}</h3>
-                    <p style={{ fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.7 }}>{s.d}</p>
-                  </div>
-                </TiltCard>
-              </SectionReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── Partner ── */}
-      <section id="partner" style={{ padding: '80px 0', background: 'var(--navy-2)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 8%' }}>
           <SectionReveal>
-            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--dim)', marginBottom: '14px' }}>Reselling Partner</p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-              <svg viewBox="0 0 52 48" width="52" height="48" fill="none">
-                <path d="M4 44 L17 4 L27 4 L14 44 Z" fill="#F0A500"/>
-                <path d="M25 4 L35 4 L48 44 L39 44 Z" fill="#F0A500"/>
-                <path d="M19 4 L27 4 L20.4 24 L16 24 Z" fill="#1B5298"/>
-              </svg>
-              <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
-                <span><span style={{ fontSize: '26px', fontWeight: 800, color: '#1B5298' }}>M</span><span style={{ fontSize: '18px', fontWeight: 700, color: '#F0A500' }}>SYS</span></span>
-                <span style={{ fontSize: '13px', fontWeight: 700, color: '#1B5298', letterSpacing: '.2em' }}>CONNECT</span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ width: '20px', height: '1px', background: 'var(--gold)' }} />
+                <span>
+                  <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
+                  <span style={{ margin: '0 10px', opacity: .4 }}>/</span>
+                  <span style={{ color: 'var(--gold)' }}>Services</span>
+                </span>
               </div>
-            </div>
-            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(1.8rem,3vw,2.4rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.02em', marginBottom: '16px' }}>Official Reselling Partner</h2>
-            <p style={{ fontSize: '14.5px', color: 'var(--muted)', lineHeight: 1.8 }}>Msys Connect is our strategic technology partner for structured cabling, passive networking components, and enterprise connectivity solutions.</p>
-          </SectionReveal>
-          <SectionReveal delay={0.15}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-              {['Access to certified Msys Connect product range','Competitive pricing on bulk procurement','Technical support and product training','Warranty and after-sales service'].map(v => (
-                <div key={v} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', marginTop: '7px', flexShrink: 0 }} />
-                  <span style={{ fontSize: '14.5px', color: 'var(--muted)', lineHeight: 1.6 }}>{v}</span>
+              
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.2)', color: 'var(--gold)', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', padding: '6px 16px', borderRadius: '4px', marginBottom: '24px' }}>
+                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block' }} />
+                Operational Excellence
+              </div>
+              
+              <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3rem,6vw,5.5rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.04em', maxWidth: '1000px', marginBottom: '32px' }}>
+                Specialized <br />
+                <span className="gold-grad">Business Solutions</span>
+              </h1>
+
+              <div style={{ maxWidth: '800px', position: 'relative' }}>
+                {/* Decorative Side Tag */}
+                <div style={{ position: 'absolute', left: '-40px', top: '10px', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.2em', opacity: 0.6, fontWeight: 700 }}>Overview</div>
+                
+                <p style={{ fontSize: '18px', color: 'var(--white)', fontWeight: 500, lineHeight: 1.6, marginBottom: '20px', opacity: 0.95 }}>
+                  Our organization operates through specialized business solutions to deliver focused and execution-driven services:
+                </p>
+                
+                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '16px' }}>
+                  Delivering technology-driven solutions and execution capabilities across IT infrastructure, IT-enabled services, and project-based assignments.
+                </p>
+
+                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8 }}>
+                  We combine technical expertise with execution strength to support businesses in implementing scalable and reliable systems.
+                </p>
+              </div>
+              
+              <div style={{ marginTop: '40px', display: 'flex', gap: '20px', alignItems: 'center' }}>
+                <Link href="#services-grid" className="btn-gold" style={{ padding: '16px 36px', fontSize: '14px', fontWeight: 600 }}>Explore Solutions</Link>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--dim)', fontSize: '13px' }}>
+                  <div style={{ width: '40px', height: '1px', background: 'var(--bdr)' }} />
+                  <span style={{ fontStyle: 'italic' }}>Scroll to dive deeper</span>
                 </div>
-              ))}
+              </div>
             </div>
           </SectionReveal>
         </div>
+
+        {/* Floating Geometric Shapes (Design Elements) */}
+        <div style={{ position: 'absolute', left: '10%', bottom: '15%', width: '12px', height: '12px', border: '1px solid var(--gold)', opacity: 0.3, transform: 'rotate(45deg)' }} />
+        <div style={{ position: 'absolute', left: '15%', top: '30%', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', opacity: 0.2 }} />
       </section>
 
-      {/* ── CTA ── */}
-      <section id="cta" style={{ background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%' }}>
+      {/* ── Services Offered ── (Slides over Hero naturally) */}
+      <section id="services-grid" style={{ position: 'relative', zIndex: 2, padding: '100px 0', background: 'var(--navy-2)', minHeight: '100vh' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
+          <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Expertise & Delivery</p>
+            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: "50px" }}>Services <span className="gold-grad">Offered</span></h2>
+          </SectionReveal>
+ 
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+            {/* IT & ITES */}
+            <SectionReveal>
+              <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🖥️</div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--white)' }}>IT & ITES Services</h3>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {itAndItes.map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '16px 18px', background: 'rgba(255,255,255,0.02)' }}>
+                      <div style={{ fontSize: '20px', flexShrink: 0 }}>{s.icon}</div>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--white)', marginBottom: '4px' }}>{s.title}</div>
+                        <div style={{ fontSize: '12.5px', color: 'var(--dim)', lineHeight: 1.5 }}>{s.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* Project Execution */}
+            <SectionReveal delay={0.1}>
+              <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🚀</div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--white)' }}>Project Execution</h3>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {projectExecution.map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '16px 18px', background: 'rgba(255,255,255,0.02)' }}>
+                      <div style={{ fontSize: '20px', flexShrink: 0 }}>{s.icon}</div>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--white)', marginBottom: '4px' }}>{s.title}</div>
+                        <div style={{ fontSize: '12.5px', color: 'var(--dim)', lineHeight: 1.5 }}>{s.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* Supply & Resale */}
+            <SectionReveal delay={0.2}>
+              <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
+                  <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>📦</div>
+                  <h3 style={{ fontSize: '18px', fontWeight: 700, color: 'var(--white)' }}>Supply & Resale</h3>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  {supplyAndResale.map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '16px 18px', background: 'rgba(255,255,255,0.02)' }}>
+                      <div style={{ fontSize: '20px', flexShrink: 0 }}>{s.icon}</div>
+                      <div>
+                        <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--white)', marginBottom: '4px' }}>{s.title}</div>
+                        <div style={{ fontSize: '12.5px', color: 'var(--dim)', lineHeight: 1.5 }}>{s.desc}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Content Wrapper for remaining sections (scrolls over sticky layers) ── */}
+      <div style={{ position: 'relative', zIndex: 10, background: 'var(--navy-2)' }}>
+        {/* ── Industry Application ── */}
+        <section id="industries" style={{ padding: '100px 0', background: 'var(--navy)' }}>
+        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
+          <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</p>
+            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: 60 }}>Industry <span className="gold-grad">Application</span></h2>
+          </SectionReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '20px' }}>
+            {industries.map((ind, i) => (
+              <SectionReveal key={i} delay={i * 0.05}>
+                <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid var(--bdr)', borderRadius: '16px', padding: '28px', textAlign: 'center' }}>
+                  <div style={{ fontSize: '32px', marginBottom: '16px' }}>{ind.icon}</div>
+                  <div style={{ fontSize: '15px', fontWeight: 600, color: 'var(--white)' }}>{ind.title}</div>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Our Strength ── */}
+      <section id="strengths" style={{ padding: '100px 0', background: 'var(--navy-2)' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
+          <SectionReveal className="mb-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
+            <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Our Strengths</p>
+            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: 30 }}>Our <span className="gold-grad">Strength</span></h2>
+          </SectionReveal>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
+            {[
+              { t: 'Integrated Advisory', d: 'Combining high-level financial advisory with on-ground execution capability.' },
+              { t: 'Partner Network', d: 'Strong vendor and strategic partner network for global standards.' },
+              { t: 'End-to-End Handling', d: 'Ability to manage both financial structuring and technical implementation.' },
+              { t: 'Project Ownership', d: 'End-to-end ownership ensuring seamless delivery and accountability.' }
+            ].map((s, i) => (
+              <SectionReveal key={i} delay={i * 0.1}>
+                <div style={{ position: 'relative', padding: '32px', background: 'var(--surf)', borderRadius: '20px', border: '1px solid var(--bdr)' }}>
+                  <div style={{ width: '4px', height: '24px', background: 'var(--gold)', position: 'absolute', left: 0, top: '32px', borderRadius: '0 4px 4px 0' }} />
+                  <h3 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--white)', marginBottom: '12px' }}>{s.t}</h3>
+                  <p style={{ fontSize: '14px', color: 'var(--dim)', lineHeight: 1.6 }}>{s.d}</p>
+                </div>
+              </SectionReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+        {/* ── Value Proposition (Wooden Theme) ── */}
+        <section id="value-prop" style={{ 
+          position: 'sticky', 
+          top: 0, 
+          zIndex: 20, 
+          padding: '120px 0', 
+          backgroundImage: 'url(/images/wooden_bg.png)', 
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          textAlign: 'center', 
+          minHeight: '100vh', 
+          display: 'flex', 
+          alignItems: 'center', 
+          justifyContent: 'center',
+          color: '#0D1635' // Dark charcoal/navy for contrast on wood
+        }}>
+          <div style={{ maxWidth: '1100px', width: '100%', margin: '0 auto', padding: '0 6%' }}>
+            <SectionReveal>
+              <p style={{ fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.4em', color: 'rgba(13,22,53,0.6)', marginBottom: '48px' }}>Value Proposition</p>
+              
+              <div style={{ position: 'relative', display: 'inline-block' }}>
+                <h2 style={{ 
+                  fontFamily: 'var(--font-playfair)', 
+                  fontSize: 'clamp(2.5rem,5.5vw,4.5rem)', 
+                  fontWeight: 800, 
+                  lineHeight: 1.1, 
+                  color: '#0D1635', 
+                  marginBottom: '64px', 
+                  letterSpacing: '-.03em',
+                  maxWidth: '1000px'
+                }}>
+                  By combining financial expertise with execution capability, we provide clients with a <span style={{ color: '#7A6B3D', opacity: 0.9 }}>seamless experience</span>
+                </h2>
+                
+                {/* Decorative Dot Element from Screenshot */}
+                <div style={{ 
+                  position: 'absolute', 
+                  right: '-20px', 
+                  bottom: '80px', 
+                  width: '32px', 
+                  height: '32px', 
+                  borderRadius: '50%', 
+                  border: '1px solid rgba(13,22,53,0.2)', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  justifyContent: 'center' 
+                }}>
+                  <div style={{ width: '4px', height: '4px', background: '#0D1635', borderRadius: '50%' }} />
+                </div>
+              </div>
+
+              <p style={{ 
+                fontSize: '16px', 
+                color: 'rgba(13,22,53,0.7)', 
+                lineHeight: 1.6, 
+                fontWeight: 600,
+                maxWidth: '600px', 
+                margin: '0 auto',
+                letterSpacing: '-.01em'
+              }}>
+                From planning and funding to implementation and delivery, we act as your dedicated execution partners to ensure measurable and result-oriented outcomes.
+              </p>
+            </SectionReveal>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section id="cta" style={{ position: 'sticky', top: 0, zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
         <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
         <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
@@ -243,7 +385,7 @@ export default function ServicesPage() {
             <style dangerouslySetInnerHTML={{ __html: `
               .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem,5.5vw,4.8rem); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
             `}} />
-            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '580px', margin: '0 auto 48px' }}>Reach out to discuss your requirements — whether financial advisory, compliance management, or IT infrastructure supply. We respond promptly.</p>
+            <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '0 auto 48px' }}>By combining financial expertise with execution capability, we provide clients with a seamless experience — from planning and funding to implementation and delivery.</p>
           </SectionReveal>
           <SectionReveal delay={0.2}>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -253,6 +395,7 @@ export default function ServicesPage() {
           </SectionReveal>
         </div>
       </section>
+      </div>
     </>
   );
 }
