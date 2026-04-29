@@ -121,53 +121,64 @@ export default function ServicesPage() {
         <div style={{ position: 'absolute', left: '4%', top: '20%', bottom: '20%', width: '1px', background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)', opacity: 0.4 }} />
 
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 8%' }}>
-          <SectionReveal>
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-              <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                <span style={{ width: '20px', height: '1px', background: 'var(--gold)' }} />
-                <span>
-                  <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
-                  <span style={{ margin: '0 10px', opacity: .4 }}>/</span>
-                  <span style={{ color: 'var(--gold)' }}>Services</span>
-                </span>
-              </div>
-              
-              <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.2)', color: 'var(--gold)', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', padding: '6px 16px', borderRadius: '4px', marginBottom: '24px' }}>
-                <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block' }} />
-                Operational Excellence
-              </div>
-              
-              <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3rem,6vw,5.5rem)', fontWeight: 700, lineHeight: 1.1, letterSpacing: '-.04em', maxWidth: '1000px', marginBottom: '32px' }}>
-                Specialized <br />
-                <span className="gold-grad">Business Solutions</span>
-              </h1>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px', animation: 'fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both' }}>
+              <span style={{ width: '20px', height: '1px', background: 'var(--gold)' }} />
+              <span>
+                <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
+                <span style={{ margin: '0 10px', opacity: .4 }}>/</span>
+                <span style={{ color: 'var(--gold)' }}>Services</span>
+              </span>
+            </div>
+            
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.2)', color: 'var(--gold)', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', padding: '6px 16px', borderRadius: '4px', marginBottom: '24px', animation: 'fadeUp .7s .2s cubic-bezier(.16,1,.3,1) both' }}>
+              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block' }} />
+              Operational Excellence
+            </div>
+            
+            <WordReveal
+              className="mb-8"
+              words={[
+                <span key="1">Specialized</span>,
+                <br key="br" />,
+                <span key="2" className="gold-grad">Business Solutions</span>
+              ]}
+            />
+            <style dangerouslySetInnerHTML={{ __html: `
+              .word-reveal { font-family: var(--font-playfair); font-size: clamp(3rem,6vw,5.5rem); font-weight: 700; line-height: 1.1; letter-spacing: -.04em; }
+            `}} />
 
-              <div style={{ maxWidth: '800px', position: 'relative' }}>
-                {/* Decorative Side Tag */}
-                <div style={{ position: 'absolute', left: '-40px', top: '10px', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.2em', opacity: 0.6, fontWeight: 700 }}>Overview</div>
-                
-                <p style={{ fontSize: '18px', color: 'var(--white)', fontWeight: 500, lineHeight: 1.6, marginBottom: '20px', opacity: 0.95 }}>
-                  Our organization operates through specialized business solutions to deliver focused and execution-driven services:
-                </p>
-                
-                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '16px' }}>
-                  Delivering technology-driven solutions and execution capabilities across IT infrastructure, IT-enabled services, and project-based assignments.
-                </p>
-
-                <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8 }}>
-                  We combine technical expertise with execution strength to support businesses in implementing scalable and reliable systems.
-                </p>
-              </div>
+            <div style={{ maxWidth: '800px', position: 'relative' }}>
+              {/* Decorative Side Tag */}
+              <div style={{ position: 'absolute', left: '-40px', top: '10px', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.2em', opacity: 0.6, fontWeight: 700 }}>Overview</div>
               
-              <div style={{ marginTop: '40px', display: 'flex', gap: '20px', alignItems: 'center' }}>
-                <Link href="#services-grid" className="btn-gold" style={{ padding: '16px 36px', fontSize: '14px', fontWeight: 600 }}>Explore Solutions</Link>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--dim)', fontSize: '13px' }}>
-                  <div style={{ width: '40px', height: '1px', background: 'var(--bdr)' }} />
-                  <span style={{ fontStyle: 'italic' }}>Scroll to dive deeper</span>
-                </div>
+              <p style={{ fontSize: '18px', color: 'var(--white)', fontWeight: 500, lineHeight: 1.6, marginBottom: '20px', opacity: 0.95, animation: 'fadeUp .7s .8s cubic-bezier(.16,1,.3,1) both' }}>
+                Our organization operates through specialized business solutions to deliver focused and execution-driven services:
+              </p>
+              
+              <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, marginBottom: '16px', animation: 'fadeUp .7s .9s cubic-bezier(.16,1,.3,1) both' }}>
+                Delivering technology-driven solutions and execution capabilities across IT infrastructure, IT-enabled services, and project-based assignments.
+              </p>
+
+              <p style={{ fontSize: '16px', color: 'var(--muted)', lineHeight: 1.8, animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
+                We combine technical expertise with execution strength to support businesses in implementing scalable and reliable systems.
+              </p>
+            </div>
+            
+            <div style={{ marginTop: '40px', display: 'flex', gap: '20px', alignItems: 'center', animation: 'fadeUp .7s 1.1s cubic-bezier(.16,1,.3,1) both' }}>
+              <Link href="#services-grid" className="btn-gold" style={{ padding: '16px 36px', fontSize: '14px', fontWeight: 600 }}>Explore Solutions</Link>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--dim)', fontSize: '13px' }}>
+                <div style={{ width: '40px', height: '1px', background: 'var(--bdr)' }} />
+                <span style={{ fontStyle: 'italic' }}>Scroll to dive deeper</span>
               </div>
             </div>
-          </SectionReveal>
+          </div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <div style={{ position: 'absolute', bottom: '36px', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', color: 'var(--dim)', fontSize: '10px', letterSpacing: '.1em', textTransform: 'uppercase' }}>
+          <span>Scroll</span>
+          <div style={{ width: '1px', height: '36px', background: 'linear-gradient(to bottom,transparent,var(--dim))', animation: 'slideDown 1.6s ease-in-out infinite' }}></div>
         </div>
 
         {/* Floating Geometric Shapes (Design Elements) */}
@@ -175,8 +186,11 @@ export default function ServicesPage() {
         <div style={{ position: 'absolute', left: '15%', top: '30%', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--gold)', opacity: 0.2 }} />
       </section>
 
-      {/* ── Services Offered ── (Slides over Hero naturally) */}
-      <section id="services-grid" style={{ position: 'relative', zIndex: 2, padding: '100px 0', background: 'var(--navy-2)', minHeight: '100vh' }}>
+      {/* Main Content Wrapper (Slides over Hero) */}
+      <div style={{ position: 'relative', zIndex: 10, background: 'var(--navy-2)', boxShadow: '0 -20px 40px rgba(0,0,0,0.3)' }}>
+
+      {/* ── Services Offered ── */}
+      <section id="services-grid" style={{ position: 'relative', padding: '100px 0', background: 'var(--navy-2)', minHeight: '100vh' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
           <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Expertise & Delivery</p>
@@ -250,8 +264,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── Content Wrapper for remaining sections (scrolls over sticky layers) ── */}
-      <div style={{ position: 'relative', zIndex: 10, background: 'var(--navy-2)' }}>
+
         {/* ── Industry Application ── */}
         <section id="industries" style={{ padding: '100px 0', background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
@@ -273,7 +286,7 @@ export default function ServicesPage() {
       </section>
 
       {/* ── Our Strength ── */}
-      <section id="strengths" style={{ padding: '100px 0', background: 'var(--navy-2)' }}>
+      <section id="strengths" style={{ position: 'sticky', top: 0, padding: '120px 0', background: 'var(--navy-2)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
           <SectionReveal className="mb-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
             <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Our Strengths</p>
@@ -298,6 +311,8 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Second Parallax Wrapper (Slides over Strengths) */}
+      <div style={{ position: 'relative', zIndex: 20, boxShadow: '0 -20px 40px rgba(0,0,0,0.4)' }}>
         {/* ── Value Proposition (Wooden Theme) ── */}
         <section id="value-prop" style={{ 
           position: 'sticky', 
@@ -365,7 +380,7 @@ export default function ServicesPage() {
         </section>
 
         {/* ── CTA ── */}
-        <section id="cta" style={{ position: 'sticky', top: 0, zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <section id="cta" style={{ zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 -20px 40px rgba(0,0,0,0.4)' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
         <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
         <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
@@ -395,6 +410,7 @@ export default function ServicesPage() {
           </SectionReveal>
         </div>
       </section>
+      </div>
       </div>
     </>
   );

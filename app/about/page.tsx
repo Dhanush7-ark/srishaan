@@ -427,7 +427,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section id="cta" style={{ position: 'sticky', top: 0, zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%' }}>
+      <section id="cta" style={{ top: 0, zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
         <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
         <div className="cta-ring" style={{ width: '520px', height: '520px', animationDelay: '.8s' }}></div>
