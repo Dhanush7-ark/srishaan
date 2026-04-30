@@ -39,29 +39,29 @@ export default function HeroCanvas() {
       scene.add(bL);
 
       const tk = new THREE.Mesh(
-        new THREE.TorusKnotGeometry(1.4, 0.32, 120, 16),
-        new THREE.MeshPhongMaterial({ color: 0x1A3A8F, transparent: true, opacity: 0.65, shininess: 90, specular: 0x3366FF })
+        new THREE.TorusKnotGeometry(1.2, 0.3, 120, 16),
+        new THREE.MeshPhongMaterial({ color: 0x1A3A8F, transparent: true, opacity: 0.6, shininess: 80, specular: 0x3366FF })
       );
-      tk.position.set(1.6, 0, 0);
+      tk.position.set(4.2, 0, 0);
       scene.add(tk);
 
       const tke = new THREE.LineSegments(
-        new THREE.EdgesGeometry(new THREE.TorusKnotGeometry(1.42, 0.325, 60, 8)),
-        new THREE.LineBasicMaterial({ color: 0xF0A500, transparent: true, opacity: 0.18 })
+        new THREE.EdgesGeometry(new THREE.TorusKnotGeometry(1.22, 0.305, 60, 8)),
+        new THREE.LineBasicMaterial({ color: 0xF0A500, transparent: true, opacity: 0.15 })
       );
       tke.position.copy(tk.position);
       scene.add(tke);
 
-      const N = 100;
+      const N = 80;
       const pos = new Float32Array(N * 3);
       for (let i = 0; i < N; i++) {
-        pos[i * 3] = (Math.random() - 0.5) * 12;
-        pos[i * 3 + 1] = (Math.random() - 0.5) * 9;
-        pos[i * 3 + 2] = (Math.random() - 0.5) * 7 - 1;
+        pos[i * 3] = (Math.random() - 0.5) * 16;
+        pos[i * 3 + 1] = (Math.random() - 0.5) * 10;
+        pos[i * 3 + 2] = (Math.random() - 0.5) * 6 - 2;
       }
       const pg = new THREE.BufferGeometry();
       pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
-      scene.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0xF0A500, size: 0.02, transparent: true, opacity: 0.35 })));
+      scene.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0xF0A500, size: 0.02, transparent: true, opacity: 0.3 })));
 
       let mx = 0, my = 0, t = 0;
       const onMove = (e: MouseEvent) => {
@@ -76,20 +76,22 @@ export default function HeroCanvas() {
 
       const tick = () => {
         animId = requestAnimationFrame(tick);
-        t += 0.004;
-        tk.rotation.x += 0.004;
-        tk.rotation.y += 0.006;
+        t += 0.005;
+        tk.rotation.x += 0.003;
+        tk.rotation.y += 0.005;
         tke.rotation.x = tk.rotation.x;
         tke.rotation.y = tk.rotation.y;
-        tk.position.x += (1.6 + mx * 0.2 - tk.position.x) * 0.05;
-        tk.position.y += (-my * 0.14 - tk.position.y) * 0.05;
+        
+        // Smooth parallax
+        tk.position.x += (4.2 + mx * 0.3 - tk.position.x) * 0.05;
+        tk.position.y += (-my * 0.2 - tk.position.y) * 0.05;
         tke.position.copy(tk.position);
         
-        camera.position.x += (mx * 0.15 - camera.position.x) * 0.04;
-        camera.position.y += (-my * 0.1 - camera.position.y) * 0.04;
-        camera.lookAt(1.6, 0, 0);
-        gL.intensity = 150 + Math.sin(t * 1.8) * 30;
+        camera.position.x += (mx * 0.2 - camera.position.x) * 0.04;
+        camera.position.y += (-my * 0.15 - camera.position.y) * 0.04;
+        camera.lookAt(2, 0, 0); // Focus slightly towards the right
         
+        gL.intensity = 150 + Math.sin(t * 1.5) * 30;
         renderer.render(scene, camera);
       };
       tick();
