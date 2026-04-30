@@ -7,10 +7,60 @@ import ContactHeroCanvas from '@/components/contact/ContactHeroCanvas';
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [sending,   setSending]   = useState(false);
+  const [sending, setSending] = useState(false);
+  const [formData, setFormData] = useState({
+    fullName: '',
+    company: '',
+    email: '',
+    phone: '',
+    interest: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({
+    email: '',
+    phone: ''
+  });
+
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    
+    if (name === 'phone') {
+      const digitsOnly = value.replace(/[^0-9]/g, '').slice(0, 10);
+      setFormData(prev => ({ ...prev, [name]: digitsOnly }));
+      if (digitsOnly.length > 0 && digitsOnly.length < 10) {
+        setErrors(prev => ({ ...prev, phone: 'Phone number must be exactly 10 digits' }));
+      } else {
+        setErrors(prev => ({ ...prev, phone: '' }));
+      }
+    } else if (name === 'email') {
+      setFormData(prev => ({ ...prev, [name]: value }));
+      if (value && !validateEmail(value)) {
+        setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
+      } else {
+        setErrors(prev => ({ ...prev, email: '' }));
+      }
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Final validation
+    if (!validateEmail(formData.email)) {
+      setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
+      return;
+    }
+    if (formData.phone.length > 0 && formData.phone.length < 10) {
+      setErrors(prev => ({ ...prev, phone: 'Phone number must be exactly 10 digits' }));
+      return;
+    }
+
     setSending(true);
     setTimeout(() => { setSending(false); setSubmitted(true); }, 1200);
   };
@@ -19,7 +69,7 @@ export default function ContactPage() {
     width: '100%', padding: '13px 16px',
     background: 'rgba(255,255,255,.04)', border: '1px solid var(--bdr)',
     borderRadius: '8px', color: 'var(--white)', fontSize: '14px',
-    outline: 'none', transition: 'border-color .25s', fontFamily: 'inherit',
+    outline: 'none', transition: 'all .25s', fontFamily: 'inherit',
   };
 
   return (
@@ -30,7 +80,7 @@ export default function ContactPage() {
           <ContactHeroCanvas />
         </div>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)', pointerEvents: 'none' }} />
-        
+
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--dim)', marginBottom: '32px' }}>
             <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
@@ -85,7 +135,7 @@ export default function ContactPage() {
       {/* ── Get In Touch Section ── */}
       <section style={{ padding: '120px 0', background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'start' }}>
-          
+
           {/* Left: Contact Details */}
           <div>
             <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.15em', marginBottom: '16px' }}>Get In Touch</div>
@@ -141,35 +191,43 @@ export default function ContactPage() {
             <TiltCard style={{ background: '#fff', borderRadius: '24px', padding: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}>
               <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '24px', fontWeight: 700, color: '#04091A', marginBottom: '12px' }}>Send Us a Message</h3>
               <p style={{ fontSize: '14px', color: '#4E5A74', marginBottom: '32px' }}>Fill in your details and we&apos;ll get back to you promptly with the right information.</p>
-              
+
               {!submitted ? (
                 <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div style={{ gridColumn: 'span 1' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Full Name *</label>
-                    <input required style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="text" placeholder="Your full name" />
+                    <input required name="fullName" value={formData.fullName} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="text" placeholder="Your full name" />
+
                   </div>
                   <div style={{ gridColumn: 'span 1' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Company / Organisation *</label>
-                    <input required style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="text" placeholder="Your company name" />
+                    <input required name="company" value={formData.company} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="text" placeholder="Your company name" />
+
                   </div>
                   <div style={{ gridColumn: 'span 1' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Email Address *</label>
-                    <input required style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="email" placeholder="your@email.com" />
+                    <input required name="email" value={formData.email} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', borderColor: errors.email ? '#dc2626' : 'var(--bdr)' }} type="email" placeholder="your@email.com" />
+                    {errors.email && <div style={{ color: '#dc2626', fontSize: '11px', marginTop: '6px', fontWeight: 500 }}>{errors.email}</div>}
+
                   </div>
                   <div style={{ gridColumn: 'span 1' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Phone Number</label>
-                    <input style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="tel" placeholder="+91 XXXXX XXXXX" />
+                    <input name="phone" value={formData.phone} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', borderColor: errors.phone ? '#dc2626' : 'var(--bdr)' }} type="tel" placeholder="10-digit mobile number" />
+                    {errors.phone && <div style={{ color: '#dc2626', fontSize: '11px', marginTop: '6px', fontWeight: 500 }}>{errors.phone}</div>}
+
                   </div>
                   <div style={{ gridColumn: 'span 2' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Area of Interest *</label>
-                    <select required style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', cursor: 'pointer' }}>
+                    <select required name="interest" value={formData.interest} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', cursor: 'pointer' }}>
                       <option value="">Select a service area</option>
-                      {['Outsourced CFO Services', 'Financial Planning', 'IT Infrastructure Supply', 'Vendor Empanelment', 'Other Enquiry'].map(o => <option key={o}>{o}</option>)}
+                      {['Outsourced CFO Services', 'Financial Planning', 'IT Infrastructure Supply', 'Vendor Empanelment', 'Other Enquiry'].map(o => <option key={o} value={o}>{o}</option>)}
                     </select>
+
                   </div>
                   <div style={{ gridColumn: 'span 2' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Message *</label>
-                    <textarea required style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', minHeight: '120px', resize: 'vertical' }} placeholder="Briefly describe your requirement or enquiry..." />
+                    <textarea required name="message" value={formData.message} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A', minHeight: '120px', resize: 'vertical' }} placeholder="Briefly describe your requirement or enquiry..." />
+
                   </div>
                   <div style={{ gridColumn: 'span 2' }}>
                     <button type="submit" disabled={sending} className="btn-gold" style={{ width: '100%', justifyContent: 'center', padding: '16px', borderRadius: '12px', fontSize: '15px' }}>

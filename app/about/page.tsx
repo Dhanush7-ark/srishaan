@@ -5,6 +5,9 @@ import Link from 'next/link';
 import HeroCanvas from '@/components/about/HeroCanvas';
 import PhilosophyCanvas from '@/components/about/PhilosophyCanvas';
 import ServiceCarousel from '@/components/about/ServiceCarousel';
+import ScrollHandler from '@/components/ui/ScrollHandler';
+import ScrollSnapSetter from '@/components/ui/ScrollSnapSetter';
+
 
 export const metadata = { title: 'About Us | Srishaan Finance' };
 
@@ -12,13 +15,11 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
   return (
     <SectionReveal className={`word-reveal ${className}`}>
       {words.map((word, i) => (
-        <span key={i} className="word" style={{ padding: '0.05em 0' }}>
+        <span key={i} className="word" style={{ marginRight: '0.25em' }}>
           <span style={{
             transitionDelay: `${i * 0.09}s`,
-            padding: '0.05em 0.15em 0.05em 0', // Padding for italic/descender clipping
             display: 'inline-block'
           }}>{word}</span>
-          {' '}
         </span>
       ))}
     </SectionReveal>
@@ -28,17 +29,23 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
 export default function AboutPage() {
   return (
     <>
+      <ScrollHandler />
+      <ScrollSnapSetter />
       {/* HERO */}
+
       <section id="about-hero" style={{
         position: 'sticky',
         top: 0,
         zIndex: 1,
+        height: '100vh',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         overflow: 'hidden',
-        background: 'var(--navy)'
+        background: 'var(--navy)',
+        scrollSnapAlign: 'start'
       }}>
+
         <HeroCanvas />
 
         {/* Ambient Orbs */}
@@ -139,7 +146,8 @@ export default function AboutPage() {
       <div style={{ position: 'relative', zIndex: 10, background: 'var(--navy-2)', boxShadow: '0 -20px 40px rgba(0,0,0,0.4)' }}>
 
         {/* COMPANY OVERVIEW */}
-        <section id="overview" style={{ background: 'var(--navy-2)', padding: '120px 8%' }}>
+        <section id="overview" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '80px', alignItems: 'start' }}>
             <div>
               <SectionReveal style={{ marginBottom: '40px' }}>
@@ -392,7 +400,8 @@ export default function AboutPage() {
       </div>
 
       {/* ── SECTION 3: STICKY LEADERSHIP ── */}
-      <section id="leadership" style={{ position: 'sticky', top: 0, zIndex: 5, background: 'var(--navy)', padding: '120px 8%', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+      <section id="leadership" style={{ position: 'sticky', top: 0, zIndex: 5, background: 'var(--navy)', padding: '120px 8%', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', scrollSnapAlign: 'start' }}>
+
         <SectionReveal className="text-center mb-16">
           <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Leadership Team</span>
           <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4.5vw,3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Experienced <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Promoters & Directors</em></h2>
@@ -438,7 +447,8 @@ export default function AboutPage() {
       <div style={{ position: 'relative', zIndex: 20, background: 'var(--navy-2)', boxShadow: '0 -20px 40px rgba(0,0,0,0.4)' }}>
 
         {/* STATS COUNTER */}
-        <section id="stats" style={{ background: 'var(--navy-3)', borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', padding: '80px 8%' }}>
+        <section id="stats" style={{ background: 'var(--navy-3)', borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', padding: '80px 8%', scrollSnapAlign: 'start' }}>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', maxWidth: '1440px', margin: '0 auto' }}>
             {[
               { target: 60, symbol: '+', suffix: 'Years', label: 'Combined Experience' },
@@ -459,7 +469,8 @@ export default function AboutPage() {
         </section>
 
         {/* APPROACH / METHODOLOGY */}
-        <section id="approach" style={{ background: 'var(--navy-2)', padding: '120px 8%' }}>
+        <section id="approach" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
+
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '100px', alignItems: 'center', maxWidth: '1440px', margin: '0 auto' }}>
             <SectionReveal>
               <div style={{ position: 'relative', height: '480px', borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--bdr)', background: 'var(--navy-3)', boxShadow: '0 40px 100px rgba(0,0,0,0.3)' }}>
@@ -503,7 +514,8 @@ export default function AboutPage() {
       </div>
 
       {/* ── SECTION 5: STICKY CTA ── */}
-      <section id="cta" style={{ position: 'sticky', top: 0, zIndex: 30, background: 'linear-gradient(135deg,#04091A 0%,#0D1635 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: '120px 8%' }}>
+      <section id="cta" style={{ position: 'sticky', top: 0, zIndex: 30, background: 'linear-gradient(135deg,#04091A 0%,#0D1635 100%)', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', overflow: 'hidden', padding: '120px 8%', scrollSnapAlign: 'start' }}>
+
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(240,165,0,0.08) 0%, transparent 70%)', pointerEvents: 'none' }}></div>
 
         {/* Animated Rings */}
@@ -514,7 +526,7 @@ export default function AboutPage() {
           <SectionReveal>
             <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px' }}>Ready to Scale?</span>
             <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.8rem,6vw,4.8rem)', fontWeight: 800, color: '#fff', lineHeight: 1.1, marginBottom: '32px', letterSpacing: '-.03em' }}>
-              Our <span className="gold-grad">Value Proposition</span>
+              Our <span className="gold-grad"></span>
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', fontWeight: 300, lineHeight: 1.8, marginBottom: '48px', maxWidth: '700px', margin: '0 auto 48px' }}>
               We act as an extended finance and compliance arm, enabling you to maintain statutory compliance, improve financial discipline, access funding efficiently, and scale with confidence.

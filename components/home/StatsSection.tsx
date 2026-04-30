@@ -2,16 +2,17 @@ import SectionReveal from '@/components/ui/SectionReveal';
 import StatCounter from '@/components/ui/StatCounter';
 
 const stats = [
-  { target:2500, suffix:'Cr+', label:'Assets Under Management' },
-  { target:15, suffix:'K+', label:'Happy Clients' },
-  { target:14, suffix:'+ Yrs', label:'Years of Excellence' },
-  { target:18, suffix:'%', label:'Avg. Annual Returns' },
+  { target: 2500, suffix: 'Cr+', label: 'Assets Under Management' },
+  { target: 15, suffix: 'K+', label: 'Happy Clients' },
+  { target: 14, suffix: '+ Yrs', label: 'Years of Excellence' },
+  { target: 18, suffix: '%', label: 'Avg. Annual Returns' },
 ];
 
 export default function StatsSection() {
   return (
     <section id="stats" className="stats-section">
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .stats-section {
           background: var(--navy-3);
           border-top: 1px solid var(--bdr);

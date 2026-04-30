@@ -7,7 +7,7 @@ import CustomCursor from '@/components/ui/CustomCursor';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter-var', display: 'swap' });
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-var', display: 'swap', weight: ['400','600','700'], style: ['normal','italic'] });
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-var', display: 'swap', weight: ['400', '600', '700'], style: ['normal', 'italic'] });
 
 export const metadata: Metadata = {
   title: 'Srishaan Finance | Expert-Led Investment Strategies',

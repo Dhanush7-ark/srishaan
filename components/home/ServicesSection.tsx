@@ -3,19 +3,18 @@ import TiltCard from '@/components/ui/TiltCard';
 import Link from 'next/link';
 
 const services = [
-  { icon:'📈', title:'Investment Advisory', desc:'Tailored portfolio strategies built on your risk profile, timeline, and long-term wealth goals.' },
-  { icon:'🏦', title:'Wealth Management',   desc:'Holistic planning that aligns your assets, liabilities, and aspirations into one unified roadmap.' },
-  { icon:'🛡️', title:'Insurance Planning',  desc:'Comprehensive life, health, and asset protection plans built for complete peace of mind.' },
-  { icon:'💼', title:'Tax Optimisation',    desc:'Legal, strategic tax planning that keeps more of your returns working for you each year.' },
+  { icon: '📈', title: 'Investment Advisory', desc: 'Tailored portfolio strategies built on your risk profile, timeline, and long-term wealth goals.' },
+  { icon: '🏦', title: 'Wealth Management', desc: 'Holistic planning that aligns your assets, liabilities, and aspirations into one unified roadmap.' },
+  { icon: '🛡️', title: 'Insurance Planning', desc: 'Comprehensive life, health, and asset protection plans built for complete peace of mind.' },
+  { icon: '💼', title: 'Tax Optimisation', desc: 'Legal, strategic tax planning that keeps more of your returns working for you each year.' },
 ];
 
 function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {
   return (
     <div className={`word-reveal ${className}`}>
       {words.map((word, i) => (
-        <span key={i} className="word">
+        <span key={i} className="word" style={{ marginRight: '0.25em' }}>
           <span style={{ transitionDelay: `${i * 0.09}s` }}>{word}</span>
-          {' '}
         </span>
       ))}
     </div>
@@ -25,7 +24,8 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
 export default function ServicesSection() {
   return (
     <section id="services" style={{ padding: '96px 6%', background: 'var(--navy-2)' }}>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         @media (max-width: 800px) { .services-grid { grid-template-columns: 1fr; } }
         .svc-card {
@@ -56,12 +56,12 @@ export default function ServicesSection() {
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
             What We Offer
           </span>
-          <WordReveal 
+          <WordReveal
             words={[
               <span key="1">Comprehensive</span>,
-              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Financial</em>,
+              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)'}}>Financial</em>,
               <span key="3">Services</span>
-            ]} 
+            ]}
           />
           <p className="sub" style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '500px', marginTop: '14px' }}>
             From growth to protection, our experts guide you at every stage of your financial journey.

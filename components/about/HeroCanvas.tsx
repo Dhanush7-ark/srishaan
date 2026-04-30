@@ -27,12 +27,12 @@ export default function HeroCanvas() {
 
       // In newer Three.js, default decay is 2. Set to 0 for r128 legacy behavior, or multiply intensity
       scene.add(new THREE.AmbientLight(0xffffff, 0.6));
-      
+
       const gL = new THREE.PointLight(0xF0A500, 150, 20); // increased intensity
       gL.position.set(5, 3, 3);
       gL.decay = 1;
       scene.add(gL);
-      
+
       const bL = new THREE.PointLight(0x2D5BE3, 80, 16); // increased intensity
       bL.position.set(-4, -2, 3);
       bL.decay = 1;
@@ -68,7 +68,7 @@ export default function HeroCanvas() {
         mx = (e.clientX / window.innerWidth - 0.5) * 2;
         my = (e.clientY / window.innerHeight - 0.5) * 2;
       };
-      
+
       if (!window.matchMedia('(pointer: coarse)').matches) {
         window.addEventListener('mousemove', onMove, { passive: true });
         cleanupFns.push(() => window.removeEventListener('mousemove', onMove));
@@ -81,16 +81,16 @@ export default function HeroCanvas() {
         tk.rotation.y += 0.005;
         tke.rotation.x = tk.rotation.x;
         tke.rotation.y = tk.rotation.y;
-        
+
         // Smooth parallax
         tk.position.x += (4.2 + mx * 0.3 - tk.position.x) * 0.05;
         tk.position.y += (-my * 0.2 - tk.position.y) * 0.05;
         tke.position.copy(tk.position);
-        
+
         camera.position.x += (mx * 0.2 - camera.position.x) * 0.04;
         camera.position.y += (-my * 0.15 - camera.position.y) * 0.04;
         camera.lookAt(2, 0, 0); // Focus slightly towards the right
-        
+
         gL.intensity = 150 + Math.sin(t * 1.5) * 30;
         renderer.render(scene, camera);
       };

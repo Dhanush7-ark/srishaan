@@ -2,19 +2,18 @@ import SectionReveal from '@/components/ui/SectionReveal';
 import TiltCard from '@/components/ui/TiltCard';
 
 const features = [
-  { icon:'📊', title:'Data-Driven Strategies',    desc:'Our recommendations are backed by deep market analysis and quantitative models — never guesswork.' },
-  { icon:'🔒', title:'Transparent & Fee-Only',    desc:'No hidden commissions. We operate on a transparent, fee-only advisory model aligned with your interests.' },
-  { icon:'🌐', title:'SEBI Registered',           desc:'Fully regulated, certified advisors you can trust. Your money is in expert, compliant hands at all times.' },
-  { icon:'⚡', title:'Real-Time Portfolio View', desc:'Track every asset, monitor performance, and get actionable insights — all from one clean dashboard.' },
+  { icon: '📊', title: 'Data-Driven Strategies', desc: 'Our recommendations are backed by deep market analysis and quantitative models — never guesswork.' },
+  { icon: '🔒', title: 'Transparent & Fee-Only', desc: 'No hidden commissions. We operate on a transparent, fee-only advisory model aligned with your interests.' },
+  { icon: '🌐', title: 'SEBI Registered', desc: 'Fully regulated, certified advisors you can trust. Your money is in expert, compliant hands at all times.' },
+  { icon: '⚡', title: 'Real-Time Portfolio View', desc: 'Track every asset, monitor performance, and get actionable insights — all from one clean dashboard.' },
 ];
 
 function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {
   return (
     <div className={`word-reveal ${className}`}>
       {words.map((word, i) => (
-        <span key={i} className="word">
+        <span key={i} className="word" style={{ marginRight: '0.25em' }}>
           <span style={{ transitionDelay: `${i * 0.09}s` }}>{word}</span>
-          {' '}
         </span>
       ))}
     </div>
@@ -29,16 +28,17 @@ export default function FeaturesSection() {
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
             Why Srishaan
           </span>
-          <WordReveal 
+          <WordReveal
             words={[
               <span key="1">Built</span>,
               <span key="2">for</span>,
               <em key="3" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Serious</em>,
               <span key="4">Wealth</span>,
               <span key="5">Builders</span>
-            ]} 
+            ]}
           />
-          <style dangerouslySetInnerHTML={{ __html: `
+          <style dangerouslySetInnerHTML={{
+            __html: `
             .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 600; line-height: 1.18; letter-spacing: -.02em; }
             .word-reveal .word { display: inline-block; overflow: hidden; vertical-align: bottom; }
             .word-reveal .word > span { display: inline-block; transform: translateY(105%); transition: transform .7s cubic-bezier(.16,1,.3,1); }
@@ -48,7 +48,7 @@ export default function FeaturesSection() {
             Every feature is designed around one goal: helping you make better financial decisions, faster.
           </p>
         </SectionReveal>
-        
+
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px' }}>
           {features.map((f, i) => (
             <SectionReveal key={f.title} delay={i * 0.08}>

@@ -1,15 +1,16 @@
 import SectionReveal from '@/components/ui/SectionReveal';
 
 const steps = [
-  { n:'01', title:'Discover',   desc:'We conduct a thorough assessment of your financial situation, goals, and risk tolerance.' },
-  { n:'02', title:'Strategise', desc:'Our certified planners craft a bespoke wealth strategy tailored precisely to your life timeline.' },
-  { n:'03', title:'Grow',       desc:'We implement, monitor, and continuously optimise your portfolio — keeping you informed every step.' },
+  { n: '01', title: 'Discover', desc: 'We conduct a thorough assessment of your financial situation, goals, and risk tolerance.' },
+  { n: '02', title: 'Strategise', desc: 'Our certified planners craft a bespoke wealth strategy tailored precisely to your life timeline.' },
+  { n: '03', title: 'Grow', desc: 'We implement, monitor, and continuously optimise your portfolio — keeping you informed every step.' },
 ];
 
 export default function HowSection() {
   return (
     <section id="how" className="how-section" style={{ padding: '110px 6%', background: 'var(--navy)', overflow: 'hidden' }}>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         .sec-head.center { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .steps {
           display: flex; justify-content: space-between;
@@ -62,10 +63,10 @@ export default function HowSection() {
         <div className="steps" id="steps-container">
           <SectionReveal style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
             <svg id="steps-svg" viewBox="0 0 1000 4" preserveAspectRatio="none">
-              <line id="steps-line" className="line-draw" x1="0" y1="2" x2="1000" y2="2" stroke="rgba(240,165,0,.3)" strokeWidth="1" strokeDasharray="8 6"/>
+              <line id="steps-line" className="line-draw" x1="0" y1="2" x2="1000" y2="2" stroke="rgba(240,165,0,.3)" strokeWidth="1" strokeDasharray="8 6" />
             </svg>
           </SectionReveal>
-          
+
           {steps.map((s, i) => (
             <SectionReveal key={s.n} delay={i * 0.15} className="step">
               <div className="step-num">{s.n}</div>

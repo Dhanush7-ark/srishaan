@@ -12,9 +12,9 @@ export default function WordReveal({ children, as: Tag = 'h1', className = '' }:
     return () => obs.disconnect();
   }, []);
   const spans = words.map((w, i) => (
-    <span key={i} className="word" style={{transitionDelay:`${i*0.08}s`}}>
+    <span key={i} className="word" style={{ transitionDelay: `${i * 0.08}s`, marginRight: '0.25em' }}>
       <span>{w}</span>
     </span>
   ));
-  return <Tag ref={ref as any} className={`word-reveal ${className}`}>{spans.reduce((acc:any,s,i)=>[...acc,s,i<spans.length-1?' ':null],[])}</Tag>;
+  return <Tag ref={ref as any} className={`word-reveal ${className}`}>{spans}</Tag>;
 }
