@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--navy-2)', borderTop: '1px solid var(--bdr)', paddingTop: '60px', paddingBottom: '32px' }}>
@@ -6,14 +7,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
-            <div className="flex items-center gap-2 mb-4">
-              <svg viewBox="0 0 40 44" fill="none" width="28" height="32">
-                <path d="M20 2 C25 7 27 14 24 21 C21 27 15 30 11 33 C9 29 9 22 12 15 C15 8 20 2 20 2Z" fill="#F0A500" />
-                <path d="M20 7 C22 11 23 16 20 20 C18 16 17 11 20 7Z" fill="#1A3A8F" />
-                <circle cx="20" cy="16" r="3.2" fill="#1A3A8F" /><circle cx="20" cy="16" r="1.7" fill="#2D5BE3" /><circle cx="20" cy="16" r="0.7" fill="#fff" />
-              </svg>
-              <span style={{ fontFamily: 'var(--font-playfair)', fontSize: '17px', fontWeight: 700, color: 'var(--white)' }}>Srishaan</span>
-            </div>
+            <Link href="/" className="flex items-center mb-4">
+              <img 
+                src="/images/Srishaan_Logo-removebg-preview.png" 
+                alt="Srishaan" 
+                style={{ height: '40px', width: 'auto' }}
+                loading="eager"
+              />
+            </Link>
             <p style={{ fontSize: '13px', color: 'var(--dim)', lineHeight: 1.7, maxWidth: '220px' }}>Empowering Financial Growth through precision-driven investment strategies and IT infrastructure solutions.</p>
           </div>
           {/* Services */}

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -41,26 +42,16 @@ export default function Navbar() {
       zIndex: 1000
     }}>
       {/* Logo */}
-      <Link href="/" className="flex items-center gap-3.5 no-underline">
-        <div className="relative w-9 h-11 flex items-center justify-center">
-          <svg viewBox="0 0 40 44" fill="none" width="32" height="36">
-            <path d="M20 2 C25 7 27 14 24 21 C21 27 15 30 11 33 C9 29 9 22 12 15 C15 8 20 2 20 2Z" fill="var(--gold)" />
-            <path d="M20 7 C22 11 23 16 20 20 C18 16 17 11 20 7Z" fill="var(--blue)" />
-            <circle cx="20" cy="16" r="3.2" fill="var(--blue)" />
-            <circle cx="20" cy="16" r="1.7" fill="var(--blue-b)" />
-            <circle cx="20" cy="16" r="0.7" fill="#fff" />
-            <path d="M10 33 C6 28 4 21 7 15" stroke="var(--blue)" strokeWidth="1.4" strokeLinecap="round" />
-            <path d="M12 35 C7 30 6 23 9 18" stroke="var(--blue)" strokeWidth="1.4" strokeLinecap="round" />
-            <path d="M11 33 C9 37 9 41 10 43" stroke="var(--gold)" strokeWidth="1.4" strokeLinecap="round" />
-          </svg>
-        </div>
-        <span style={{
-          fontFamily: 'var(--font-playfair)',
-          fontSize: '24px',
-          fontWeight: 700,
-          color: 'var(--white)',
-          letterSpacing: '-0.01em'
-        }}>Srishaan</span>
+      <Link href="/" className="flex items-center no-underline">
+        <Image 
+          src="/images/Srishaan_Logo-removebg-preview.png" 
+          alt="Srishaan" 
+          width={200} 
+          height={56} 
+          priority
+          className="object-contain"
+          style={{ height: '56px', width: 'auto'}}
+        />
       </Link>
 
       {/* Desktop Nav Links */}
