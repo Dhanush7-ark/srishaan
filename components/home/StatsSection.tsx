@@ -17,7 +17,7 @@ export default function StatsSection() {
           background: var(--navy-3);
           border-top: 1px solid var(--bdr);
           border-bottom: 1px solid var(--bdr);
-          padding: 72px 6%;
+          padding: 72px 8%;
           position: relative;
           overflow: hidden;
         }
@@ -61,7 +61,7 @@ export default function StatsSection() {
           .stat-item::after { display: none; }
         }
       `}} />
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         <div className="stats-row">
           {stats.map((s, i) => (
             <SectionReveal key={s.label} delay={i * 0.1} className="stat-item">

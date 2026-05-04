@@ -19,16 +19,16 @@ export default function ServiceCarousel({ children }: ServiceCarouselProps) {
   };
 
   return (
-    <div style={{ 
-      position: 'relative', 
-      width: 'calc(100% + 12vw)', 
+    <div style={{
+      position: 'relative',
+      width: 'calc(100% + 12vw)',
       marginLeft: '-6vw',
-      overflow: 'hidden' 
+      overflow: 'hidden'
     }}>
 
 
       {/* Carousel Container */}
-      <div 
+      <div
         ref={scrollRef}
         style={{
           display: 'flex',

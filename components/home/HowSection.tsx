@@ -8,9 +8,11 @@ const steps = [
 
 export default function HowSection() {
   return (
-    <section id="how" className="how-section" style={{ padding: '110px 6%', background: 'var(--navy)', overflow: 'hidden' }}>
+    <section id="how" className="how-section">
       <style dangerouslySetInnerHTML={{
         __html: `
+        .how-section { padding: 110px 8%; background: var(--navy); overflow: hidden; }
+        @media (max-width: 768px) { .how-section { padding: 70px 8%; } }
         .sec-head.center { text-align: center; display: flex; flex-direction: column; align-items: center; }
         .steps {
           display: flex; justify-content: space-between;
@@ -44,10 +46,11 @@ export default function HowSection() {
           .steps { flex-direction: column; gap: 50px; align-items: center; }
           #steps-svg { display: none; }
           .step { width: 100%; max-width: 300px; }
+          .step-num { width: 60px; height: 60px; font-size: 18px; margin-bottom: 16px; }
         }
       `}} />
 
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         <SectionReveal className="sec-head center" style={{ marginBottom: '56px' }}>
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
             The Process

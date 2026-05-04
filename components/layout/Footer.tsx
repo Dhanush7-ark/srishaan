@@ -3,19 +3,19 @@ import Image from 'next/image';
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--navy-2)', borderTop: '1px solid var(--bdr)', paddingTop: '60px', paddingBottom: '32px' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 8%' }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center mb-4">
-              <img 
-                src="/images/Srishaan_Logo-removebg-preview.png" 
-                alt="Srishaan" 
+              <img
+                src="/images/Srishaan_Logo-removebg-preview.png"
+                alt="Srishaan"
                 style={{ height: '40px', width: 'auto' }}
-                loading="eager"
+                loading="lazy"
               />
             </Link>
-            <p style={{ fontSize: '13px', color: 'var(--dim)', lineHeight: 1.7, maxWidth: '220px' }}>Empowering Financial Growth through precision-driven investment strategies and IT infrastructure solutions.</p>
+            <p style={{ fontSize: '13px', color: 'var(--dim)', lineHeight: 1.7, maxWidth: '240px' }}>Empowering Financial Growth through precision-driven investment strategies and IT infrastructure solutions.</p>
           </div>
           {/* Services */}
           <div>
@@ -40,7 +40,7 @@ export default function Footer() {
           </div>
         </div>
         {/* Bottom bar */}
-        <div style={{ borderTop: '1px solid var(--bdr)', paddingTop: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '12px' }}>
+        <div style={{ borderTop: '1px solid var(--bdr)', paddingTop: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
           <p style={{ fontSize: '12px', color: 'var(--dim)' }}>© 2025 Srishaan Tech & Financial Services Pvt. Ltd. All rights reserved.</p>
           <p style={{ fontSize: '12px', color: 'var(--dim)' }}>SEBI Registered &nbsp;·&nbsp; ISO 27001 Secured</p>
         </div>

@@ -22,8 +22,18 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
 
 export default function FeaturesSection() {
   return (
-    <section id="features" style={{ padding: '96px 6%', background: 'var(--navy-2)' }}>
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+    <section id="features" className="features-section">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        .features-section {
+          padding: 96px 8%;
+          background: var(--navy-2);
+        }
+        @media (max-width: 768px) {
+          .features-section { padding: 70px 8%; }
+        }
+      `}} />
+      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         <SectionReveal className="sec-head" style={{ marginBottom: '56px' }}>
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
             Why Srishaan

@@ -83,7 +83,6 @@ export default function AboutPage() {
               words={[
                 <span key="1">Financial</span>,
                 <span key="2">Services</span>,
-                <br key="br" />,
                 <span key="3">That</span>,
                 <span key="4" className="gold-grad">Scale With</span>,
                 <em key="5" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>You</em>
@@ -100,9 +99,15 @@ export default function AboutPage() {
             </p>
 
             {/* CTA Buttons */}
-            <div style={{ marginTop: '36px', display: 'flex', gap: '16px', alignItems: 'center', animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
-              <Link href="/contact" className="btn-gold" style={{ padding: '15px 34px', fontSize: '14px', fontWeight: 600 }}>Get Started</Link>
-              <Link href="/contact" className="btn-ghost" style={{ padding: '14px 30px', fontSize: '14px' }}>Book Consultation</Link>
+            <style dangerouslySetInnerHTML={{ __html: `
+              @media (max-width: 480px) {
+                .hero-ctas { flex-direction: column; width: 100%; gap: 12px !important; }
+                .hero-ctas > a { width: 100%; text-align: center; }
+              }
+            `}} />
+            <div className="hero-ctas" style={{ marginTop: '36px', display: 'flex', gap: '16px', alignItems: 'center', animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
+              <Link href="/contact" className="btn-gold" style={{ padding: '15px 34px', fontSize: '14px', fontWeight: 600, whiteSpace: 'nowrap' }}>Get Started</Link>
+              <Link href="/contact" className="btn-ghost" style={{ padding: '14px 30px', fontSize: '14px', whiteSpace: 'nowrap' }}>Book Consultation</Link>
             </div>
 
             {/* Trust Signal */}
@@ -148,7 +153,7 @@ export default function AboutPage() {
         {/* COMPANY OVERVIEW */}
         <section id="overview" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '80px', alignItems: 'start' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px', alignItems: 'start' }}>
             <div>
               <SectionReveal style={{ marginBottom: '40px' }}>
                 <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Company Overview</span>
@@ -334,14 +339,20 @@ export default function AboutPage() {
         </section>
 
         {/* INDUSTRIES & WHY US */}
-        <section id="industries-values" style={{ background: 'var(--navy-2)', padding: '120px 8%' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(440px, 1fr))', gap: '80px' }}>
-            <div>
-              <SectionReveal style={{ marginBottom: '44px' }}>
-                <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</span>
-                <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Industries We <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Serve</em></h2>
-              </SectionReveal>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+        <section id="industries-values" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
+              <style dangerouslySetInnerHTML={{ __html: `
+                @media (max-width: 768px) {
+                  .ind-grid { grid-template-columns: 1fr !important; }
+                  .why-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+                }
+              `}} />
+              <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px' }}>
+                <div>
+                  <SectionReveal style={{ marginBottom: '44px' }}>
+                    <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</span>
+                    <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Industries We <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Serve</em></h2>
+                  </SectionReveal>
+                  <div className="ind-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 {[
                   { icon: '🏗️', title: 'Infrastructure & Contractors', desc: 'Strategic advisory for engineering firms' },
                   { icon: '🏢', title: 'Real Estate & Developers', desc: 'Financial structuring for builders' },
@@ -358,7 +369,11 @@ export default function AboutPage() {
                 ))}
 
                 {/* Balancing Card for the left column */}
-                <SectionReveal delay={0.4} style={{ gridColumn: 'span 2' }}>
+                <SectionReveal delay={0.4} className="ind-span-card">
+                  <style dangerouslySetInnerHTML={{ __html: `
+                    .ind-span-card { grid-column: span 2; }
+                    @media (max-width: 768px) { .ind-span-card { grid-column: span 1 !important; } }
+                  `}} />
                   <div style={{ padding: '24px 30px', background: 'linear-gradient(90deg, rgba(255,255,255,0.03), transparent)', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <div style={{ fontSize: '24px', opacity: 0.6 }}>⚙️</div>
                     <div>
@@ -408,35 +423,60 @@ export default function AboutPage() {
           <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '20px auto 0' }}>Over six decades of combined expertise across finance, manufacturing, technology, and public sector operations.</p>
         </SectionReveal>
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(440px, 1fr))', gap: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
+        <style dangerouslySetInnerHTML={{ __html: `
+          @media (max-width: 768px) {
+            .leader-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+            .leader-card { padding: 32px 24px !important; }
+            .leader-card h3 { font-size: 20px !important; }
+          }
+        `}} />
+        <div className="leader-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px', maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
           <SectionReveal>
-            <div className="leader-card" style={{ padding: '40px', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <div className="leader-avatar avatar-vg" style={{ width: '72px', height: '72px', fontSize: '28px', marginBottom: '24px', background: 'linear-gradient(135deg, var(--blue), var(--blue-b))', color: '#fff', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>VP</div>
-              <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '24px', fontWeight: 700, marginBottom: '6px' }}>Mr. Venu Gopal Pidugu</h3>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: '20px' }}>Promoter & Director</div>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(200,155,60,.12)', border: '1px solid rgba(200,155,60,.25)', color: 'var(--gold)', fontSize: '12px', fontWeight: 700, padding: '6px 16px', borderRadius: '100px', marginBottom: '24px' }}>🎓 Chartered Accountant</span>
-              <p style={{ fontSize: '14.5px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '24px' }}>
+            <div className="leader-card" style={{ padding: '48px', background: 'var(--surf)', borderRadius: '24px', border: '1px solid var(--bdr)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div className="leader-avatar avatar-vg" style={{ width: '80px', height: '80px', fontSize: '32px', marginBottom: '28px', background: 'linear-gradient(135deg, var(--blue), var(--blue-b))', color: '#fff', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, boxShadow: '0 10px 30px rgba(26,58,143,0.3)' }}>VP</div>
+              <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '26px', fontWeight: 700, marginBottom: '8px' }}>Mr. Venu Gopal Pidugu</h3>
+              <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: '24px' }}>Promoter & Director</div>
+              
+              <div style={{ marginBottom: '28px' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(200,155,60,.12)', border: '1px solid rgba(200,155,60,.2)', color: 'var(--gold)', fontSize: '12px', fontWeight: 700, padding: '8px 18px', borderRadius: '100px' }}>
+                  <span style={{ fontSize: '14px' }}>🎓</span> Chartered Accountant
+                </span>
+              </div>
+
+              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px' }}>
                 A qualified CA with over 20 years of experience across infrastructure, technology, and ITES. Brings deep expertise in financial management, corporate finance, and strategic advisory — enabling structured governance and informed decision-making.
               </p>
-              <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.1em', fontWeight: 700, marginBottom: '12px' }}>Strategic Associations</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                {['GVK Group', 'Arabi Co. WLL', 'VSoft Tech'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.05)', padding: '6px 14px', borderRadius: '6px', fontSize: '12px' }}>{o}</span>)}
+
+              <div style={{ marginTop: 'auto' }}>
+                <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 700, marginBottom: '16px' }}>Strategic Associations</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {['GVK Group', 'Arabi Co. WLL', 'VSoft Tech'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.04)', padding: '7px 14px', borderRadius: '8px', fontSize: '12px', color: 'var(--white)', border: '1px solid var(--bdr)' }}>{o}</span>)}
+                </div>
               </div>
             </div>
           </SectionReveal>
 
           <SectionReveal delay={0.2}>
-            <div className="leader-card" style={{ padding: '40px', background: 'rgba(255,255,255,0.03)', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.06)' }}>
-              <div className="leader-avatar avatar-jj" style={{ width: '72px', height: '72px', fontSize: '28px', marginBottom: '24px', background: 'linear-gradient(135deg, var(--gold), var(--gold-l))', color: 'var(--navy)', borderRadius: '16px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700 }}>JC</div>
-              <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '24px', fontWeight: 700, marginBottom: '6px' }}>Mr. John J. Campos</h3>
-              <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.1em', textTransform: 'uppercase', marginBottom: '20px' }}>Promoter & Director</div>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(200,155,60,.12)', border: '1px solid rgba(200,155,60,.25)', color: 'var(--gold)', fontSize: '12px', fontWeight: 700, padding: '6px 16px', borderRadius: '100px', marginBottom: '24px' }}>🎓 Mechanical Engineer · JNTU</span>
-              <p style={{ fontSize: '14.5px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '24px' }}>
+            <div className="leader-card" style={{ padding: '48px', background: 'var(--surf)', borderRadius: '24px', border: '1px solid var(--bdr)', height: '100%', display: 'flex', flexDirection: 'column' }}>
+              <div className="leader-avatar avatar-jj" style={{ width: '80px', height: '80px', fontSize: '32px', marginBottom: '28px', background: 'linear-gradient(135deg, var(--gold), var(--gold-l))', color: 'var(--navy)', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, boxShadow: '0 10px 30px rgba(240,165,0,0.2)' }}>JC</div>
+              <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '26px', fontWeight: 700, marginBottom: '8px' }}>Mr. John J. Campos</h3>
+              <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: '24px' }}>Promoter & Director</div>
+
+              <div style={{ marginBottom: '28px' }}>
+                <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(200,155,60,.12)', border: '1px solid rgba(200,155,60,.2)', color: 'var(--gold)', fontSize: '12px', fontWeight: 700, padding: '8px 18px', borderRadius: '100px' }}>
+                  <span style={{ fontSize: '14px' }}>🎓</span> Mechanical Engineer · JNTU
+                </span>
+              </div>
+
+              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px' }}>
                 Over 40 years of experience in manufacturing and production. Brings deep expertise in plant operations, process optimization, and quality systems — providing operational discipline and execution rigour to Srishaan’s delivery model.
               </p>
-              <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.1em', fontWeight: 700, marginBottom: '12px' }}>Industrial Tenure</div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                {['Procter & Gamble', 'Coffee Day Global'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.05)', padding: '6px 14px', borderRadius: '6px', fontSize: '12px' }}>{o}</span>)}
+
+              <div style={{ marginTop: 'auto' }}>
+                <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 700, marginBottom: '16px' }}>Industrial Tenure</div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+                  {['Procter & Gamble', 'Coffee Day Global'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.04)', padding: '7px 14px', borderRadius: '8px', fontSize: '12px', color: 'var(--white)', border: '1px solid var(--bdr)' }}>{o}</span>)}
+                </div>
               </div>
             </div>
           </SectionReveal>
@@ -471,7 +511,7 @@ export default function AboutPage() {
         {/* APPROACH / METHODOLOGY */}
         <section id="approach" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))', gap: '100px', alignItems: 'center', maxWidth: '1440px', margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '100px', alignItems: 'center', maxWidth: '1440px', margin: '0 auto' }}>
             <SectionReveal>
               <div style={{ position: 'relative', height: '480px', borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--bdr)', background: 'var(--navy-3)', boxShadow: '0 40px 100px rgba(0,0,0,0.3)' }}>
                 <PhilosophyCanvas />
@@ -526,7 +566,8 @@ export default function AboutPage() {
           <SectionReveal>
             <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '24px' }}>Ready to Scale?</span>
             <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.8rem,6vw,4.8rem)', fontWeight: 800, color: '#fff', lineHeight: 1.1, marginBottom: '32px', letterSpacing: '-.03em' }}>
-              Our <span className="gold-grad"></span>
+              Our  <span className="gold-grad">Value Proposition</span>
+
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '18px', fontWeight: 300, lineHeight: 1.8, marginBottom: '48px', maxWidth: '700px', margin: '0 auto 48px' }}>
               We act as an extended finance and compliance arm, enabling you to maintain statutory compliance, improve financial discipline, access funding efficiently, and scale with confidence.

@@ -74,14 +74,30 @@ export default function ContactPage() {
 
   return (
     <main style={{ background: 'var(--navy)', color: 'var(--white)', minHeight: '100vh' }}>
+      <style dangerouslySetInnerHTML={{ __html: `
+        @media (max-width: 1024px) {
+          .contact-split-grid { grid-template-columns: 1fr !important; gap: 60px !important; }
+          .hero-canvas-wrap { right: -10% !important; width: 400px !important; height: 400px !important; opacity: 0.4 !important; }
+        }
+        @media (max-width: 768px) {
+          .contact-hero-sec { padding: 120px 0 60px !important; }
+          .hero-canvas-wrap { display: none !important; }
+          .contact-form-card { padding: 32px 24px !important; }
+          .form-inner-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .form-inner-grid > div { grid-column: span 1 !important; }
+          .location-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+          .contact-details-list { margin-bottom: 32px !important; }
+        }
+      `}} />
+
       {/* ── Hero Section ── */}
-      <section style={{ padding: '160px 0 100px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', right: '5%', top: '45%', width: '500px', height: '500px', opacity: 0.7, pointerEvents: 'none' }}>
+      <section className="contact-hero-sec" style={{ padding: '160px 0 100px', position: 'relative', overflow: 'hidden' }}>
+        <div className="hero-canvas-wrap" style={{ position: 'absolute', right: '5%', top: '45%', width: '500px', height: '500px', opacity: 0.7, pointerEvents: 'none' }}>
           <ContactHeroCanvas />
         </div>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(255,255,255,0.02) 0%, transparent 100%)', pointerEvents: 'none' }} />
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', margin: '0 auto', padding: '0 8%' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px', color: 'var(--dim)', marginBottom: '32px' }}>
             <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
             <span style={{ opacity: 0.4 }}>›</span>
@@ -93,7 +109,7 @@ export default function ContactPage() {
             Hyderabad, Telangana
           </div>
 
-          <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3.5rem, 6vw, 5.5rem)', fontWeight: 700, lineHeight: 1, letterSpacing: '-.03em', maxWidth: '800px' }}>
+          <h1 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(3rem, 6vw, 5.5rem)', fontWeight: 700, lineHeight: 1, letterSpacing: '-.03em', maxWidth: '800px' }}>
             Let&apos;s <i className="gold-grad" style={{ fontStyle: 'italic', fontWeight: 400 }}>Connect</i>
           </h1>
           <p style={{ fontSize: '18px', color: 'var(--muted)', lineHeight: 1.7, maxWidth: '520px', marginTop: '28px' }}>
@@ -104,7 +120,7 @@ export default function ContactPage() {
 
       {/* ── "What Are You Looking For?" Section ── */}
       <section style={{ padding: '100px 0', background: 'var(--navy-2)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 8%' }}>
           <div style={{ textAlign: 'center', marginBottom: '60px' }}>
             <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.15em', marginBottom: '16px' }}>How Can We Help</div>
             <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 700, letterSpacing: '-.02em' }}>
@@ -112,7 +128,7 @@ export default function ContactPage() {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '30px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '30px' }}>
             {[
               { icon: '📊', title: 'Financial & Compliance Services', desc: 'CFO services, MIS reporting, statutory compliance, financial planning, and strategic advisory for your organization.' },
               { icon: '📱', title: 'IT Infrastructure Supply', desc: 'Laptops, desktops, server lines, data center solutions, network racks — PSU compliant supply with full documentation.' },
@@ -134,7 +150,7 @@ export default function ContactPage() {
 
       {/* ── Get In Touch Section ── */}
       <section style={{ padding: '120px 0', background: 'var(--navy)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'start' }}>
+        <div className="contact-split-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 8%', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'start' }}>
 
           {/* Left: Contact Details */}
           <div>
@@ -146,7 +162,7 @@ export default function ContactPage() {
               Reach us directly or fill the form and we&apos;ll respond within one business day.
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '48px' }}>
+            <div className="contact-details-list" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '48px' }}>
               {[
                 { icon: '📍', label: 'Registered Office', val: 'Hyderabad, Telangana, India' },
                 { icon: '📞', label: 'Phone', val: '+91 96765 63210' },
@@ -167,33 +183,35 @@ export default function ContactPage() {
 
             <div style={{ padding: '32px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--bdr)', borderRadius: '20px' }}>
               <div style={{ fontSize: '14px', fontWeight: 700, marginBottom: '20px' }}>Statutory Details</div>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px' }}>
-                <tbody>
-                  {[
-                    ['Company', 'Srishaan Tech & Financial Services Pvt. Ltd.'],
-                    ['CIN', 'U74999TG2024PTC176888'],
-                    ['Incorporated', '2024 — Companies Act'],
-                    ['GST', 'Registered & Active'],
-                    ['Classification', 'MSME / Startup India']
-                  ].map(([k, v], idx) => (
-                    <tr key={idx} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
-                      <td style={{ padding: '12px 0', color: 'var(--dim)', fontWeight: 500 }}>{k}</td>
-                      <td style={{ padding: '12px 0', color: 'var(--muted)', textAlign: 'right' }}>{v}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '13px', minWidth: '300px' }}>
+                  <tbody>
+                    {[
+                      ['Company', 'Srishaan Tech & Financial Services Pvt. Ltd.'],
+                      ['CIN', 'U74999TG2024PTC176888'],
+                      ['Incorporated', '2024 — Companies Act'],
+                      ['GST', 'Registered & Active'],
+                      ['Classification', 'MSME / Startup India']
+                    ].map(([k, v], idx) => (
+                      <tr key={idx} style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+                        <td style={{ padding: '12px 0', color: 'var(--dim)', fontWeight: 500 }}>{k}</td>
+                        <td style={{ padding: '12px 0', color: 'var(--muted)', textAlign: 'right' }}>{v}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
           {/* Right: Message Form */}
           <SectionReveal delay={0.2}>
-            <TiltCard style={{ background: '#fff', borderRadius: '24px', padding: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}>
+            <TiltCard className="contact-form-card" style={{ background: '#fff', borderRadius: '24px', padding: '48px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}>
               <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '24px', fontWeight: 700, color: '#04091A', marginBottom: '12px' }}>Send Us a Message</h3>
               <p style={{ fontSize: '14px', color: '#4E5A74', marginBottom: '32px' }}>Fill in your details and we&apos;ll get back to you promptly with the right information.</p>
 
               {!submitted ? (
-                <form onSubmit={handleSubmit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                <form onSubmit={handleSubmit} className="form-inner-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                   <div style={{ gridColumn: 'span 1' }}>
                     <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#04091A', marginBottom: '8px' }}>Full Name *</label>
                     <input required name="fullName" value={formData.fullName} onChange={handleChange} style={{ ...inputStyle, background: '#F8FAFF', color: '#04091A' }} type="text" placeholder="Your full name" />
@@ -249,7 +267,7 @@ export default function ContactPage() {
 
       {/* ── Location Section ── */}
       <section style={{ padding: '100px 0 140px', background: 'var(--navy-2)' }}>
-        <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="location-grid" style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 8%', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
           <div>
             <div style={{ fontSize: '11px', fontWeight: 700, color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.15em', marginBottom: '16px' }}>Our Location</div>
             <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: '24px' }}>

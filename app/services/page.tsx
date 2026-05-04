@@ -123,14 +123,26 @@ export default function ServicesPage() {
         <div style={{ position: 'absolute', right: '5%', bottom: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(26,58,143,0.15) 0%, transparent 70%)', filter: 'blur(80px)', pointerEvents: 'none' }} />
 
         {/* 3D Canvas — decorative background */}
-        <div style={{ position: 'absolute', right: '-120px', top: '50%', transform: 'translateY(-50%)', width: '700px', height: '700px', opacity: 1, pointerEvents: 'none' }}>
+        <div className="hero-viz-container" style={{ position: 'absolute', right: '-120px', top: '50%', transform: 'translateY(-50%)', width: '700px', height: '700px', opacity: 1, pointerEvents: 'none' }}>
           <ServicesHeroCanvas />
         </div>
 
         {/* Vertical Brand Line */}
-        <div style={{ position: 'absolute', left: '4%', top: '20%', bottom: '20%', width: '1px', background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)', opacity: 0.4 }} />
+        <div className="hero-brand-line" style={{ position: 'absolute', left: '4%', top: '20%', bottom: '20%', width: '1px', background: 'linear-gradient(to bottom, transparent, var(--gold), transparent)', opacity: 0.4 }} />
 
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 8%' }}>
+        <div className="hero-inner-container" style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 8%' }}>
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            @media (max-width: 1024px) {
+              .hero-viz-container { right: -250px !important; opacity: 0.6 !important; width: 600px !important; height: 600px !important; }
+              .hero-inner-container { padding: 0 6% !important; }
+            }
+            @media (max-width: 768px) {
+              .hero-viz-container { right: -150px !important; top: 60% !important; width: 450px !important; height: 450px !important; opacity: 0.4 !important; }
+              .hero-brand-line { display: none; }
+              .word-reveal { font-size: clamp(2.5rem, 8vw, 3.8rem) !important; }
+            }
+          `}} />
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px', animation: 'fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both' }}>
               <span style={{ width: '20px', height: '1px', background: 'var(--gold)' }} />
@@ -150,7 +162,6 @@ export default function ServicesPage() {
               className="mb-8"
               words={[
                 <span key="1">Specialized</span>,
-                <br key="br" />,
                 <span key="2" className="gold-grad">Business Solutions</span>
               ]}
             />
@@ -161,7 +172,11 @@ export default function ServicesPage() {
 
             <div style={{ maxWidth: '800px', position: 'relative' }}>
               {/* Decorative Side Tag */}
-              <div style={{ position: 'absolute', left: '-40px', top: '10px', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.2em', opacity: 0.6, fontWeight: 700 }}>Overview</div>
+              <div className="overview-tag" style={{ position: 'absolute', left: '-40px', top: '10px', writingMode: 'vertical-rl', transform: 'rotate(180deg)', fontSize: '10px', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.2em', opacity: 0.6, fontWeight: 700 }}>Overview</div>
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 1200px) { .overview-tag { display: none; } }
+              `}} />
 
               <p style={{ fontSize: '18px', color: 'var(--white)', fontWeight: 500, lineHeight: 1.6, marginBottom: '20px', opacity: 0.95, animation: 'fadeUp .7s .8s cubic-bezier(.16,1,.3,1) both' }}>
                 Our organization operates through specialized business solutions to deliver focused and execution-driven services:
@@ -176,12 +191,20 @@ export default function ServicesPage() {
               </p>
             </div>
 
-            <div style={{ marginTop: '40px', display: 'flex', gap: '20px', alignItems: 'center', animation: 'fadeUp .7s 1.1s cubic-bezier(.16,1,.3,1) both' }}>
+            <div className="hero-cta-row" style={{ marginTop: '40px', display: 'flex', gap: '20px', alignItems: 'center', animation: 'fadeUp .7s 1.1s cubic-bezier(.16,1,.3,1) both' }}>
               <Link href="#services-grid" className="btn-gold" style={{ padding: '16px 36px', fontSize: '14px', fontWeight: 600 }}>Explore Solutions</Link>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--dim)', fontSize: '13px' }}>
+              <div className="scroll-hint-hero" style={{ display: 'flex', alignItems: 'center', gap: '15px', color: 'var(--dim)', fontSize: '13px' }}>
                 <div style={{ width: '40px', height: '1px', background: 'var(--bdr)' }} />
                 <span style={{ fontStyle: 'italic' }}>Scroll to dive deeper</span>
               </div>
+              <style dangerouslySetInnerHTML={{
+                __html: `
+                @media (max-width: 640px) {
+                  .scroll-hint-hero { display: none !important; }
+                  .hero-cta-row { justify-content: center; width: 100%; }
+                  .hero-cta-row > a { width: 100%; text-align: center; }
+                }
+              `}} />
             </div>
           </div>
         </div>
@@ -202,14 +225,19 @@ export default function ServicesPage() {
 
         {/* ── Services Offered ── */}
         <section id="services-grid" style={{ position: 'relative', padding: '100px 0', background: 'var(--navy-2)', minHeight: '100vh', scrollSnapAlign: 'start' }}>
-
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            @media (max-width: 768px) {
+              #services-grid { padding: 60px 0 !important; }
+            }
+          `}} />
           <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
             <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Expertise & Delivery</p>
               <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: "50px" }}>Services <span className="gold-grad">Offered</span></h2>
             </SectionReveal>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '32px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
               {/* IT & ITES */}
               <SectionReveal>
                 <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
@@ -279,8 +307,12 @@ export default function ServicesPage() {
 
         {/* ── Industry Application ── */}
         <section id="industries" style={{ padding: '100px 0', background: 'var(--navy)', scrollSnapAlign: 'start' }}>
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            @media (max-width: 768px) { #industries { padding: 60px 0 !important; } }
+          `}} />
 
-          <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 6%' }}>
+          <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 8%' }}>
             <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</p>
               <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: 60 }}>Industry <span className="gold-grad">Application</span></h2>
@@ -300,6 +332,10 @@ export default function ServicesPage() {
 
         {/* ── Our Strength ── */}
         <section id="strengths" style={{ position: 'sticky', top: 0, padding: '120px 0', background: 'var(--navy-2)', scrollSnapAlign: 'start' }}>
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            @media (max-width: 768px) { #strengths { padding: 80px 0 !important; } }
+          `}} />
 
           <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
             <SectionReveal className="mb-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
@@ -343,13 +379,20 @@ export default function ServicesPage() {
             color: '#0D1635', // Dark charcoal/navy for contrast on wood
             scrollSnapAlign: 'start'
           }}>
+            <style dangerouslySetInnerHTML={{
+              __html: `
+              @media (max-width: 768px) {
+                #value-prop { padding: 80px 0 !important; }
+                .wooden-h2 { font-size: clamp(2rem, 10vw, 2.8rem) !important; margin-bottom: 32px !important; }
+              }
+            `}} />
 
             <div style={{ maxWidth: '1100px', width: '100%', margin: '0 auto', padding: '0 6%' }}>
               <SectionReveal>
                 <p style={{ fontSize: '16px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.4em', color: 'rgba(13,22,53,0.6)', marginBottom: '48px' }}>Value Proposition</p>
 
                 <div style={{ position: 'relative', display: 'inline-block' }}>
-                  <h2 style={{
+                  <h2 className="wooden-h2" style={{
                     fontFamily: 'var(--font-playfair)',
                     fontSize: 'clamp(2.5rem,5.5vw,4.5rem)',
                     fontWeight: 800,
@@ -396,6 +439,17 @@ export default function ServicesPage() {
 
           {/* ── CTA ── */}
           <section id="cta" style={{ zIndex: 30, background: 'linear-gradient(135deg,#0D1635 0%,#112255 50%,#1A3A8F 100%)', textAlign: 'center', position: 'relative', overflow: 'hidden', padding: '120px 6%', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 -20px 40px rgba(0,0,0,0.4)', scrollSnapAlign: 'start' }}>
+            <style dangerouslySetInnerHTML={{
+              __html: `
+              @media (max-width: 640px) {
+                #cta { padding: 80px 6% !important; }
+                .cta-btns { flex-direction: column; width: 100%; }
+                .cta-btns > a { width: 100%; justify-content: center; }
+                .cta-ring { width: 260px !important; height: 260px !important; }
+                .cta-ring:nth-of-type(2) { width: 420px !important; height: 420px !important; }
+                .cta-ring:nth-of-type(3) { width: 580px !important; height: 580px !important; }
+              }
+            `}} />
 
             <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 65% 65% at 50% 50%,rgba(240,165,0,.1) 0%,transparent 65%)' }}></div>
             <div className="cta-ring" style={{ width: '300px', height: '300px', animationDelay: '0s' }}></div>
@@ -420,7 +474,7 @@ export default function ServicesPage() {
                 <p style={{ color: 'rgba(255,255,255,.9)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '0 auto 48px' }}>By combining financial expertise with execution capability, we provide clients with a seamless experience — from planning and funding to implementation and delivery.</p>
               </SectionReveal>
               <SectionReveal delay={0.2}>
-                <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
+                <div className="cta-btns" style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>
                   <Link href="/contact" className="btn-gold" style={{ padding: '14px 32px' }}>Contact Us Today</Link>
                   <Link href="/about" className="btn-ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)', padding: '14px 32px' }}>About Srishaan</Link>
                 </div>

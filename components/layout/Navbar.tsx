@@ -30,8 +30,8 @@ export default function Navbar() {
       background: 'var(--navy)',
       borderBottom: '1px solid var(--bdr)',
       transition: 'all 0.3s ease',
-      height: '76px',
-      padding: '0 5%',
+      height: 'var(--nav-h, 76px)',
+      padding: '0 8%',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -41,6 +41,18 @@ export default function Navbar() {
       right: 0,
       zIndex: 1000
     }}>
+      <style dangerouslySetInnerHTML={{ __html: `
+        :root { --nav-h: 76px; }
+        @media (max-width: 768px) {
+          :root { --nav-h: 64px; }
+          .nav-logo { height: 42px !important; }
+          #main-nav { padding: 0 8% !important; }
+          .nav-btn-desktop { display: none !important; }
+        }
+        @media (min-width: 1024px) {
+          .nav-btn-desktop { display: inline-flex !important; }
+        }
+      `}} />
       {/* Logo */}
       <Link href="/" className="flex items-center no-underline">
         <Image 
@@ -49,7 +61,7 @@ export default function Navbar() {
           width={200} 
           height={56} 
           priority
-          className="object-contain"
+          className="object-contain nav-logo"
           style={{ height: '56px', width: 'auto'}}
         />
       </Link>
@@ -89,75 +101,75 @@ export default function Navbar() {
       </ul>
 
       {/* Right side */}
-      <div className="flex items-center gap-6">
+      <div className="flex items-center gap-3 sm:gap-6">
         {/* Partner badge */}
-        <div className="hidden xl:flex items-center gap-4 ml-4" style={{ borderLeft: '1.5px solid var(--bdr)', height: '32px', paddingLeft: '32px' }}>
-          <span style={{
-            fontSize: '10px',
-            fontWeight: 600,
-            textTransform: 'uppercase',
-            letterSpacing: '0.12em',
-            color: 'var(--dim)',
-            whiteSpace: 'nowrap'
-          }}>Partner</span>
-          <div className="flex items-center gap-2">
-            <svg viewBox="0 0 26 24" width="24" height="22" fill="none">
+        <div className="hidden md:flex items-center gap-4 ml-4" style={{ borderLeft: '1.5px solid var(--bdr)', height: '24px', paddingLeft: '24px' }}>
+          <span style={{ fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--dim)', whiteSpace: 'nowrap' }}>Partner</span>
+          <div className="flex items-center gap-2 scale-90 origin-left">
+            <svg viewBox="0 0 26 24" width="20" height="18" fill="none">
               <path d="M2 22 L8.5 2 L13.5 2 L7 22 Z" fill="var(--gold)" />
               <path d="M12.5 2 L17.5 2 L24 22 L19.5 22 Z" fill="var(--gold)" />
               <path d="M9.5 2 L13.5 2 L10.2 12 L8 12 Z" fill="var(--blue)" />
             </svg>
             <div className="flex flex-col leading-none">
               <div className="flex items-baseline gap-0.5">
-                <span style={{ fontSize: '14px', fontWeight: 900, color: 'var(--blue)', fontFamily: 'var(--font-inter)' }}>M</span>
-                <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-inter)' }}>SYS</span>
+                <span style={{ fontSize: '12px', fontWeight: 900, color: 'var(--blue)' }}>M</span>
+                <span style={{ fontSize: '8px', fontWeight: 700, color: 'var(--gold)' }}>SYS</span>
               </div>
-              <span style={{ fontSize: '7.5px', fontWeight: 800, color: 'var(--blue)', letterSpacing: '.18em', textTransform: 'uppercase' }}>CONNECT</span>
             </div>
           </div>
         </div>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           <ThemeToggle />
-          <Link href="/contact" className="btn-gold hidden sm:inline-flex" style={{
-            padding: '11px 24px',
-            fontSize: '14.5px',
-            borderRadius: '10px',
-            fontWeight: 600,
-            color: '#fff' // Ensure white text on gold button
-          }}>Get Started</Link>
+          <Link href="/contact" className="btn-gold nav-btn-desktop" style={{ padding: '10px 20px', fontSize: '13px', borderRadius: '8px', fontWeight: 600, color: '#fff' }}>Get Started</Link>
 
           {/* Hamburger */}
-          <button className="lg:hidden flex flex-col gap-1.5 p-2" onClick={() => setOpen(!open)} aria-label="Menu" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
-            <span className="block w-6 h-0.5" style={{ background: 'var(--white)' }} />
-            <span className="block w-6 h-0.5" style={{ background: 'var(--white)' }} />
-            <span className="block w-6 h-0.5" style={{ background: 'var(--white)' }} />
+          <button 
+            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors" 
+            onClick={() => setOpen(!open)} 
+            aria-label="Menu"
+          >
+            <div className="relative w-5 h-4">
+              <span className={`absolute left-0 block w-full h-0.5 transition-all duration-300 ${open ? 'top-2 rotate-45' : 'top-0'}`} style={{ background: 'var(--white)' }} />
+              <span className={`absolute left-0 top-1.5 block w-full h-0.5 transition-opacity duration-200 ${open ? 'opacity-0' : 'opacity-100'}`} style={{ background: 'var(--white)' }} />
+              <span className={`absolute left-0 block w-full h-0.5 transition-all duration-300 ${open ? 'top-2 -rotate-45' : 'top-3'}`} style={{ background: 'var(--white)' }} />
+            </div>
           </button>
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="absolute top-full left-0 right-0 lg:hidden flex flex-col py-6 px-[5%] gap-4" style={{
-          background: 'var(--navy)',
-          borderTop: '1px solid var(--bdr)',
-          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)'
-        }}>
-          {links.map(l => (
-            <Link key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
-              fontSize: '17px',
-              fontWeight: 500,
-              color: isActive(l.href) ? 'var(--gold)' : 'var(--white)',
-              textDecoration: 'none',
-              padding: '10px 0'
-            }}>
+      {/* Mobile menu Overlay */}
+      <div className={`fixed inset-0 top-[var(--nav-h)] z-[999] lg:hidden transition-all duration-500 ease-in-out ${open ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}>
+        <div 
+          className="absolute inset-0 bg-black/40 backdrop-blur-md" 
+          onClick={() => setOpen(false)}
+        />
+        <div className={`relative bg-navy border-b border-bdr px-[8%] py-10 flex flex-col gap-6 transform transition-transform duration-500 ease-out ${open ? 'translate-y-0' : '-translate-y-full'}`} style={{ background: 'var(--navy)' }}>
+          {links.map((l, i) => (
+            <Link 
+              key={l.href} 
+              href={l.href} 
+              onClick={() => setOpen(false)} 
+              style={{
+                fontSize: '22px',
+                fontFamily: 'var(--font-playfair)',
+                fontWeight: isActive(l.href) ? 700 : 500,
+                color: isActive(l.href) ? 'var(--gold)' : 'var(--white)',
+                textDecoration: 'none',
+                opacity: open ? 1 : 0,
+                transform: open ? 'translateX(0)' : 'translateX(-20px)',
+                transition: `all 0.4s ease-out ${0.1 + i * 0.05}s`
+              }}
+            >
               {l.label}
             </Link>
           ))}
-          <div className="pt-2">
-            <Link href="/contact" className="btn-gold w-full justify-center" onClick={() => setOpen(false)} style={{ color: '#fff' }}>Get Started</Link>
+          <div className="pt-4 border-t border-bdr" style={{ opacity: open ? 1 : 0, transition: 'all 0.4s ease-out 0.35s' }}>
+            <Link href="/contact" className="btn-gold w-full justify-center py-4 text-base" onClick={() => setOpen(false)} style={{ color: '#fff' }}>Get Started</Link>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

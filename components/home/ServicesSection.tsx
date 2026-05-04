@@ -23,9 +23,11 @@ function WordReveal({ words, className = '' }: { words: React.ReactNode[], class
 
 export default function ServicesSection() {
   return (
-    <section id="services" style={{ padding: '96px 6%', background: 'var(--navy-2)' }}>
+    <section id="services" className="services-section">
       <style dangerouslySetInnerHTML={{
         __html: `
+        .services-section { padding: 96px 8%; background: var(--navy-2); }
+        @media (max-width: 768px) { .services-section { padding: 70px 8%; } }
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         @media (max-width: 800px) { .services-grid { grid-template-columns: 1fr; } }
         .svc-card {
@@ -51,7 +53,7 @@ export default function ServicesSection() {
         .word-reveal .word > span { display: inline-block; transform: translateY(105%); transition: transform .7s cubic-bezier(.16,1,.3,1); }
         #services.in .word-reveal .word > span, .in .word-reveal .word > span { transform: none; }
       `}} />
-      <div style={{ maxWidth: '1280px', margin: '0 auto' }}>
+      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
         <SectionReveal className="sec-head" style={{ marginBottom: '56px' }}>
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
             What We Offer
@@ -59,7 +61,7 @@ export default function ServicesSection() {
           <WordReveal
             words={[
               <span key="1">Comprehensive</span>,
-              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)'}}>Financial</em>,
+              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Financial</em>,
               <span key="3">Services</span>
             ]}
           />
