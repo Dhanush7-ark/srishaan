@@ -48,9 +48,32 @@ export default function AboutPage() {
 
         <HeroCanvas />
 
-        {/* Ambient Orbs */}
-        <div style={{ position: 'absolute', borderRadius: '50%', pointerEvents: 'none', filter: 'blur(100px)', width: '500px', height: '500px', right: '10%', top: '5%', background: 'radial-gradient(circle,rgba(26,58,143,.18),transparent 70%)' }} />
-        <div style={{ position: 'absolute', borderRadius: '50%', pointerEvents: 'none', filter: 'blur(90px)', width: '350px', height: '350px', left: '5%', bottom: '15%', background: 'radial-gradient(circle,rgba(200,155,60,.06),transparent 70%)' }} />
+        {/* Background Image with Mask - New Ultra-Premium Financial Feel */}
+        <div style={{
+          position: 'absolute',
+          right: '-5%',
+          top: '-5%',
+          width: '75%',
+          height: '110%',
+          backgroundImage: 'url(/images/financial_hero_v3.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.65,
+          zIndex: 0,
+          maskImage: 'radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
+          WebkitMaskImage: 'radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
+          filter: 'contrast(1.1) brightness(1.1)',
+          pointerEvents: 'none'
+        }} />
+
+        {/* Dynamic Shade Gradients (Premium Depth) */}
+        <div style={{ 
+          position: 'absolute', 
+          inset: 0, 
+          background: 'radial-gradient(circle at 80% 20%, rgba(240,165,0,0.08), transparent 50%), radial-gradient(circle at 20% 80%, rgba(26,58,143,0.15), transparent 50%)',
+          pointerEvents: 'none',
+          zIndex: 1
+        }} />
 
         {/* Subtle Grid */}
         <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.06, backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
