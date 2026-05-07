@@ -27,7 +27,7 @@ export default function ContactPage() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    
+
     if (name === 'phone') {
       const digitsOnly = value.replace(/[^0-9]/g, '').slice(0, 10);
       setFormData(prev => ({ ...prev, [name]: digitsOnly }));
@@ -50,7 +50,7 @@ export default function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     // Final validation
     if (!validateEmail(formData.email)) {
       setErrors(prev => ({ ...prev, email: 'Please enter a valid email address' }));
@@ -74,7 +74,8 @@ export default function ContactPage() {
 
   return (
     <main style={{ background: 'var(--navy)', color: 'var(--white)', minHeight: '100vh' }}>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         @media (max-width: 1024px) {
           .contact-split-grid { grid-template-columns: 1fr !important; gap: 60px !important; }
           .hero-canvas-wrap { right: -10% !important; width: 400px !important; height: 400px !important; opacity: 0.4 !important; }

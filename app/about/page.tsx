@@ -34,13 +34,13 @@ export default function AboutPage() {
       {/* HERO */}
 
       <section id="about-hero" style={{
-        position: 'sticky',
-        top: 0,
+        position: 'relative',
         zIndex: 1,
-        height: '100vh',
         minHeight: '100vh',
         display: 'flex',
+        flexDirection: 'column',
         alignItems: 'center',
+        padding: '140px 8% 100px',
         overflow: 'hidden',
         background: 'var(--navy)',
         scrollSnapAlign: 'start'
@@ -48,61 +48,39 @@ export default function AboutPage() {
 
         <HeroCanvas />
 
-        {/* Background Image with Mask - New Ultra-Premium Financial Feel */}
+        {/* Dynamic Shade Gradients (Premium Depth) */}
         <div style={{
           position: 'absolute',
-          right: '-5%',
-          top: '-5%',
-          width: '75%',
-          height: '110%',
-          backgroundImage: 'url(/images/financial_hero_v3.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.65,
-          zIndex: 0,
-          maskImage: 'radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
-          WebkitMaskImage: 'radial-gradient(circle at 70% 50%, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 80%)',
-          filter: 'contrast(1.1) brightness(1.1)',
-          pointerEvents: 'none'
-        }} />
-
-        {/* Dynamic Shade Gradients (Premium Depth) */}
-        <div style={{ 
-          position: 'absolute', 
-          inset: 0, 
-          background: 'radial-gradient(circle at 80% 20%, rgba(240,165,0,0.08), transparent 50%), radial-gradient(circle at 20% 80%, rgba(26,58,143,0.15), transparent 50%)',
+          inset: 0,
+          background: 'radial-gradient(circle at 50% 50%, rgba(240,165,0,0.05), transparent 70%)',
           pointerEvents: 'none',
           zIndex: 1
         }} />
 
         {/* Subtle Grid */}
-        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.06, backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none', opacity: 0.04, backgroundImage: 'linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px)', backgroundSize: '80px 80px' }} />
 
-        {/* Vertical Brand Line */}
-        <div style={{ position: 'absolute', left: '5%', top: '18%', bottom: '18%', width: '1px', background: 'linear-gradient(to bottom, transparent, rgba(200,155,60,.35), transparent)', zIndex: 2 }} />
+        {/* Main Hero Content (Northwind Style - Centered) */}
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1200px', width: '100%', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
 
-        {/* Main Hero Content */}
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '0 8%' }}>
-          <div style={{ maxWidth: '640px' }}>
-            {/* Breadcrumb */}
-            <div style={{ fontSize: '13px', color: 'var(--dim)', marginBottom: '20px', display: 'flex', alignItems: 'center', gap: '10px', animation: 'fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both' }}>
-              <span style={{ width: '20px', height: '1px', background: 'var(--gold)' }} />
-              <span>
-                <Link href="/" style={{ color: 'var(--dim)', textDecoration: 'none' }}>Home</Link>
-                <span style={{ margin: '0 10px', opacity: .4 }}>/</span>
-                <span style={{ color: 'var(--gold)' }}>About Us</span>
-              </span>
-            </div>
+          {/* Label Above */}
+          <div style={{
+            fontSize: '11px',
+            fontWeight: 600,
+            color: 'var(--gold)',
+            letterSpacing: '.4em',
+            textTransform: 'uppercase',
+            marginBottom: '40px',
+            opacity: 0.8,
+            animation: 'fadeUp .6s .1s cubic-bezier(.16,1,.3,1) both'
+          }}>
+            — ABOUT SRISHAAN —
+          </div>
 
-            {/* Status Badge */}
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(200,155,60,.06)', border: '1px solid rgba(200,155,60,.15)', color: 'var(--gold)', fontSize: '11px', fontWeight: 600, letterSpacing: '.15em', textTransform: 'uppercase', padding: '6px 16px', borderRadius: '4px', marginBottom: '28px', animation: 'fadeUp .7s .2s cubic-bezier(.16,1,.3,1) both' }}>
-              <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', display: 'inline-block', animation: 'blink 2s ease-in-out infinite' }} />
-              Incorporated 2025 · Hyderabad
-            </div>
-
-            {/* Heading */}
+          {/* Heading */}
+          <div style={{ maxWidth: '1000px', marginBottom: '40px' }}>
             <WordReveal
-              className="mb-5"
+              className="northwind-heading"
               words={[
                 <span key="1">Financial</span>,
                 <span key="2">Services</span>,
@@ -111,63 +89,121 @@ export default function AboutPage() {
                 <em key="5" style={{ fontStyle: 'italic', color: 'var(--gold)' }}>You</em>
               ]}
             />
-            <style dangerouslySetInnerHTML={{
-              __html: `
-              .word-reveal { font-family: 'Playfair Display', serif; font-size: clamp(2.6rem,5vw,4.2rem); font-weight: 700; line-height: 1.15; letter-spacing: -.03em; }
-            `}} />
+          </div>
+          <style dangerouslySetInnerHTML={{
+            __html: `
+            .northwind-heading { 
+              font-family: 'Playfair Display', serif; 
+              font-size: clamp(3.2rem, 8.5vw, 6rem); 
+              font-weight: 500; 
+              line-height: 1.05; 
+              letter-spacing: -.03em;
+              text-align: center;
+              color: var(--white);
+            }
+            .northwind-heading .word { margin: 0 0.15em !important; }
+          `}} />
 
-            {/* Subheading */}
-            <p style={{ fontSize: '17px', color: 'var(--muted)', lineHeight: 1.75, fontWeight: 300, maxWidth: '520px', marginTop: '32px', animation: 'fadeUp .7s .85s cubic-bezier(.16,1,.3,1) both' }}>
-              Helping businesses grow with smarter financial strategy, faster funding, and seamless compliance — backed by 60+ years of combined leadership experience.
-            </p>
+          {/* Subheading */}
+          <p style={{
+            fontSize: 'clamp(16px, 2vw, 19px)',
+            color: 'var(--muted)',
+            lineHeight: 1.7,
+            fontWeight: 300,
+            maxWidth: '680px',
+            margin: '0 auto 64px',
+            animation: 'fadeUp .7s .85s cubic-bezier(.16,1,.3,1) both'
+          }}>
+            Helping businesses grow with smarter financial strategy, faster funding, and seamless compliance — backed by 60+ years of combined leadership experience.
+          </p>
 
-            {/* CTA Buttons */}
-            <style dangerouslySetInnerHTML={{ __html: `
-              @media (max-width: 480px) {
-                .hero-ctas { flex-direction: column; width: 100%; gap: 12px !important; }
-                .hero-ctas > a { width: 100%; text-align: center; }
-              }
-            `}} />
-            <div className="hero-ctas" style={{ marginTop: '36px', display: 'flex', gap: '16px', alignItems: 'center', animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
-              <Link href="/contact" className="btn-gold" style={{ padding: '15px 34px', fontSize: '14px', fontWeight: 600, whiteSpace: 'nowrap' }}>Get Started</Link>
-              <Link href="/contact" className="btn-ghost" style={{ padding: '14px 30px', fontSize: '14px', whiteSpace: 'nowrap' }}>Book Consultation</Link>
+          {/* Featured Image Block (Northwind Style) */}
+          <div style={{
+            position: 'relative',
+            width: '100%',
+            maxWidth: '1100px',
+            aspectRatio: '16/9',
+            borderRadius: '16px',
+            overflow: 'hidden',
+            boxShadow: '0 40px 100px rgba(0,0,0,0.6)',
+            border: '1px solid rgba(255,255,255,0.1)',
+            animation: 'fadeUp 1s 1.2s cubic-bezier(.16,1,.3,1) both'
+          }}>
+            <img
+              src="/images/about_team_v5.png"
+              alt="Srishaan Leadership Team"
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            {/* Overlays to eliminate emptiness */}
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,9,26,0.6) 0%, transparent 40%, transparent 70%, rgba(4,9,26,0.2) 100%)' }} />
+
+            {/* Top Right Strategic Info */}
+            <div style={{
+              position: 'absolute',
+              top: '32px',
+              right: '32px',
+              background: 'rgba(255,255,255,0.03)',
+              backdropFilter: 'blur(12px)',
+              border: '1px solid rgba(255,255,255,0.1)',
+              borderRadius: '14px',
+              padding: '20px 24px',
+              textAlign: 'right',
+              animation: 'fadeUp .8s 1.5s cubic-bezier(.16,1,.3,1) both'
+            }}>
+              <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-playfair)', lineHeight: 1 }}>12+</div>
+              <div style={{ fontSize: '9px', textTransform: 'uppercase', color: 'var(--dim)', letterSpacing: '.12em', fontWeight: 600, marginTop: '4px' }}>Expert Verticals</div>
+
+              <div style={{ height: '1px', background: 'rgba(255,255,255,0.1)', margin: '12px 0' }} />
+
+              <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-playfair)', lineHeight: 1 }}>20+</div>
+              <div style={{ fontSize: '9px', textTransform: 'uppercase', color: 'var(--dim)', letterSpacing: '.12em', fontWeight: 600, marginTop: '4px' }}>Years Expertise</div>
             </div>
 
-            {/* Trust Signal */}
-            <div style={{ marginTop: '48px', animation: 'fadeUp .7s 1.15s cubic-bezier(.16,1,.3,1) both' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '20px' }}>
-                <div style={{ display: 'flex' }}>
-                  {[0, 1, 2, 3].map(i => (
-                    <div key={i} style={{ width: '28px', height: '28px', borderRadius: '50%', background: `linear-gradient(135deg, ${['rgba(200,155,60,.3)', 'rgba(26,58,143,.5)', 'rgba(45,91,227,.4)', 'rgba(200,155,60,.25)'][i]}, ${['rgba(200,155,60,.15)', 'rgba(26,58,143,.25)', 'rgba(45,91,227,.2)', 'rgba(200,155,60,.1)'][i]})`, border: '2px solid var(--navy)', marginLeft: i > 0 ? '-8px' : '0', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '10px', fontWeight: 700, color: 'rgba(255,255,255,.7)' }}>
-                      {['S', 'R', 'A', 'V'][i]}
-                    </div>
-                  ))}
-                </div>
-                <span style={{ fontSize: '13px', color: 'var(--dim)', fontWeight: 400 }}>Trusted by <span style={{ color: 'var(--gold)', fontWeight: 600 }}>growing businesses</span> across India</span>
-              </div>
-
-              {/* Client Initiatives */}
-              <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                {['Startup India', 'Make in India', 'Digital India', 'MSE Registered'].map(g => (
-                  <span key={g} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', background: 'rgba(255,255,255,.03)', border: '1px solid rgba(255,255,255,.06)', color: 'var(--dim)', fontSize: '11px', fontWeight: 500, padding: '5px 12px', borderRadius: '4px', letterSpacing: '.02em' }}>
-                    <span style={{ width: '4px', height: '4px', background: 'var(--gold)', borderRadius: '50%', opacity: 0.6 }} />
-                    {g}
-                  </span>
-                ))}
-              </div>
+            {/* Image Tag / Caption */}
+            <div style={{
+              position: 'absolute',
+              bottom: '32px',
+              left: '32px',
+              background: 'rgba(255,255,255,0.98)',
+              color: '#000',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '.12em',
+              textTransform: 'uppercase',
+              padding: '8px 20px',
+              borderRadius: '2px',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.4)',
+              animation: 'fadeUp .8s 1.4s cubic-bezier(.16,1,.3,1) both'
+            }}>
+              [ THE CORE TEAM — STRATEGIC PLANNING 2025 ]
             </div>
           </div>
+
+          {/* CTA Buttons */}
+          <div style={{ marginTop: '-20px', marginBottom: '60px', display: 'flex', gap: '24px', justifyContent: 'center', animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
+            <Link href="/contact" style={{ color: 'var(--gold)', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.15em', textDecoration: 'none', borderBottom: '1px solid var(--gold)', paddingBottom: '4px' }}>Get Started</Link>
+            <Link href="/contact" style={{ color: 'var(--white)', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.15em', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px' }}>Book Consultation</Link>
+          </div>
+        </div>
+
+        {/* Floating Badge */}
+        <div style={{
+          position: 'absolute',
+          right: '4%',
+          bottom: '10%',
+          zIndex: 3,
+          opacity: 0.6,
+          animation: 'fadeUp .8s 1.5s cubic-bezier(.16,1,.3,1) both',
+          pointerEvents: 'none'
+        }}>
+          <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-playfair)', textAlign: 'right' }}>60+ Yrs</div>
+          <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '.12em', color: 'var(--dim)', fontWeight: 600 }}>Leadership</div>
         </div>
 
         {/* Scroll Indicator */}
         <div style={{ position: 'absolute', bottom: '36px', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', color: 'var(--dim)', fontSize: '10px', letterSpacing: '.1em', textTransform: 'uppercase' }}>
-          <span>Scroll</span>
           <div style={{ width: '1px', height: '36px', background: 'linear-gradient(to bottom,transparent,var(--dim))', animation: 'slideDown 1.6s ease-in-out infinite' }} />
         </div>
-
-        {/* Decorative Geometric Elements */}
-        <div style={{ position: 'absolute', left: '12%', bottom: '14%', width: '10px', height: '10px', border: '1px solid var(--gold)', opacity: 0.2, transform: 'rotate(45deg)' }} />
-        <div style={{ position: 'absolute', left: '8%', top: '35%', width: '6px', height: '6px', borderRadius: '50%', background: 'var(--gold)', opacity: 0.15 }} />
       </section>
 
       {/* ── SECTION 2: SLIDE OVER HERO (Overview, Verticals, Industries) ── */}
@@ -363,19 +399,20 @@ export default function AboutPage() {
 
         {/* INDUSTRIES & WHY US */}
         <section id="industries-values" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
-              <style dangerouslySetInnerHTML={{ __html: `
+          <style dangerouslySetInnerHTML={{
+            __html: `
                 @media (max-width: 768px) {
                   .ind-grid { grid-template-columns: 1fr !important; }
                   .why-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
                 }
               `}} />
-              <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px' }}>
-                <div>
-                  <SectionReveal style={{ marginBottom: '44px' }}>
-                    <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</span>
-                    <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Industries We <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Serve</em></h2>
-                  </SectionReveal>
-                  <div className="ind-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+          <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px' }}>
+            <div>
+              <SectionReveal style={{ marginBottom: '44px' }}>
+                <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</span>
+                <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Industries We <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Serve</em></h2>
+              </SectionReveal>
+              <div className="ind-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
                 {[
                   { icon: '🏗️', title: 'Infrastructure & Contractors', desc: 'Strategic advisory for engineering firms' },
                   { icon: '🏢', title: 'Real Estate & Developers', desc: 'Financial structuring for builders' },
@@ -393,7 +430,8 @@ export default function AboutPage() {
 
                 {/* Balancing Card for the left column */}
                 <SectionReveal delay={0.4} className="ind-span-card">
-                  <style dangerouslySetInnerHTML={{ __html: `
+                  <style dangerouslySetInnerHTML={{
+                    __html: `
                     .ind-span-card { grid-column: span 2; }
                     @media (max-width: 768px) { .ind-span-card { grid-column: span 1 !important; } }
                   `}} />
@@ -446,7 +484,8 @@ export default function AboutPage() {
           <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '20px auto 0' }}>Over six decades of combined expertise across finance, manufacturing, technology, and public sector operations.</p>
         </SectionReveal>
 
-        <style dangerouslySetInnerHTML={{ __html: `
+        <style dangerouslySetInnerHTML={{
+          __html: `
           @media (max-width: 768px) {
             .leader-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
             .leader-card { padding: 32px 24px !important; }
@@ -459,7 +498,7 @@ export default function AboutPage() {
               <div className="leader-avatar avatar-vg" style={{ width: '80px', height: '80px', fontSize: '32px', marginBottom: '28px', background: 'linear-gradient(135deg, var(--blue), var(--blue-b))', color: '#fff', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 700, boxShadow: '0 10px 30px rgba(26,58,143,0.3)' }}>VP</div>
               <h3 style={{ fontFamily: 'var(--font-playfair)', fontSize: '26px', fontWeight: 700, marginBottom: '8px' }}>Mr. Venu Gopal Pidugu</h3>
               <div style={{ fontSize: '12px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: '24px' }}>Promoter & Director</div>
-              
+
               <div style={{ marginBottom: '28px' }}>
                 <span style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(200,155,60,.12)', border: '1px solid rgba(200,155,60,.2)', color: 'var(--gold)', fontSize: '12px', fontWeight: 700, padding: '8px 18px', borderRadius: '100px' }}>
                   <span style={{ fontSize: '14px' }}>🎓</span> Chartered Accountant

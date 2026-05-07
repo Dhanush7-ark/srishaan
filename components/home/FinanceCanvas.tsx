@@ -40,7 +40,7 @@ export default function FinanceCanvas() {
       // Financial Story: Growing Bar Chart
       const bars: any[] = [];
       const data = [0.2, 0.5, 0.9, 1.4, 2.1, 3.0]; // Upward trend
-      
+
       const barMaterial = new THREE.MeshPhongMaterial({
         color: 0x1A3A8F,
         transparent: true,
@@ -61,10 +61,10 @@ export default function FinanceCanvas() {
         const geometry = new THREE.BoxGeometry(0.5, 0.1, 0.5); // Initial tiny height
         const mesh = new THREE.Mesh(geometry, barMaterial);
         mesh.position.set(startX + i * gap, 0.05, 0);
-        
+
         // Store target height for animation (storytelling growth)
         mesh.userData = { targetHeight: val, currentHeight: 0.1 };
-        
+
         // Gold cap on top of the bar
         const capGeom = new THREE.BoxGeometry(0.52, 0.05, 0.52);
         const cap = new THREE.Mesh(capGeom, goldMaterial);
@@ -88,7 +88,7 @@ export default function FinanceCanvas() {
         opacity: 0.9,
       });
       const trendline = new THREE.Mesh(tubeGeom, tubeMat);
-      
+
       // Animate line drawing
       tubeGeom.setDrawRange(0, 0);
       group.add(trendline);
@@ -140,7 +140,7 @@ export default function FinanceCanvas() {
             bar.userData.currentHeight += (bar.userData.targetHeight - bar.userData.currentHeight) * 0.05;
             bar.scale.y = bar.userData.currentHeight / 0.1; // Scale relative to initial geometry height
             bar.position.y = bar.userData.currentHeight / 2;
-            
+
             // Keep cap visually same thickness by inverse scaling
             bar.userData.cap.scale.y = 0.1 / bar.userData.currentHeight;
             bar.userData.cap.position.y = 0.05; // Stay at top of scaled box

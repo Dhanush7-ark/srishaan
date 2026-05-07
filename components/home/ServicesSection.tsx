@@ -5,7 +5,6 @@ import Link from 'next/link';
 const services = [
   { icon: '📈', title: 'Investment Advisory', desc: 'Tailored portfolio strategies built on your risk profile, timeline, and long-term wealth goals.' },
   { icon: '🏦', title: 'Wealth Management', desc: 'Holistic planning that aligns your assets, liabilities, and aspirations into one unified roadmap.' },
-  { icon: '🛡️', title: 'Insurance Planning', desc: 'Comprehensive life, health, and asset protection plans built for complete peace of mind.' },
   { icon: '💼', title: 'Tax Optimisation', desc: 'Legal, strategic tax planning that keeps more of your returns working for you each year.' },
 ];
 
@@ -53,40 +52,6 @@ export default function ServicesSection() {
         .word-reveal .word > span { display: inline-block; transform: translateY(105%); transition: transform .7s cubic-bezier(.16,1,.3,1); }
         #services.in .word-reveal .word > span, .in .word-reveal .word > span { transform: none; }
       `}} />
-      <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-        <SectionReveal className="sec-head" style={{ marginBottom: '56px' }}>
-          <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
-            What We Offer
-          </span>
-          <WordReveal
-            words={[
-              <span key="1">Comprehensive</span>,
-              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Financial</em>,
-              <span key="3">Services</span>
-            ]}
-          />
-          <p className="sub" style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '500px', marginTop: '14px' }}>
-            From growth to protection, our experts guide you at every stage of your financial journey.
-          </p>
-        </SectionReveal>
-
-        <div className="services-grid">
-          {services.map((s, i) => (
-            <SectionReveal key={s.title} delay={i * 0.07}>
-              <TiltCard className="tilt-card svc-card">
-                <div style={{ position: 'relative', zIndex: 2, display: 'flex', gap: 'inherit', flexDirection: 'inherit' }}>
-                  <div className="svc-icon">{s.icon}</div>
-                  <div className="svc-body">
-                    <h3>{s.title}</h3>
-                    <p>{s.desc}</p>
-                    <Link href="/services" className="svc-link">Learn more →</Link>
-                  </div>
-                </div>
-              </TiltCard>
-            </SectionReveal>
-          ))}
-        </div>
-      </div>
     </section>
   );
 }

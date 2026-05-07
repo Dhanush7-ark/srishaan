@@ -2,10 +2,10 @@ import SectionReveal from '@/components/ui/SectionReveal';
 import TiltCard from '@/components/ui/TiltCard';
 
 const features = [
-  { icon: '📊', title: 'Data-Driven Strategies', desc: 'Our recommendations are backed by deep market analysis and quantitative models — never guesswork.' },
-  { icon: '🔒', title: 'Transparent & Fee-Only', desc: 'No hidden commissions. We operate on a transparent, fee-only advisory model aligned with your interests.' },
-  { icon: '🌐', title: 'SEBI Registered', desc: 'Fully regulated, certified advisors you can trust. Your money is in expert, compliant hands at all times.' },
-  { icon: '⚡', title: 'Real-Time Portfolio View', desc: 'Track every asset, monitor performance, and get actionable insights — all from one clean dashboard.' },
+  { icon: '📊', title: 'Integrated Advisory', desc: 'Combining high-level financial advisory with on-ground execution capability.' },
+  { icon: '🔒', title: 'Partner Network', desc: 'Strong vendor and strategic partner network for global standards.' },
+  { icon: '🌐', title: 'End-to-End Handling', desc: 'Ability to manage both financial structuring and technical implementation.' },
+  { icon: '⚡', title: 'Project Ownership', desc: 'End-to-end ownership ensuring seamless delivery and accountability.' },
 ];
 
 function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {

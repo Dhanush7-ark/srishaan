@@ -24,7 +24,7 @@ export default function StatsSection() {
         .stats-section::before {
           content: '';
           position: absolute; inset: 0;
-          background-image: repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0, rgba(255,255,255,.025) 1px, transparent 0, transparent 50%);
+          background-image: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.03) 0, rgba(0, 0, 0, 0.03) 1px, transparent 0, transparent 50%);
           background-size: 80px 100%;
         }
         body.light .stats-section::before {
