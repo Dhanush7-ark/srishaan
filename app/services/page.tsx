@@ -239,7 +239,7 @@ export default function ServicesPage() {
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>
               {/* IT & ITES */}
-              <SectionReveal>
+              <SectionReveal id="it-ites">
                 <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🖥️</div>
@@ -260,7 +260,7 @@ export default function ServicesPage() {
               </SectionReveal>
 
               {/* Project Execution */}
-              <SectionReveal delay={0.1}>
+              <SectionReveal id="project-execution" delay={0.1}>
                 <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>🚀</div>
@@ -281,7 +281,7 @@ export default function ServicesPage() {
               </SectionReveal>
 
               {/* Supply & Resale */}
-              <SectionReveal delay={0.2}>
+              <SectionReveal id="supply-resale" delay={0.2}>
                 <div style={{ background: 'var(--surf)', border: '1px solid var(--bdr)', borderRadius: '24px', padding: '36px', height: '100%' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '28px' }}>
                     <div style={{ width: '40px', height: '40px', borderRadius: '10px', background: 'rgba(240,165,0,.1)', border: '1px solid rgba(240,165,0,.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '20px' }}>📦</div>

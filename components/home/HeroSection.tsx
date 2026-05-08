@@ -117,19 +117,26 @@ export default function HeroSection() {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
         }
+        .hero-stat-link {
+          text-decoration: none;
+          transition: transform 0.3s ease, opacity 0.3s ease;
+          display: block;
+        }
+        .hero-stat-link:hover {
+          transform: translateY(-4px);
+        }
+        .hero-stat-link:hover .stat-title {
+          color: var(--gold) !important;
+        }
+        .hero-stat-link:hover .stat-dot {
+          opacity: 1 !important;
+          transform: scale(1.2);
+        }
       `}} />
 
       <div ref={innerRef} className="hero-container">
         {/* LEFT: Content */}
         <div className="hero-content" style={{ display: 'flex', flexDirection: 'column', gap: '26px' }}>
-          {/* Trust badge */}
-          <div className="hero-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', background: 'rgba(240,165,0,.08)', border: '1px solid rgba(240,165,0,.22)', color: 'var(--gold)', fontSize: '11.5px', fontWeight: 600, letterSpacing: '.09em', textTransform: 'uppercase', padding: '6px 14px', borderRadius: '100px', width: 'fit-content', opacity: 0, animation: 'fadeUp .7s .1s cubic-bezier(.16,1,.3,1) forwards' }}>
-            <span style={{ display: 'flex' }} className="hidden sm:flex">
-
-            </span>
-            <span style={{ width: '1px', height: '12px', background: 'rgba(240,165,0,.3)' }} className="hidden sm:block" />
-            <span style={{ width: '1px', height: '12px', background: 'rgba(240,165,0,.3)' }} />
-          </div>
 
           {/* Heading */}
           <h1 className="word-reveal hero-h1" style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem, 4.8vw, 4.9rem)', fontWeight: 700, lineHeight: 1.06, letterSpacing: '-.03em' }}>
@@ -160,14 +167,38 @@ export default function HeroSection() {
           </div> */}
 
           {/* Stats row */}
-          <div className="hero-stats" style={{ display: 'flex', gap: '28px', alignItems: 'center', paddingTop: '4px', opacity: 0, animation: 'fadeUp .7s 1.0s cubic-bezier(.16,1,.3,1) forwards' }}>
-            {[['IT & ITES Services'], ['Project Execution'], ['Supply & Resale']].map(([v, l], i) => (
-              <Fragment key={v}>
-                {i > 0 && <div key={`d${i}`} className="hero-stats-divider" style={{ width: '1px', height: '34px', background: 'var(--bdr)', flexShrink: 0 }} />}
-                <div key={v}>
-                  <div style={{ fontFamily: 'var(--font-playfair)', fontSize: '17px', fontWeight: 700, color: 'var(--white)', lineHeight: 1, marginBottom: '4px' }}>{v}</div>
-                  <div style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.1em', color: 'rgba(255, 162, 0, 0.5)' }}>{l}</div>
-                </div>
+          <div className="hero-stats" style={{ display: 'flex', gap: '32px', alignItems: 'center', paddingTop: '10px', opacity: 0, animation: 'fadeUp .7s 1.0s cubic-bezier(.16,1,.3,1) forwards' }}>
+            {[
+              { v: 'IT & ITES Services', h: '/services#it-ites' },
+              { v: 'Project Execution', h: '/services#project-execution' },
+              { v: 'Supply & Resale', h: '/services#supply-resale' }
+            ].map((item, i) => (
+              <Fragment key={item.v}>
+                {i > 0 && <div className="hero-stats-divider" style={{ width: '1px', height: '30px', background: 'rgba(255,255,255,0.1)', flexShrink: 0 }} />}
+                <Link href={item.h} className="hero-stat-link">
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', position: 'relative' }}>
+                    <div className="stat-dot" style={{ 
+                      width: '6px', 
+                      height: '6px', 
+                      borderRadius: '50%', 
+                      background: 'var(--gold)', 
+                      opacity: 0, 
+                      transform: 'translateY(10px)',
+                      transition: 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+                      position: 'absolute',
+                      top: '-16px'
+                      }} />
+                    <div className="stat-title" style={{ 
+                      fontFamily: 'var(--font-playfair)', 
+                      fontSize: '16px', 
+                      fontWeight: 600, 
+                      color: 'var(--white)', 
+                      lineHeight: 1, 
+                      transition: 'all 0.3s ease',
+                      letterSpacing: '0.01em'
+                    }}>{item.v}</div>
+                  </div>
+                </Link>
               </Fragment>
             ))}
           </div>

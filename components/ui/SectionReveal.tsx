@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef } from 'react';
 import React from 'react';
-export default function SectionReveal({ children, className='', delay=0, style }: { children:React.ReactNode; className?:string; delay?:number; style?:React.CSSProperties }) {
+export default function SectionReveal({ children, className='', delay=0, style, id }: { children:React.ReactNode; className?:string; delay?:number; style?:React.CSSProperties; id?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const el = ref.current; if (!el) return;
@@ -9,5 +9,5 @@ export default function SectionReveal({ children, className='', delay=0, style }
     obs.observe(el);
     return ()=>obs.disconnect();
   }, []);
-  return <div ref={ref} className={`reveal ${className}`} style={{transitionDelay:`${delay}s`,...style}}>{children}</div>;
+  return <div id={id} ref={ref} className={`reveal ${className}`} style={{transitionDelay:`${delay}s`,...style}}>{children}</div>;
 }
