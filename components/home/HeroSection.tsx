@@ -154,7 +154,7 @@ export default function HeroSection() {
 
           {/* CTAs */}
           <div className="hero-btns" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'inherit', opacity: 0, animation: 'fadeUp .7s .75s cubic-bezier(.16,1,.3,1) forwards' }}>
-            <Link href="/contact" className="btn-gold">
+            <Link href="/services" className="btn-gold">
               Explore Services
               <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
             </Link>
