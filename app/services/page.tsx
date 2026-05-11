@@ -41,11 +41,20 @@ const supplyAndResale = [
   { icon: '🏢', title: 'Authorized Resale', desc: 'Authorized partner-based resale including MSys Connect and other global platforms.' },
   { icon: '🚛', title: 'Procurement & Logistics', desc: 'End-to-end procurement support and logistics management for infrastructure projects.' },
 ];
+
 const industries = [
   { icon: '🏗️', title: 'Infrastructure Projects' },
   { icon: '🏢', title: 'Corporate & Enterprise IT' },
   { icon: '👥', title: 'Facility Management' },
-  { icon: '🏛️', title: 'Government & Institutions' }
+  { icon: '🏛️', title: 'Government & Institutions' },
+  { icon: '⚡', title: 'Energy & Infrastructure' },
+  { icon: '🏭', title: 'Manufacturing' },
+  { icon: '🏥', title: 'Healthcare' },
+  { icon: '💰', title: 'Asset & Wealth Management' },
+  { icon: '🏬', title: 'Small & Medium Enterprises (SMEs)' },
+  { icon: '🛍️', title: 'Retail & Consumer Goods' },
+  { icon: '💻', title: 'Technology and Fintech' },
+  { icon: '🏠', title: 'Real Estate' }
 ];
 
 function FinanceParticles() {

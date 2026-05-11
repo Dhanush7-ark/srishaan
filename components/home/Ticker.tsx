@@ -1,5 +1,5 @@
 export default function Ticker() {
-  const items = ['Mutual Funds', 'Equity Advisory', 'Wealth Management', 'Retirement Planning', 'Tax Optimisation', 'Life Insurance', 'Estate Planning', 'Portfolio Review'];
+  const items = ['Energy & Infrastructure', 'Manufacturing', 'Healthcare', 'Asset & Wealth Management', 'Tax Optimisation', 'Small & Medium Enterprises (SMEs)', 'Retail & Consumer Goods', 'Technology and Fintech','Real Estate'];
   const sep = <span style={{ color: 'var(--gold)', margin: '0 24px', opacity: .6 }}>◆</span>;
   return (
     <div style={{ borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', background: 'var(--navy-2)', overflow: 'hidden', padding: '14px 0' }}>
