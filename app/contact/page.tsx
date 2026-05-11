@@ -165,9 +165,9 @@ export default function ContactPage() {
 
             <div className="contact-details-list" style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '48px' }}>
               {[
-                { icon: '📍', label: 'Registered Office', val: 'Hyderabad, Telangana, India' },
-                { icon: '📞', label: 'Phone', val: '+91 96765 63210' },
-                { icon: '✉️', label: 'Email', val: 'hello@srishaan.com' },
+                { icon: '📍', label: 'F NO. 1304 & 1305A , BLK-1 METROPOLIS CLASSIC HOMES', val: ' Erragadda,Hyderabad, Telangana, India 500018' },
+                { icon: '📞', label: 'Phone', val: '+91 7702224512' },
+                { icon: '✉️', label: 'Email', val: 'Info@srishaan.co.in' },
                 { icon: '🕒', label: 'Business Hours', val: 'Mon – Sat, 9:00 AM – 6:00 PM IST' }
               ].map((item, idx) => (
                 <div key={idx} style={{ display: 'flex', gap: '20px', padding: '24px', background: 'rgba(255,255,255,0.02)', border: '1px solid var(--bdr)', borderRadius: '16px' }}>

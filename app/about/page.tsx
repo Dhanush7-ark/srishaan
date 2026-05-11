@@ -642,8 +642,8 @@ export default function AboutPage() {
 
             <div style={{ marginTop: '64px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '32px', borderTop: '1px solid rgba(255,255,255,0.06)', paddingTop: '48px' }}>
               {[
-                { label: 'Call Us', val: '[Phone Number]' },
-                { label: 'Email Us', val: '[Email ID]' },
+                { label: 'Call Us', val: '[+91 7702224512]' },
+                { label: 'Email Us', val: '[Info@srishaan.co.in]' },
                 { label: 'Visit Us', val: '[Office Address]' }
               ].map((c, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
