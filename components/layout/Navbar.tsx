@@ -41,7 +41,8 @@ export default function Navbar() {
       right: 0,
       zIndex: 1000
     }}>
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style dangerouslySetInnerHTML={{
+        __html: `
         :root { --nav-h: 76px; }
         @media (max-width: 768px) {
           :root { --nav-h: 64px; }
@@ -55,14 +56,14 @@ export default function Navbar() {
       `}} />
       {/* Logo */}
       <Link href="/" className="flex items-center no-underline">
-        <Image 
-          src="/images/Srishaan_Logo-removebg-preview.png" 
-          alt="Srishaan" 
-          width={200} 
-          height={56} 
+        <Image
+          src="/images/Srishaan_Logo-removebg-preview.png"
+          alt="Srishaan"
+          width={200}
+          height={56}
           priority
           className="object-contain nav-logo"
-          style={{ height: '56px', width: 'auto'}}
+          style={{ height: '56px', width: 'auto' }}
         />
       </Link>
 
@@ -125,9 +126,9 @@ export default function Navbar() {
           <Link href="/contact" className="btn-gold nav-btn-desktop" style={{ padding: '10px 20px', fontSize: '13px', borderRadius: '8px', fontWeight: 600, color: '#fff' }}>Get Started</Link>
 
           {/* Hamburger */}
-          <button 
-            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors" 
-            onClick={() => setOpen(!open)} 
+          <button
+            className="lg:hidden flex flex-col items-center justify-center w-10 h-10 rounded-full hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
+            onClick={() => setOpen(!open)}
             aria-label="Menu"
           >
             <div className="relative w-5 h-4">
@@ -141,16 +142,16 @@ export default function Navbar() {
 
       {/* Mobile menu Overlay */}
       <div className={`fixed inset-0 top-[var(--nav-h)] z-[999] lg:hidden transition-all duration-500 ease-in-out ${open ? 'opacity-100 visible pointer-events-auto' : 'opacity-0 invisible pointer-events-none'}`}>
-        <div 
-          className="absolute inset-0 bg-black/40 backdrop-blur-md" 
+        <div
+          className="absolute inset-0 bg-black/40 backdrop-blur-md"
           onClick={() => setOpen(false)}
         />
         <div className={`relative bg-navy border-b border-bdr px-[8%] py-10 flex flex-col gap-6 transform transition-transform duration-500 ease-out ${open ? 'translate-y-0' : '-translate-y-full'}`} style={{ background: 'var(--navy)' }}>
           {links.map((l, i) => (
-            <Link 
-              key={l.href} 
-              href={l.href} 
-              onClick={() => setOpen(false)} 
+            <Link
+              key={l.href}
+              href={l.href}
+              onClick={() => setOpen(false)}
               style={{
                 fontSize: '22px',
                 fontFamily: 'var(--font-playfair)',
