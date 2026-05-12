@@ -644,7 +644,7 @@ export default function AboutPage() {
               {[
                 { label: 'Call Us', val: '[+91 7702224512]' },
                 { label: 'Email Us', val: '[Info@srishaan.co.in]' },
-                { label: 'Visit Us', val: '[Office Address]' }
+                { label: 'Visit Us', val: '[F NO. 1304 & 1305A, BLK-1 METROPOLIS CLASSIC HOMES, Erragadda Hyderabad Telangana India 5000]' }
               ].map((c, i) => (
                 <div key={i} style={{ textAlign: 'center' }}>
                   <div style={{ fontSize: '11px', fontWeight: 600, color: 'var(--gold)', letterSpacing: '.12em', textTransform: 'uppercase', marginBottom: '8px' }}>{c.label}</div>
