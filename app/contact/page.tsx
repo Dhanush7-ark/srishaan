@@ -48,7 +48,7 @@ export default function ContactPage() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Final validation
@@ -62,7 +62,22 @@ export default function ContactPage() {
     }
 
     setSending(true);
-    setTimeout(() => { setSending(false); setSubmitted(true); }, 1200);
+    try {
+      // Import the action dynamically or use it if imported at top
+      const { sendContactEmail } = await import('@/app/actions/contact');
+      const result = await sendContactEmail(formData);
+      
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        alert('Failed to send message: ' + result.error);
+      }
+    } catch (error) {
+      console.error('Submission error:', error);
+      alert('An error occurred while sending your message. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const inputStyle: React.CSSProperties = {
