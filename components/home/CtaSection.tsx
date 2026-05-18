@@ -25,7 +25,7 @@ export default function CtaSection() {
           <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4.5vw,3.8rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.025em', marginBottom: '24px', color: '#fff' }}>Start Your Wealth Journey Today</h2>
           <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '36px' }}>Join 15,000+ families who trust Srishaan to grow and protect their wealth.</p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/contact" className="btn-gold" style={{ padding: '14px 32px' }}>Book Free Consultation</Link>
+            {/* <Link href="/contact" className="btn-gold" style={{ padding: '14px 32px' }}>Book Free Consultation</Link> */}
             <Link href="/about" className="btn-ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)', padding: '14px 32px' }}>Learn About Us</Link>
           </div>
         </SectionReveal>

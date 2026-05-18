@@ -4,7 +4,6 @@ import StatCounter from '@/components/ui/StatCounter';
 import Link from 'next/link';
 import HeroCanvas from '@/components/about/HeroCanvas';
 import PhilosophyCanvas from '@/components/about/PhilosophyCanvas';
-import ServiceCarousel from '@/components/about/ServiceCarousel';
 import ScrollHandler from '@/components/ui/ScrollHandler';
 import ScrollSnapSetter from '@/components/ui/ScrollSnapSetter';
 
@@ -118,7 +117,7 @@ export default function AboutPage() {
           </p>
 
           {/* Featured Image Block (Northwind Style) */}
-          <div style={{
+          {/* <div style={{
             position: 'relative',
             width: '100%',
             maxWidth: '1100px',
@@ -133,12 +132,12 @@ export default function AboutPage() {
               src="/images/about_team_v5.png"
               alt="Srishaan Leadership Team"
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-            />
+            /> */}
             {/* Overlays to eliminate emptiness */}
-            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,9,26,0.6) 0%, transparent 40%, transparent 70%, rgba(4,9,26,0.2) 100%)' }} />
+            {/* <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(4,9,26,0.6) 0%, transparent 40%, transparent 70%, rgba(4,9,26,0.2) 100%)' }} /> */}
 
             {/* Top Right Strategic Info */}
-            <div style={{
+            {/* <div style={{
               position: 'absolute',
               top: '32px',
               right: '32px',
@@ -157,10 +156,10 @@ export default function AboutPage() {
 
               <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-playfair)', lineHeight: 1 }}>20+</div>
               <div style={{ fontSize: '9px', textTransform: 'uppercase', color: 'var(--dim)', letterSpacing: '.12em', fontWeight: 600, marginTop: '4px' }}>Years Expertise</div>
-            </div>
+            </div> */}
 
             {/* Image Tag / Caption */}
-            <div style={{
+            {/* <div style={{
               position: 'absolute',
               bottom: '32px',
               left: '32px',
@@ -177,17 +176,17 @@ export default function AboutPage() {
             }}>
               [ THE CORE TEAM — STRATEGIC PLANNING 2025 ]
             </div>
-          </div>
+          </div> */}
 
           {/* CTA Buttons */}
           <div style={{ marginTop: '-20px', marginBottom: '60px', display: 'flex', gap: '24px', justifyContent: 'center', animation: 'fadeUp .7s 1s cubic-bezier(.16,1,.3,1) both' }}>
             <Link href="/contact" style={{ color: 'var(--gold)', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.15em', textDecoration: 'none', borderBottom: '1px solid var(--gold)', paddingBottom: '4px' }}>Get Started</Link>
-            <Link href="/contact" style={{ color: 'var(--white)', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.15em', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px' }}>Book Consultation</Link>
+            {/* <Link href="/contact" style={{ color: 'var(--white)', fontSize: '13px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.15em', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: '4px' }}>Book Consultation</Link> */}
           </div>
         </div>
 
         {/* Floating Badge */}
-        <div style={{
+        {/* <div style={{
           position: 'absolute',
           right: '4%',
           bottom: '10%',
@@ -198,7 +197,7 @@ export default function AboutPage() {
         }}>
           <div style={{ fontSize: '24px', fontWeight: 700, color: 'var(--gold)', fontFamily: 'var(--font-playfair)', textAlign: 'right' }}>60+ Yrs</div>
           <div style={{ fontSize: '9px', textTransform: 'uppercase', letterSpacing: '.12em', color: 'var(--dim)', fontWeight: 600 }}>Leadership</div>
-        </div>
+        </div> */}
 
         {/* Scroll Indicator */}
         <div style={{ position: 'absolute', bottom: '36px', left: '50%', transform: 'translateX(-50%)', zIndex: 2, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px', color: 'var(--dim)', fontSize: '10px', letterSpacing: '.1em', textTransform: 'uppercase' }}>
@@ -276,212 +275,44 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* CORE SERVICES VERTICALS */}
-        <section id="services-split" style={{ background: 'var(--navy)', padding: '120px 8%' }}>
-          <SectionReveal className="text-center mb-16">
-            <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Expertise Areas</span>
-            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4.5vw,3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Core <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Service Verticals</em></h2>
-            <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '600px', margin: '20px auto 0' }}>Strategic finance, structured funding, and end-to-end compliance solutions tailored for business excellence.</p>
-          </SectionReveal>
-
-          <ServiceCarousel>
-            {/* 1. Virtual CFO */}
-            <SectionReveal>
-              <div className="svc-group" style={{ height: '100%' }}>
-                <div className="svc-group-header fin" style={{ background: 'rgba(26,58,143,.12)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(26,58,143,.2)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                  <div style={{ fontSize: '28px' }}>📊</div>
-                  <div>
-                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Virtual CFO Services</div>
-                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Strategic Leadership · MIS · Planning</div>
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                  {[
-                    'Financial planning & analysis',
-                    'Cash flow management',
-                    'MIS reporting & dashboards',
-                    'Profitability improvement',
-                    'Budgeting & forecasting',
-                    'Strategic decision support'
-                  ].map((s, i) => (
-                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
+        {/* WHY US */}
+        <section id="why-us" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
+          <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
+            <SectionReveal className="text-center" style={{ marginBottom: '64px', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>The Advantage</span>
+              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4.5vw,3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Srishaan</em></h2>
             </SectionReveal>
-
-            {/* 2. Funding */}
-            <SectionReveal delay={0.1}>
-              <div className="svc-group" style={{ height: '100%' }}>
-                <div className="svc-group-header it" style={{ background: 'rgba(200,155,60,.06)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(200,155,60,.15)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                  <div style={{ fontSize: '28px' }}>💰</div>
-                  <div>
-                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Funding & Financial Structuring</div>
-                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Loans · Reports · Liaison</div>
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                  {[
-                    'CMA data preparation',
-                    'Project reports & financial modeling',
-                    'Working capital & term loan structuring',
-                    'Bank & NBFC liaison',
-                    'End-to-end funding execution',
-                    'Debt restructuring support'
-                  ].map((s, i) => (
-                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </SectionReveal>
-
-            {/* 3. Business Advisory */}
-            <SectionReveal delay={0.2}>
-              <div className="svc-group" style={{ height: '100%' }}>
-                <div className="svc-group-header fin" style={{ background: 'rgba(26,58,143,.12)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(26,58,143,.2)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                  <div style={{ fontSize: '28px' }}>📈</div>
-                  <div>
-                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Business Advisory</div>
-                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Growth · Optimization · Processes</div>
-                  </div>
-                </div>
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
-                  {[
-                    'Cost optimization strategies',
-                    'Business restructuring',
-                    'Growth & expansion planning',
-                    'Process improvement',
-                    'Financial diagnostics',
-                    'Performance review'
-                  ].map((s, i) => (
-                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </SectionReveal>
-
-            {/* 4. Compliance */}
-            <SectionReveal delay={0.3}>
-              <div className="svc-group" style={{ height: '100%' }}>
-                <div className="svc-group-header it" style={{ background: 'rgba(200,155,60,.06)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(200,155,60,.15)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
-                  <div style={{ fontSize: '28px' }}>⚖️</div>
-                  <div>
-                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Compliance & Regulatory</div>
-                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>GST · IT · ROC · Payroll</div>
-                  </div>
-                </div>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-                  <div style={{ fontSize: '12.5px', color: 'var(--dim)', marginBottom: '8px', lineHeight: 1.5, fontWeight: 300 }}>We provide end-to-end statutory and regulatory compliance support to ensure businesses remain risk-free.</div>
-                  {[
-                    'GST compliance (returns, reconciliation, advisory)',
-                    'Income Tax & TDS compliance',
-                    'PF, ESI & payroll compliance',
-                    'Professional Tax (PT)',
-                    'ROC / MCA compliance support',
-                    'Handling notices & representation',
-                    'Regulatory documentation & filings'
-                  ].map((s, i) => (
-                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </SectionReveal>
-          </ServiceCarousel>
-        </section>
-
-        {/* INDUSTRIES & WHY US */}
-        <section id="industries-values" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
-          <style dangerouslySetInnerHTML={{
-            __html: `
-                @media (max-width: 768px) {
-                  .ind-grid { grid-template-columns: 1fr !important; }
-                  .why-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
-                }
-              `}} />
-          <div className="why-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '80px' }}>
-            <div>
-              <SectionReveal style={{ marginBottom: '44px' }}>
-                <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Market Focus</span>
-                <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Industries We <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Serve</em></h2>
-              </SectionReveal>
-              <div className="ind-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-                {[
-                  { icon: '🏗️', title: 'Infrastructure & Contractors', desc: 'Strategic advisory for engineering firms' },
-                  { icon: '🏢', title: 'Real Estate & Developers', desc: 'Financial structuring for builders' },
-                  { icon: '👥', title: 'Manpower & Facility Management', desc: 'Compliance & payroll solutions' },
-                  { icon: '🏭', title: 'SMEs & Mid-sized Enterprises', desc: 'Growth & funding strategies' }
-                ].map((ind, i) => (
-                  <SectionReveal key={ind.title} delay={i * 0.1}>
-                    <div className="recog-card" style={{ padding: '32px 24px', textAlign: 'left', background: 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', height: '100%' }}>
-                      <div style={{ fontSize: '32px', marginBottom: '16px' }}>{ind.icon}</div>
-                      <h4 style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)', marginBottom: '6px' }}>{ind.title}</h4>
-                      <p style={{ fontSize: '12.5px', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.5 }}>{ind.desc}</p>
-                    </div>
-                  </SectionReveal>
-                ))}
-
-                {/* Balancing Card for the left column */}
-                <SectionReveal delay={0.4} className="ind-span-card">
-                  <style dangerouslySetInnerHTML={{
-                    __html: `
-                    .ind-span-card { grid-column: span 2; }
-                    @media (max-width: 768px) { .ind-span-card { grid-column: span 1 !important; } }
-                  `}} />
-                  <div style={{ padding: '24px 30px', background: 'linear-gradient(90deg, rgba(255,255,255,0.03), transparent)', borderRadius: '14px', border: '1px solid rgba(255,255,255,0.04)', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <div style={{ fontSize: '24px', opacity: 0.6 }}>⚙️</div>
+            
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
+              {[
+                { title: 'Integrated Expertise', desc: 'Finance, compliance & funding under one roof' },
+                { title: 'Execution-Focused', desc: 'Execution partners (not just advisory)' },
+                { title: 'Industry Depth', desc: 'Strong industry understanding & sector knowledge' },
+                { title: 'Result-Oriented', desc: 'Focused on delivering measurable outcomes' },
+                { title: 'Trusted Partner', desc: 'Long-term growth partnership approach' }
+              ].map((val, i) => (
+                <SectionReveal key={i} delay={i * 0.1}>
+                  <div className="svc-item" style={{ padding: '32px 28px', display: 'flex', gap: '20px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.02)', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', height: '100%' }}>
+                    <div style={{ width: '8px', height: '8px', background: 'var(--gold)', borderRadius: '50%', marginTop: '6px', flexShrink: 0, boxShadow: '0 0 10px var(--gold)' }}></div>
                     <div>
-                      <div style={{ fontSize: '14px', fontWeight: 600, color: 'var(--white)' }}>Custom Sector Solutions</div>
-                      <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.1em', marginTop: '2px' }}>Strategic Advisory · Compliance · Growth</div>
+                      <h4 style={{ fontSize: '17px', fontWeight: 700, marginBottom: '8px', color: 'var(--white)' }}>{val.title}</h4>
+                      <p style={{ fontSize: '14px', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.6 }}>{val.desc}</p>
                     </div>
                   </div>
                 </SectionReveal>
-              </div>
-            </div>
-
-            <div>
-              <SectionReveal style={{ marginBottom: '44px' }}>
-                <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>The Advantage</span>
-                <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4vw,3rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Why Choose <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Srishaan</em></h2>
-              </SectionReveal>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                {[
-                  { title: 'Integrated Expertise', desc: 'Finance, compliance & funding under one roof' },
-                  { title: 'Execution-Focused', desc: 'Execution partners (not just advisory)' },
-                  { title: 'Industry Depth', desc: 'Strong industry understanding & sector knowledge' },
-                  { title: 'Result-Oriented', desc: 'Focused on delivering measurable outcomes' },
-                  { title: 'Trusted Partner', desc: 'Long-term growth partnership approach' }
-                ].map((val, i) => (
-                  <SectionReveal key={i} delay={i * 0.1}>
-                    <div className="svc-item" style={{ padding: '20px 24px', display: 'flex', gap: '20px', alignItems: 'flex-start', background: 'rgba(255,255,255,0.02)', borderRadius: '12px', border: '1px solid rgba(255,255,255,0.05)' }}>
-                      <div style={{ width: '8px', height: '8px', background: 'var(--gold)', borderRadius: '50%', marginTop: '6px', flexShrink: 0, boxShadow: '0 0 10px var(--gold)' }}></div>
-                      <div>
-                        <h4 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '4px' }}>{val.title}</h4>
-                        <p style={{ fontSize: '13px', color: 'var(--muted)', fontWeight: 300, lineHeight: 1.6 }}>{val.desc}</p>
-                      </div>
-                    </div>
-                  </SectionReveal>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </section>
       </div>
 
-      {/* ── SECTION 3: STICKY LEADERSHIP ── */}
-      <section id="leadership" style={{ position: 'sticky', top: 0, zIndex: 5, background: 'var(--navy)', padding: '120px 8%', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', scrollSnapAlign: 'start' }}>
+      {/* ── SECTION 3: LEADERSHIP ── */}
+      <section id="leadership" style={{ position: 'relative', zIndex: 5, background: 'var(--navy)', padding: '120px 8%', minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', scrollSnapAlign: 'start' }}>
 
         <SectionReveal className="text-center mb-16">
           <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Leadership Team</span>
           <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4.5vw,3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Experienced <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Promoters & Directors</em></h2>
-          <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '20px auto 0' }}>Over six decades of combined expertise across finance, manufacturing, technology, and public sector operations.</p>
+          <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '640px', margin: '20px auto 40px' }}>Over six decades of combined expertise across finance, manufacturing, technology, and public sector operations.</p>
         </SectionReveal>
 
         <style dangerouslySetInnerHTML={{
@@ -505,16 +336,9 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px' }}>
+              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '0' }}>
                 A qualified CA with over 20 years of experience across infrastructure, technology, and ITES. Brings deep expertise in financial management, corporate finance, and strategic advisory — enabling structured governance and informed decision-making.
               </p>
-
-              <div style={{ marginTop: 'auto' }}>
-                <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 700, marginBottom: '16px' }}>Strategic Associations</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                  {['GVK Group', 'Arabi Co. WLL', 'VSoft Tech'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.04)', padding: '7px 14px', borderRadius: '8px', fontSize: '12px', color: 'var(--white)', border: '1px solid var(--bdr)' }}>{o}</span>)}
-                </div>
-              </div>
             </div>
           </SectionReveal>
 
@@ -530,16 +354,9 @@ export default function AboutPage() {
                 </span>
               </div>
 
-              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '32px' }}>
+              <p style={{ fontSize: '15px', color: 'var(--muted)', lineHeight: 1.8, fontWeight: 300, marginBottom: '0' }}>
                 Over 40 years of experience in manufacturing and production. Brings deep expertise in plant operations, process optimization, and quality systems — providing operational discipline and execution rigour to Srishaan’s delivery model.
               </p>
-
-              <div style={{ marginTop: 'auto' }}>
-                <div style={{ fontSize: '11px', color: 'var(--dim)', textTransform: 'uppercase', letterSpacing: '.12em', fontWeight: 700, marginBottom: '16px' }}>Industrial Tenure</div>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-                  {['Procter & Gamble', 'Coffee Day Global'].map(o => <span key={o} className="org-tag" style={{ background: 'rgba(255,255,255,.04)', padding: '7px 14px', borderRadius: '8px', fontSize: '12px', color: 'var(--white)', border: '1px solid var(--bdr)' }}>{o}</span>)}
-                </div>
-              </div>
             </div>
           </SectionReveal>
         </div>
@@ -549,7 +366,7 @@ export default function AboutPage() {
       <div style={{ position: 'relative', zIndex: 20, background: 'var(--navy-2)', boxShadow: '0 -20px 40px rgba(0,0,0,0.4)' }}>
 
         {/* STATS COUNTER */}
-        <section id="stats" style={{ background: 'var(--navy-3)', borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', padding: '80px 8%', scrollSnapAlign: 'start' }}>
+        {/* <section id="stats" style={{ background: 'var(--navy-3)', borderTop: '1px solid var(--bdr)', borderBottom: '1px solid var(--bdr)', padding: '80px 8%', scrollSnapAlign: 'start' }}>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '48px', maxWidth: '1440px', margin: '0 auto' }}>
             {[
@@ -568,16 +385,16 @@ export default function AboutPage() {
               </SectionReveal>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* APPROACH / METHODOLOGY */}
         <section id="approach" style={{ background: 'var(--navy-2)', padding: '120px 8%', scrollSnapAlign: 'start' }}>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '100px', alignItems: 'center', maxWidth: '1440px', margin: '0 auto' }}>
             <SectionReveal>
-              <div style={{ position: 'relative', height: '480px', borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--bdr)', background: 'var(--navy-3)', boxShadow: '0 40px 100px rgba(0,0,0,0.3)' }}>
-                <PhilosophyCanvas />
-                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, transparent 30%, rgba(4,9,26,0.4) 100%)', pointerEvents: 'none' }}></div>
+              <div style={{ position: 'relative', height: '480px', borderRadius: '32px', overflow: 'hidden', border: '1px solid var(--bdr)', background: 'var(--navy-3)', boxShadow: '0 40px 100px rgba(0,0,0,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <img src="/images/Srishaan_Logo-removebg-preview.png" alt="Srishaan" style={{ width: '70%', maxWidth: '320px', objectFit: 'contain', position: 'relative', zIndex: 2 }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(circle at 50% 50%, rgba(255,255,255,0.3) 0%, transparent 60%)', pointerEvents: 'none' }}></div>
               </div>
             </SectionReveal>
 

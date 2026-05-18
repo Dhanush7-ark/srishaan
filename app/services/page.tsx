@@ -4,6 +4,7 @@ import ServicesHeroCanvas from '@/components/services/ServicesHeroCanvas';
 import Link from 'next/link';
 import ScrollHandler from '@/components/ui/ScrollHandler';
 import ScrollSnapSetter from '@/components/ui/ScrollSnapSetter';
+import ServiceCarousel from '@/components/about/ServiceCarousel';
 
 
 function WordReveal({ words, className = '' }: { words: React.ReactNode[], className?: string }) {
@@ -232,6 +233,127 @@ export default function ServicesPage() {
       {/* Main Content Wrapper (Slides over Hero) */}
       <div style={{ position: 'relative', zIndex: 10, background: 'var(--navy-2)', boxShadow: '0 -20px 40px rgba(0,0,0,0.3)' }}>
 
+        {/* CORE SERVICES VERTICALS */}
+        <section id="services-split" style={{ background: 'var(--navy)', padding: '120px 8%' }}>
+          <SectionReveal className="text-center mb-16">
+            <span style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>Expertise Areas</span>
+            <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.4rem,4.5vw,3.5rem)', fontWeight: 700, lineHeight: 1.15, letterSpacing: '-.02em' }}>Core <em style={{ fontStyle: 'italic', color: 'var(--gold)' }}>Service Verticals</em></h2>
+            <p style={{ color: 'var(--muted)', fontSize: '16px', fontWeight: 300, lineHeight: 1.8, maxWidth: '600px', margin: '20px auto 0' }}>Strategic finance, structured funding, and end-to-end compliance solutions tailored for business excellence.</p>
+          </SectionReveal>
+
+          <ServiceCarousel>
+            {/* 1. Virtual CFO */}
+            <SectionReveal>
+              <div className="svc-group" style={{ height: '100%' }}>
+                <div className="svc-group-header fin" style={{ background: 'rgba(26,58,143,.12)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(26,58,143,.2)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                  <div style={{ fontSize: '28px' }}>📊</div>
+                  <div>
+                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Virtual CFO Services</div>
+                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Strategic Leadership · MIS · Planning</div>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                  {[
+                    'Financial planning & analysis',
+                    'Cash flow management',
+                    'MIS reporting & dashboards',
+                    'Profitability improvement',
+                    'Budgeting & forecasting',
+                    'Strategic decision support'
+                  ].map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* 2. Funding */}
+            <SectionReveal delay={0.1}>
+              <div className="svc-group" style={{ height: '100%' }}>
+                <div className="svc-group-header it" style={{ background: 'rgba(200,155,60,.06)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(200,155,60,.15)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                  <div style={{ fontSize: '28px' }}>💰</div>
+                  <div>
+                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Funding & Financial Structuring</div>
+                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Loans · Reports · Liaison</div>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                  {[
+                    'CMA data preparation',
+                    'Project reports & financial modeling',
+                    'Working capital & term loan structuring',
+                    'Bank & NBFC liaison',
+                    'End-to-end funding execution',
+                    'Debt restructuring support'
+                  ].map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* 3. Business Advisory */}
+            <SectionReveal delay={0.2}>
+              <div className="svc-group" style={{ height: '100%' }}>
+                <div className="svc-group-header fin" style={{ background: 'rgba(26,58,143,.12)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(26,58,143,.2)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                  <div style={{ fontSize: '28px' }}>📈</div>
+                  <div>
+                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Business Advisory</div>
+                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>Growth · Optimization · Processes</div>
+                  </div>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '12px' }}>
+                  {[
+                    'Cost optimization strategies',
+                    'Business restructuring',
+                    'Growth & expansion planning',
+                    'Process improvement',
+                    'Financial diagnostics',
+                    'Performance review'
+                  ].map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+
+            {/* 4. Compliance */}
+            <SectionReveal delay={0.3}>
+              <div className="svc-group" style={{ height: '100%' }}>
+                <div className="svc-group-header it" style={{ background: 'rgba(200,155,60,.06)', padding: '24px', borderRadius: '12px', border: '1px solid rgba(200,155,60,.15)', display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '20px' }}>
+                  <div style={{ fontSize: '28px' }}>⚖️</div>
+                  <div>
+                    <div style={{ fontSize: '18px', fontWeight: 700 }}>Compliance & Regulatory</div>
+                    <div style={{ fontSize: '12px', color: 'var(--muted)', fontWeight: 400, marginTop: '2px' }}>GST · IT · ROC · Payroll</div>
+                  </div>
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                  <div style={{ fontSize: '12.5px', color: 'var(--dim)', marginBottom: '8px', lineHeight: 1.5, fontWeight: 300 }}>We provide end-to-end statutory and regulatory compliance support to ensure businesses remain risk-free.</div>
+                  {[
+                    'GST compliance (returns, reconciliation, advisory)',
+                    'Income Tax & TDS compliance',
+                    'PF, ESI & payroll compliance',
+                    'Professional Tax (PT)',
+                    'ROC / MCA compliance support',
+                    'Handling notices & representation',
+                    'Regulatory documentation & filings'
+                  ].map((s, i) => (
+                    <div key={i} className="svc-item" style={{ padding: '14px 18px', background: 'rgba(255,255,255,0.02)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                      <div style={{ fontSize: '13px', color: 'var(--white)', fontWeight: 500 }}>{s}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </SectionReveal>
+          </ServiceCarousel>
+        </section>
+
         {/* ── Services Offered ── */}
         <section id="services-grid" style={{ position: 'relative', padding: '100px 0', background: 'var(--navy-2)', minHeight: '100vh', scrollSnapAlign: 'start' }}>
           <style dangerouslySetInnerHTML={{
@@ -315,7 +437,7 @@ export default function ServicesPage() {
 
 
         {/* ── Industry Application ── */}
-        <section id="industries" style={{ padding: '100px 0', background: 'var(--navy)', scrollSnapAlign: 'start' }}>
+        {/* <section id="industries" style={{ padding: '100px 0', background: 'var(--navy)', scrollSnapAlign: 'start' }}>
           <style dangerouslySetInnerHTML={{
             __html: `
             @media (max-width: 768px) { #industries { padding: 60px 0 !important; } }
@@ -337,7 +459,7 @@ export default function ServicesPage() {
               ))}
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* ── Our Strength ── */}
         <section id="strengths" style={{ position: 'sticky', top: 0, padding: '120px 0', background: 'var(--navy-2)', scrollSnapAlign: 'start' }}>
