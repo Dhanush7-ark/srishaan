@@ -9,15 +9,25 @@ export default function ScrollHandler() {
       window.history.scrollRestoration = 'manual';
     }
 
-    // Force scroll to top on mount
-    // Using a small timeout to ensure it happens after layout paints
+    // Force scroll to top on mount ONLY if no hash is present in the URL.
+    // If a hash is present, scroll to that element.
     const timer = setTimeout(() => {
+      const hash = window.location.hash;
+      if (hash) {
+        const id = hash.substring(1);
+        const element = document.getElementById(id);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+
       window.scrollTo({
         top: 0,
         left: 0,
-        behavior: 'instant' as any // Use 'instant' if supported, or just omit behavior
+        behavior: 'instant' as any
       });
-    }, 10);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, []);

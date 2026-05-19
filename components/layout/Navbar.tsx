@@ -20,7 +20,7 @@ export default function Navbar() {
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
     { href: '/about', label: 'About Us' },
-    { href: '/contact', label: 'CONTACT US' },
+    { href: '/contact', label: 'Contact Us' },
   ];
 
   const isActive = (href: string) => pathname === href;
@@ -52,6 +52,16 @@ export default function Navbar() {
         }
         @media (min-width: 1024px) {
           .nav-btn-desktop { display: inline-flex !important; }
+        }
+        .startup-india-logo {
+          height: 48px;
+          width: auto;
+          object-fit: contain;
+          transition: all 0.3s ease;
+          display: block;
+        }
+        body:not(.light) .startup-india-logo {
+          filter: invert(1) brightness(1.2);
         }
       `}} />
       {/* Logo */}
@@ -103,19 +113,28 @@ export default function Navbar() {
 
       {/* Right side */}
       <div className="flex items-center gap-3 sm:gap-6">
+        {/* Startup India Logo */}
+        <div className="hidden lg:flex items-center ml-2">
+          <img 
+            src="/images/startup-india-transparent.png" 
+            alt="DPIIT Startup India" 
+            className="startup-india-logo"
+          />
+        </div>
+
         {/* Partner badge */}
-        <div className="hidden md:flex items-center gap-4 ml-4" style={{ borderLeft: '1.5px solid var(--bdr)', height: '24px', paddingLeft: '24px' }}>
-          <span style={{ fontSize: '9px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--dim)', whiteSpace: 'nowrap' }}>Partner</span>
-          <div className="flex items-center gap-2 scale-90 origin-left">
-            <svg viewBox="0 0 26 24" width="20" height="18" fill="none">
+        <div className="hidden md:flex items-center gap-4 ml-4" style={{ borderLeft: '1.5px solid var(--bdr)', height: '36px', paddingLeft: '24px' }}>
+          <span style={{ fontSize: '10px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.12em', color: 'var(--dim)', whiteSpace: 'nowrap' }}>Partner</span>
+          <div className="flex items-center gap-2">
+            <svg viewBox="0 0 26 24" width="25" height="23" fill="none">
               <path d="M2 22 L8.5 2 L13.5 2 L7 22 Z" fill="var(--gold)" />
               <path d="M12.5 2 L17.5 2 L24 22 L19.5 22 Z" fill="var(--gold)" />
               <path d="M9.5 2 L13.5 2 L10.2 12 L8 12 Z" fill="var(--blue)" />
             </svg>
             <div className="flex flex-col leading-none">
               <div className="flex items-baseline gap-0.5">
-                <span style={{ fontSize: '12px', fontWeight: 900, color: 'var(--blue)' }}>M</span>
-                <span style={{ fontSize: '8px', fontWeight: 700, color: 'var(--gold)' }}>SYS</span>
+                <span style={{ fontSize: '15px', fontWeight: 900, color: 'var(--blue)' }}>M</span>
+                <span style={{ fontSize: '10px', fontWeight: 700, color: 'var(--gold)' }}>SYS</span>
               </div>
             </div>
           </div>

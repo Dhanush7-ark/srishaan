@@ -22,8 +22,8 @@ export default function CtaSection() {
       <div style={{ position: 'relative', zIndex: 2, maxWidth: '640px', margin: '0 auto', padding: '0 8%' }}>
         <SectionReveal>
           <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '20px' }}>Get Started Today</p>
-          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4.5vw,3.8rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.025em', marginBottom: '24px', color: '#fff' }}>Start Your Wealth Journey Today</h2>
-          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '36px' }}>Join 15,000+ families who trust Srishaan to grow and protect their wealth.</p>
+          <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2.2rem,4.5vw,3.8rem)', fontWeight: 700, lineHeight: 1.2, letterSpacing: '-.025em', marginBottom: '24px', color: '#fff' }}>Start Your Business Growth Journey Today</h2>
+          <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.8, marginBottom: '36px' }}>Join 15,000+ families who trust Srishaan to grow and protect their business.</p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>
             {/* <Link href="/contact" className="btn-gold" style={{ padding: '14px 32px' }}>Book Free Consultation</Link> */}
             <Link href="/about" className="btn-ghost" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)', padding: '14px 32px' }}>Learn About Us</Link>

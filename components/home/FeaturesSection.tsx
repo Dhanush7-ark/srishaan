@@ -34,17 +34,14 @@ export default function FeaturesSection() {
         }
       `}} />
       <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-        <SectionReveal className="sec-head" style={{ marginBottom: '56px' }}>
+        <SectionReveal className="sec-head text-center" style={{ marginBottom: '56px' }}>
           <span className="tag" style={{ display: 'inline-block', fontSize: '11px', fontWeight: 600, letterSpacing: '.12em', textTransform: 'uppercase', color: 'var(--gold)', marginBottom: '14px' }}>
-            Why Srishaan
+            Our Strengths
           </span>
           <WordReveal
             words={[
-              <span key="1">Built</span>,
-              <span key="2">for</span>,
-              <em key="3" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Serious</em>,
-              <span key="4">Wealth</span>,
-              <span key="5">Builders</span>
+              <span key="1">Our</span>,
+              <em key="2" style={{ fontStyle: 'normal', color: 'var(--gold)' }}>Strengths</em>,
             ]}
           />
           <style dangerouslySetInnerHTML={{
@@ -54,9 +51,6 @@ export default function FeaturesSection() {
             .word-reveal .word > span { display: inline-block; transform: translateY(105%); transition: transform .7s cubic-bezier(.16,1,.3,1); }
             #features.in .word-reveal .word > span, .in .word-reveal .word > span { transform: none; }
           `}} />
-          <p className="sub" style={{ color: 'var(--muted)', fontSize: '15px', fontWeight: 300, lineHeight: 1.75, maxWidth: '500px', marginTop: '14px' }}>
-            Every feature is designed around one goal: helping you make better financial decisions, faster.
-          </p>
         </SectionReveal>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '22px' }}>

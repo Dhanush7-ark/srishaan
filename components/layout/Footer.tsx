@@ -20,14 +20,24 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h4 style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.1em', color: 'var(--dim)', marginBottom: '16px' }}>Services</h4>
-            {['Mutual Funds', 'Equity Advisory', 'Wealth Management', 'Retirement Planning', 'Tax Optimisation'].map(s => (
-              <Link key={s} href="/services" style={{ display: 'block', fontSize: '13.5px', color: 'var(--muted)', textDecoration: 'none', marginBottom: '10px', transition: 'color .2s' }}>{s}</Link>
+            {[
+              { l: 'Financial Services', h: '/services#services-split' },
+              { l: 'IT & ITES Services', h: '/services#it-ites' },
+              { l: 'Project Execution', h: '/services#project-execution' },
+              { l: 'Supply & Resale', h: '/services#supply-resale' }
+            ].map(s => (
+              <Link key={s.l} href={s.h} style={{ display: 'block', fontSize: '13.5px', color: 'var(--muted)', textDecoration: 'none', marginBottom: '10px', transition: 'color .2s' }}>{s.l}</Link>
             ))}
           </div>
           {/* Company */}
           <div>
             <h4 style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.1em', color: 'var(--dim)', marginBottom: '16px' }}>Company</h4>
-            {[['About Us', '/about'], ['Services', '/services'], ['Contact Us', '/contact']].map(([l, h]) => (
+            {[
+              ['Home', '/'],
+              ['About Us', '/about'],
+              ['Services', '/services'],
+              ['Contact Us', '/contact']
+            ].map(([l, h]) => (
               <Link key={h} href={h} style={{ display: 'block', fontSize: '13.5px', color: 'var(--muted)', textDecoration: 'none', marginBottom: '10px', transition: 'color .2s' }}>{l}</Link>
             ))}
           </div>
@@ -42,7 +52,6 @@ export default function Footer() {
         {/* Bottom bar */}
         <div style={{ borderTop: '1px solid var(--bdr)', paddingTop: '24px', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '20px' }}>
           <p style={{ fontSize: '12px', color: 'var(--dim)' }}>© 2025 Srishaan Tech & Financial Services Pvt. Ltd. All rights reserved.</p>
-          <p style={{ fontSize: '12px', color: 'var(--dim)' }}>SEBI Registered &nbsp;·&nbsp; ISO 27001 Secured</p>
         </div>
       </div>
     </footer>

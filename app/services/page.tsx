@@ -461,7 +461,7 @@ export default function ServicesPage() {
           </div>
         </section> */}
 
-        {/* ── Our Strength ── */}
+        {/* ── Our Strengths ── */}
         <section id="strengths" style={{ position: 'sticky', top: 0, padding: '120px 0', background: 'var(--navy-2)', scrollSnapAlign: 'start' }}>
           <style dangerouslySetInnerHTML={{
             __html: `
@@ -471,7 +471,7 @@ export default function ServicesPage() {
           <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
             <SectionReveal className="mb-10" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Our Strengths</p>
-              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: 30 }}>Our <span className="gold-grad">Strength</span></h2>
+              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: 30 }}>Our <span className="gold-grad">Strengths</span></h2>
             </SectionReveal>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '24px' }}>
               {[

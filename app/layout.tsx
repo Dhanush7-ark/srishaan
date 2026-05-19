@@ -3,7 +3,6 @@ import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import CustomCursor from '@/components/ui/CustomCursor';
 import ScrollProgress from '@/components/ui/ScrollProgress';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter-var', display: 'swap' });
@@ -11,7 +10,7 @@ const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfa
 
 export const metadata: Metadata = {
   title: 'Srishaan Finance | Expert-Led Investment Strategies',
-  description: 'Expert-led investment strategies tailored to your life goals. SEBI registered wealth management firm.',
+  description: 'Expert-led investment strategies tailored to your life goals. SEBI registered business management firm.',
   icons: {
     icon: [
       { url: '/icon.png', type: 'image/png' },
@@ -26,7 +25,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body>
-        <CustomCursor />
         <ScrollProgress />
         <Navbar />
         <main>{children}</main>

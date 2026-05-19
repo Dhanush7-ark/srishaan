@@ -169,6 +169,7 @@ export default function HeroSection() {
           {/* Stats row */}
           <div className="hero-stats" style={{ display: 'flex', gap: '32px', alignItems: 'center', paddingTop: '10px', opacity: 0, animation: 'fadeUp .7s 1.0s cubic-bezier(.16,1,.3,1) forwards' }}>
             {[
+              { v: 'Financial Services', h: '/services#services-split' },
               { v: 'IT & ITES Services', h: '/services#it-ites' },
               { v: 'Project Execution', h: '/services#project-execution' },
               { v: 'Supply & Resale', h: '/services#supply-resale' }
@@ -195,7 +196,8 @@ export default function HeroSection() {
                       color: 'var(--white)', 
                       lineHeight: 1, 
                       transition: 'all 0.3s ease',
-                      letterSpacing: '0.01em'
+                      letterSpacing: '0.01em',
+                      whiteSpace: 'nowrap'
                     }}>{item.v}</div>
                   </div>
                 </Link>

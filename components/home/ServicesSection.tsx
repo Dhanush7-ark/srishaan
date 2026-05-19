@@ -3,8 +3,8 @@ import TiltCard from '@/components/ui/TiltCard';
 import Link from 'next/link';
 
 const services = [
-  { icon: '📈', title: 'Investment Advisory', desc: 'Tailored portfolio strategies built on your risk profile, timeline, and long-term wealth goals.' },
-  { icon: '🏦', title: 'Wealth Management', desc: 'Holistic planning that aligns your assets, liabilities, and aspirations into one unified roadmap.' },
+  { icon: '📈', title: 'Investment Advisory', desc: 'Tailored portfolio strategies built on your risk profile, timeline, and long-term business goals.' },
+  { icon: '🏦', title: 'Business Management', desc: 'Holistic planning that aligns your assets, liabilities, and aspirations into one unified roadmap.' },
   { icon: '💼', title: 'Tax Optimisation', desc: 'Legal, strategic tax planning that keeps more of your returns working for you each year.' },
 ];
 

@@ -2,7 +2,7 @@ import SectionReveal from '@/components/ui/SectionReveal';
 
 const steps = [
   { n: '01', title: 'Discover', desc: 'We conduct a thorough assessment of your financial situation, goals, and risk tolerance.' },
-  { n: '02', title: 'Strategise', desc: 'Our certified planners craft a bespoke wealth strategy tailored precisely to your life timeline.' },
+  { n: '02', title: 'Strategise', desc: 'Our certified planners craft a bespoke business strategy tailored precisely to your life timeline.' },
   { n: '03', title: 'Grow', desc: 'We implement, monitor, and continuously optimise your portfolio — keeping you informed every step.' },
 ];
 
