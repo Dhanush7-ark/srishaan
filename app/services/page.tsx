@@ -365,7 +365,7 @@ export default function ServicesPage() {
           <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 6%' }}>
             <SectionReveal className="mb-14" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center' }}>
               <p style={{ fontSize: '11px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '.14em', color: 'var(--gold)', marginBottom: '14px' }}>Expertise & Delivery</p>
-              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: "50px" }}>Services <span className="gold-grad">Offered</span></h2>
+              <h2 style={{ fontFamily: 'var(--font-playfair)', fontSize: 'clamp(2rem,3.5vw,3rem)', fontWeight: 700, letterSpacing: '-.02em', marginBottom: "50px" }}> Other Services <span className="gold-grad">Offered</span></h2>
             </SectionReveal>
 
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '32px' }}>

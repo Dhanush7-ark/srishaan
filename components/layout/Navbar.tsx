@@ -63,17 +63,27 @@ export default function Navbar() {
         body:not(.light) .startup-india-logo {
           filter: invert(1) brightness(1.2);
         }
+        .msme-logo {
+          height: 30px;
+          width: auto;
+          object-fit: contain;
+          transition: all 0.3s ease;
+          display: block;
+        }
+        body:not(.light) .msme-logo {
+          filter: invert(1) brightness(1.2);
+        }
       `}} />
       {/* Logo */}
       <Link href="/" className="flex items-center no-underline">
         <Image
           src="/images/Srishaan_Logo-removebg-preview.png"
           alt="Srishaan"
-          width={200}
-          height={56}
+          width={300}
+          height={150}
           priority
           className="object-contain nav-logo"
-          style={{ height: '56px', width: 'auto' }}
+          style={{ height: '70px', width: 'auto' }}
         />
       </Link>
 
@@ -119,6 +129,15 @@ export default function Navbar() {
             src="/images/startup-india-transparent.png" 
             alt="DPIIT Startup India" 
             className="startup-india-logo"
+          />
+        </div>
+
+        {/* MSME Logo */}
+        <div className="hidden lg:flex items-center ml-2">
+          <img 
+            src="/images/msme-transparent.png" 
+            alt="MSME" 
+            className="msme-logo"
           />
         </div>
 
