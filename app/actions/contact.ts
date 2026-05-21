@@ -86,6 +86,7 @@
 // }
 
 
+
 export async function sendContactEmail(formData: {
   fullName: string;
   company: string;
@@ -95,28 +96,32 @@ export async function sendContactEmail(formData: {
   message: string;
 }) {
   try {
-const response = await fetch('https://api.web3forms.com/submit', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json',
-    Accept: 'application/json',
-  },
-  body: JSON.stringify({
-    access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+    const response = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+      },
+      body: JSON.stringify({
+        access_key: 'ae42f7a1-464f-457a-9afb-bfc1c11e8c55',
 
-    subject: `New Application: ${formData.interest} - ${formData.fullName}`,
+        subject: `New Application: ${formData.interest} - ${formData.fullName}`,
 
-    from_name: 'Srishaan Contact Form',
+        from_name: 'Srishaan Contact Form',
 
-    fullName: formData.fullName,
-    company: formData.company,
-    email: formData.email,
-    phone: formData.phone,
-    interest: formData.interest,
-    message: formData.message,
-  }),
-});
+        name: formData.fullName,
+        email: formData.email,
+        message: formData.message,
+
+        company: formData.company,
+        phone: formData.phone,
+        interest: formData.interest,
+      }),
+    });
+
     const result = await response.json();
+
+    console.log(result);
 
     if (result.success) {
       return { success: true };

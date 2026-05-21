@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 export default function Footer() {
   return (
     <footer style={{ background: 'var(--navy-2)', borderTop: '1px solid var(--bdr)', paddingTop: '60px', paddingBottom: '32px' }}>

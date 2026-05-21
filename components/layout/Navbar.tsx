@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
-import Image from 'next/image';
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -76,15 +75,14 @@ export default function Navbar() {
       `}} />
       {/* Logo */}
       <Link href="/" className="flex items-center no-underline">
-        <Image
-          src="/images/Srishaan_Logo-removebg-preview.png"
-          alt="Srishaan"
-          width={300}
-          height={150}
-          priority
-          className="object-contain nav-logo"
-          style={{ height: '70px', width: 'auto' }}
-        />
+        <img
+  src="/images/Srishaan_Logo-removebg-preview.png"
+  alt="Srishaan"
+  width={300}
+  height={150}
+  className="object-contain nav-logo"
+  style={{ height: '70px', width: 'auto' }}
+/>
       </Link>
 
       {/* Desktop Nav Links */}
